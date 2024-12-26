@@ -1,5 +1,7 @@
 # Abstract Algebra
 
+NOTE: we directly use the [book](../res/Abstract%20Algebra%20-%20Theory%20and%20Applications.pdf) is litter difficult. So We use the chinese version handout to learn is be first, then we will use the book to learn.
+
 The abstract algebra is a branch of mathematics that studies algebraic structures, such as groups, rings, fields, modules, vector spaces, and algebras. which is helpful for the cryptography, coding theory, and many other fields.
 
 ## content
