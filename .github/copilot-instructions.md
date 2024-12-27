@@ -1,4 +1,4 @@
-# Markdown covert
+# Latex covert
 
-- transform the pdf copy to markdown format code
-- the math symbols warp by $
+- transform the pdf copy to latex format code
+- translate the chinese characters to english
