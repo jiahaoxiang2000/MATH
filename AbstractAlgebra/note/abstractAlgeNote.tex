@@ -30,7 +30,139 @@
 
 \mainmatter
 
+\chapter{Group Theory}
 
+\section{Monoid Group}
+
+\begin{definition}{monoid}{monoid}
+  We say that $(S, \ast)$ is a monoid if the binary operation satisfies the associative law and has an identity element. That is,
+  \[
+  \forall x, y, z \in S, \quad x \ast (y \ast z) = (x \ast y) \ast z
+  \]
+  and
+  \[
+  \exists e \in S, \forall x \in S, \quad e \ast x = x \ast e = x
+  \]
+\end{definition}
+
+
+\begin{definition}{commutative monoid}{commutative monoid}
+  We say that $(S, \ast)$ is a commutative monoid if it is a monoid and the operation satisfies the commutative law. That is,
+  \[
+  \forall x, y \in S, \quad x \ast y = y \ast x
+  \]
+\end{definition}
+
+\begin{proposition}{unique of identity element}{uniqueness_of_identity_element}
+  Let $(S, \cdot)$ be a monoid. Then the identity element is unique.
+\end{proposition}
+\begin{proof}
+  Suppose that $e$ and $e'$ are both identity elements of $S$. Then
+  \[
+  e = e \cdot e' = e'
+  \]
+  so $e = e'$.
+\end{proof}
+
+\begin{proposition}{expand of associative law}{expand_of_associative_law}
+  Let $x_1, \ldots, x_n, y_1, \ldots, y_m \in S$. Then
+  \[
+  x_1 \cdot x_2 \cdot \ldots \cdot x_n \cdot y_1 \cdot y_2 \cdot \ldots \cdot y_m = (x_1 \cdot x_2 \cdot \ldots \cdot x_n) \cdot (y_1 \cdot y_2 \cdot \ldots \cdot y_m)
+  \]
+\end{proposition}
+\begin{proof}
+We prove this by induction on $n$.
+
+\textbf{Base Case ($n = 1$):}  
+When $n = 1$, the statement simplifies to:
+\[
+x_1 \cdot y_1 \cdot y_2 \cdot \ldots \cdot y_m = x_1 \cdot (y_1 \cdot y_2 \cdot \ldots \cdot y_m)
+\]
+This is clearly true by the associative property of multiplication.
+
+\textbf{Inductive Step:}  
+Assume the statement holds for $n = k$, that is:
+\[
+x_1 \cdot x_2 \cdot \ldots \cdot x_k \cdot y_1 \cdot y_2 \cdot \ldots \cdot y_m = (x_1 \cdot x_2 \cdot \ldots \cdot x_k) \cdot (y_1 \cdot y_2 \cdot \ldots \cdot y_m)
+\]
+We need to show that the statement holds for $n = k + 1$. Consider:
+\[
+x_1 \cdot x_2 \cdot \ldots \cdot x_k \cdot x_{k+1} \cdot y_1 \cdot y_2 \cdot \ldots \cdot y_m
+\]
+By the associative property, we can regroup the terms as:
+\[
+(x_1 \cdot x_2 \cdot \ldots \cdot x_k \cdot x_{k+1}) \cdot (y_1 \cdot y_2 \cdot \ldots \cdot y_m)
+\]
+Using the inductive hypothesis on the first $k$ terms, we have:
+\[
+(x_1 \cdot x_2 \cdot \ldots \cdot x_k) \cdot x_{k+1} \cdot (y_1 \cdot y_2 \cdot \ldots \cdot y_m) = (x_1 \cdot x_2 \cdot \ldots \cdot x_k \cdot x_{k+1}) \cdot (y_1 \cdot y_2 \cdot \ldots \cdot y_m)
+\]
+Thus, the statement holds for $n = k + 1$.
+
+\end{proof}
+
+\begin{proposition}
+  Let $x \in S$ and $m,n \in \mathbb{N}$. Then
+  \[
+  x^{m+n} = x^m \cdot x^n
+  \]
+\end{proposition}
+\begin{proof}
+  We will prove this in three steps:
+
+  \textbf{Step 1:} First, recall from Proposition~\ref{pro:expand_of_associative_law} that for any elements in $S$:
+  \[
+    x_1 \cdot x_2 \cdot \ldots \cdot x_n \cdot y_1 \cdot y_2 \cdot \ldots \cdot y_m = (x_1 \cdot x_2 \cdot \ldots \cdot x_n) \cdot (y_1 \cdot y_2 \cdot \ldots \cdot y_m)
+  \]
+
+  \textbf{Step 2:} Now, consider the special case where all elements are equal to $x$:
+  \begin{itemize}
+    \item Let $x_1 = x_2 = \ldots = x_m = x$
+    \item Let $y_1 = y_2 = \ldots = y_n = x$
+  \end{itemize}
+
+  \textbf{Step 3:} By definition of exponentiation in a monoid:
+  \begin{align*}
+    x^{m+n} &= \underbrace{x \cdot x \cdot \ldots \cdot x}_{m+n \text{ times}} \\
+    &= (\underbrace{x \cdot x \cdot \ldots \cdot x}_{m \text{ times}}) \cdot (\underbrace{x \cdot x \cdot \ldots \cdot x}_{n \text{ times}}) \\
+    &= x^m \cdot x^n
+  \end{align*}
+
+  Therefore, we have proved that $x^{m+n} = x^m \cdot x^n$ for all $x \in S$ and $m,n \in \mathbb{N}$.
+\end{proof}
+
+\begin{definition}{Submonoid}{submonoid}
+  Let $(S,\cdot)$ be a monoid. If $T \subset S$, we say that $(T,\cdot)$ is a submonoid of $(S,\cdot)$ if:
+  \begin{enumerate}
+    \item The identity element $e \in T$
+    \item $T$ is closed under multiplication, that is:
+    \[
+      \forall x,y \in T, \quad x \cdot y \in T
+    \]
+  \end{enumerate}
+\end{definition}
+
+\begin{proposition}
+  If $(T,\cdot)$ is a submonoid of $(S,\cdot)$, then $(T,\cdot)$ is a monoid.
+\end{proposition}
+\begin{proof}
+  We need to verify two properties:
+  \begin{enumerate}
+    \item The operation is associative in $T$: \\
+    Since $T \subset S$ and $\cdot$ is associative in $S$, it is also associative in $T$.
+    
+    \item $T$ has an identity element: \\
+    By definition of submonoid, the identity element $e \in T$.
+  \end{enumerate}
+  Therefore, $(T,\cdot)$ satisfies all properties of a monoid.
+\end{proof}
+
+
+\chapter{Ring Theory}
+
+\chapter{Polynomial Theory}
+
+\chapter{Field Theory}
 
 
 
