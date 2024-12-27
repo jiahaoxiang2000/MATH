@@ -264,6 +264,212 @@ Thus, the statement holds for $n = k + 1$.
   Therefore, $f^{-1}$ is both a homomorphism and bijective, making it an isomorphism.
 \end{proof}
 
+\section{Group}
+
+\begin{definition}[Invertible Element]{invertible_element}
+  Let $(S,\cdot)$ be a monoid and $x \in S$. We say $x$ is invertible if and only if
+  \[
+    \exists y \in S, x \cdot y = y \cdot x = e 
+  \]
+  where $y$ is called the inverse of $x$, denoted as $x^{-1}$.
+\end{definition}
+
+\begin{proposition}[Uniqueness of Inverse]{uniqueness_of_inverse}
+  Let $(S,\cdot)$ be a monoid. If $x \in S$ is invertible, then its inverse is unique. That is, if $y,y' \in S$ are both inverses of $x$, then $y = y'$.
+\end{proposition}
+
+\begin{proof}
+  Let $y$ and $y'$ be inverses of $x$. Then:
+  \begin{align*}
+    y &= y \cdot e \\
+    &= y \cdot (x \cdot y') \\
+    &= (y \cdot x) \cdot y' \\
+    &= e \cdot y' \\
+    &= y'
+  \end{align*}
+  Therefore, the inverse is unique.
+\end{proof}
+
+\begin{definition}[Group]{group}
+  Let $(G,\cdot)$ be a monoid. We say it is a group if every element in $G$ is invertible. 
+  
+  Equivalently, if $\cdot$ is a binary operation on $G$, we say $(G,\cdot)$ is a group, or $G$ forms a group under $\cdot$, when this operation satisfies:
+  \begin{enumerate}
+    \item Associativity: For all $x,y,z \in G$
+    \[
+      x \cdot (y \cdot z) = (x \cdot y) \cdot z 
+    \]
+    
+    \item Identity element: There exists $e \in G$ such that for all $x \in G$
+    \[
+      x \cdot e = e \cdot x = x 
+    \]
+    
+    \item Inverse elements: For each $x \in G$, there exists $y \in G$ such that
+    \[
+      x \cdot y = y \cdot x = e 
+    \]
+  \end{enumerate}
+\end{definition}
+
+\begin{proposition}
+  Let $(G,\cdot)$ be a group and $x \in G$. Then $(x^{-1})^{-1} = x$.
+\end{proposition}
+
+\begin{proof}
+  Let $y = x^{-1}$. Then:
+  \[
+    y \cdot x = x \cdot y = e
+  \]
+  This shows that $x$ is the inverse of $y = x^{-1}$.
+  Therefore, $(x^{-1})^{-1} = x$.
+\end{proof}
+
+\begin{proposition}[Inverse of Product]
+  Let $(G,\cdot)$ be a group and $x,y \in G$. Then $(x \cdot y)^{-1} = y^{-1} \cdot x^{-1}$.
+\end{proposition}
+
+\begin{proof}
+  We will show that $y^{-1} \cdot x^{-1}$ is the inverse of $x \cdot y$:
+  \begin{align*}
+    (x \cdot y)(y^{-1} \cdot x^{-1}) &= x \cdot (y \cdot y^{-1}) \cdot x^{-1} \\
+    &= x \cdot e \cdot x^{-1} \\
+    &= x \cdot x^{-1} \\
+    &= e
+  \end{align*}
+  Similarly, $(y^{-1} \cdot x^{-1})(x \cdot y) = e$.
+  Therefore, $(x \cdot y)^{-1} = y^{-1} \cdot x^{-1}$.
+\end{proof}
+
+\begin{definition}[Abelian Group]{abelian_group}
+  Let $(G,\cdot)$ be a group. We say it is an abelian group, or commutative group, if the operation satisfies the commutative law:
+  \[
+    \forall x,y \in G, \quad x \cdot y = y \cdot x
+  \]
+\end{definition}
+
+\begin{lemma}
+  Let $(S,\cdot)$ be a monoid and let $G$ be the subset of all invertible elements in $S$. Then $(G,\cdot)$ is a group.
+\end{lemma}
+
+\begin{proof}
+  We need to verify three group axioms:
+  \begin{enumerate}
+    \item Closure: If $x,y \in G$, then $x \cdot y \in G$ (as product of invertible elements is invertible)
+    \item Identity: $e \in G$ (as $e$ is invertible)
+    \item Inverse: If $x \in G$, then $x^{-1} \in G$ (by definition of invertible elements)
+  \end{enumerate}
+  Associativity is inherited from $S$. Therefore, $(G,\cdot)$ is a group.
+\end{proof}
+
+\begin{definition}[General Linear Group]{general_linear_group}
+  The group of $n \times n$ invertible real matrices under matrix multiplication is called the general linear group of degree $n$ over the real numbers, denoted as $(GL(n,\mathbb{R}),\cdot)$. Since a matrix is invertible if and only if its determinant is nonzero:
+  \[
+    GL(n,\mathbb{R}) = \{ A \in M(n,\mathbb{R}) : \det(A) \neq 0 \}
+  \]
+\end{definition}
+
+\begin{definition}[Special Linear Group]
+  The special linear group of degree $n$ over the real numbers is the group of $n \times n$ real matrices with determinant exactly $1$ under matrix multiplication, denoted as $(SL(n,\mathbb{R}),\cdot)$. That is:
+  \[
+    SL(n,\mathbb{R}) = \{ A \in M(n,\mathbb{R}) : \det(A) = 1 \}
+  \]
+\end{definition}
+
+\begin{definition}[Subgroup]{subgroup}
+  Let $(G,\cdot)$ be a group and $H \subset G$. We say $H$ is a subgroup of $G$, denoted as $H < G$, if it contains the identity element and is closed under multiplication and inverse operations. That is:
+  \begin{enumerate}
+    \item $\forall x,y \in H, \quad x \cdot y \in H$ \quad (closure under multiplication)
+    \item $\forall x \in H, \quad x^{-1} \in H$ \quad (closure under inverse)
+    \item $e \in H$ \quad (contains identity)
+  \end{enumerate}
+\end{definition}
+
+\begin{proposition}
+  Let $(G,\cdot)$ be a group. If $H$ is a subgroup of $G$, then $(H,\cdot)$ is also a group.
+\end{proposition}
+
+\begin{proof}
+  Since $H$ is a subgroup:
+  \begin{enumerate}
+    \item Associativity: Inherited from $G$
+    \item Identity: $e \in H$ by definition of subgroup
+    \item Inverse: For all $x \in H$, $x^{-1} \in H$ by definition of subgroup
+    \item Closure: For all $x,y \in H$, $x \cdot y \in H$ by definition of subgroup
+  \end{enumerate}
+  Therefore, $(H,\cdot)$ satisfies all group axioms.
+\end{proof}
+
+\begin{proposition}
+  For convenience, we can combine the first two conditions of a subgroup definition~\ref{def:subgroup} into one, reducing to two conditions:
+  \begin{enumerate}
+    \item $\forall x,y \in H, \quad x \cdot y^{-1} \in H$ 
+    \item $e \in H$ 
+  \end{enumerate}
+  These conditions are equivalent to the original subgroup definition.
+\end{proposition}
+
+\begin{proof}
+
+  ($\Rightarrow$)  $\forall y \in H$, $y^{-1} \in H$, then the closure under multiplication,  $\forall x,y,y^{-1} \in H$, $x \cdot y^{-1} \in H$
+  
+  ($\Leftarrow$) $\forall x,y \in H$, $x \cdot y^{-1} \in H$, let $x=e$, then have $\forall y\in H$, $y^{-1} \in H$; so $\forall x,y^{-1}\in H$, $x \cdot (y^{-1})^{-1} \in H$, then $x \cdot y \in H$.
+\end{proof}
+
+\begin{proposition}
+  $(SL(n,\mathbb{R}),\cdot)$ is a group.
+\end{proposition}
+
+\begin{proof}
+  We verify the group axioms:
+  \begin{enumerate}
+    \item Closure: If $A,B \in SL(n,\mathbb{R})$, then $\det(AB) = \det(A)\det(B) = 1 \cdot 1 = 1$, so $AB \in SL(n,\mathbb{R})$
+    
+    \item Identity: The identity matrix $I_n \in SL(n,\mathbb{R})$ since $\det(I_n) = 1$
+    
+    \item Inverse: If $A \in SL(n,\mathbb{R})$, then $\det(A^{-1}) = \frac{1}{\det(A)} = 1$, so $A^{-1} \in SL(n,\mathbb{R})$
+    
+    \item Associativity: Inherited from matrix multiplication
+  \end{enumerate}
+  Therefore, $(SL(n,\mathbb{R}),\cdot)$ is a group.
+\end{proof}
+
+\begin{definition}[Group Homomorphism]
+  Let $(G,\cdot)$ and $(G',\ast)$ be groups, and let $f : G \to G'$ be a mapping. We say $f$ is a group homomorphism if it preserves the operation, that is:
+  \[
+    \forall x,y \in G, \quad f(x \cdot y) = f(x) \ast f(y)
+  \]
+\end{definition}
+
+\begin{proposition}
+  Let $f : (G,\cdot) \to (G',\ast)$ be a group homomorphism. Then:
+  \begin{enumerate}
+    \item $f(e) = e'$ (preserves identity)
+    \item $f(x^{-1}) = f(x)^{-1}$ (preserves inverses)
+  \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+  \begin{enumerate}
+    \item For identity element:
+    \begin{align*}
+      f(e) \ast f(e) &= f(e \cdot e) = f(e) \quad \text{left multiply by $f(e)^{-1}$} \\
+      \therefore f(e) &= e'
+    \end{align*}
+    \item For inverse elements:
+    \begin{align*}
+      f(x) \ast f(x^{-1}) &= f(x \cdot x^{-1}) = f(e) = e' \quad \text{left multiply by $f(x)^{-1}$} \\
+      \therefore f(x^{-1}) &= f(x)^{-1}
+    \end{align*}
+  \end{enumerate}
+\end{proof}
+
+\chapter{Ring Theory}
+
+\chapter{Ring Theory}
+
+\chapter{Ring Theory}
+
 \chapter{Ring Theory}
 
 \chapter{Ring Theory}
