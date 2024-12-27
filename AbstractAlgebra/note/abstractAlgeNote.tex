@@ -210,7 +210,7 @@ Thus, the statement holds for $n = k + 1$.
   Let $(S,\cdot)$ be a monoid and $A \subset S$ be a subset. Then $\langle A \rangle$ is also a submonoid. Therefore, it is the smallest submonoid containing $A$.
 \end{proposition}
 \begin{proof}
-  We will prove this in three steps:
+  We will prove this in two steps:
 
   \textbf{Step 1:} Show $\langle A \rangle$ contains the identity element 
   
@@ -225,15 +225,43 @@ Thus, the statement holds for $n = k + 1$.
      Since each $T_\alpha$ is a submonoid, $x \cdot y \in T_\alpha$ for all $\alpha \in I$,
      Therefore $x \cdot y \in \bigcap_{\alpha \in I} T_\alpha = \langle A \rangle$.
   
+\end{proof}
 
-  \textbf{Step 3:} Show minimality
- 
-     Let $T$ be any submonoid containing $A$,
-     Then $T$ is one of the $T_\alpha$ in our intersection,
-     Therefore $\langle A \rangle = \bigcap_{\alpha \in I} T_\alpha \subseteq T$.
- 
+\begin{definition}[Monoid Isomorphism]
+  Let $(S,\cdot)$ and $(T,\ast)$ be monoids, and let $f : S \to T$ be a mapping. We say $f$ is a monoid isomorphism if $f$ is bijective and a homomorphism. That is:
+  \begin{enumerate}
+    \item $f$ is bijective (one-to-one and onto) 
+    \item For all $x,y \in S$:
+    \[
+      f(x \cdot y) = f(x) \ast f(y) 
+    \]
+    \item For the identity elements $e \in S$ and $e' \in T$:
+    \[
+      f(e) = e' 
+    \]
+  \end{enumerate}
+\end{definition}
 
-  Thus, $\langle A \rangle$ is a submonoid and is minimal among all submonoids containing $A$.
+\begin{proposition}
+  If $f : (S,\cdot) \to (T,\ast)$ is a monoid isomorphism, then $f^{-1} : T \to S$ is a monoid homomorphism. Therefore, $f^{-1}$ is also a monoid isomorphism.
+\end{proposition}
+
+\begin{proof}
+  Since $f$ is an isomorphism, $f^{-1}$ exists and is bijective. We need to show:
+  \begin{enumerate}
+    \item $f^{-1}$ preserves operation:
+    \begin{align*}
+      f^{-1}(a \ast b) &= f^{-1}(f(f^{-1}(a)) \ast f(f^{-1}(b))) \\
+      &= f^{-1}(f(f^{-1}(a) \cdot f^{-1}(b))) \\
+      &= f^{-1}(a) \cdot f^{-1}(b)
+    \end{align*}
+    
+    \item $f^{-1}$ preserves identity:
+    \[
+      f^{-1}(e') = e \text{ where $e'$ and $e$ are identity elements}
+    \]
+  \end{enumerate}
+  Therefore, $f^{-1}$ is both a homomorphism and bijective, making it an isomorphism.
 \end{proof}
 
 \chapter{Ring Theory}
@@ -254,7 +282,7 @@ Thus, the statement holds for $n = k + 1$.
 
 % \chapter{Mathematical Tools}
 
-% This appendix covers some of the basic mathematics used in econometrics. We briefly discuss the properties of summation operators, study the properties of linear and some nonlinear equations, and review the ratios and percentages. We also introduce some special functions that are common in econometrics applications, including quadratic functions and natural logarithms. The first four sections require only basic algebraic techniques. The fifth section briefly reviews differential Calculus Although Calculus is not necessary to understand much of this book, it is used in some of the end-of-chapter appendices and in some of the more advanced topics in part 3.
+% This appendix covers some of the basic mathematics used in econometrics. We briefly discuss the properties of summation operators, study the properties of linear and some nonlinear equations, and  also introduce some special functions that are common in econometrics applications, including quadratic functions and natural logarithms. The first four sections require only basic algebraic techniques. The fifth section briefly reviews differential Calculus Although Calculus is not necessary to understand much of this book, it is used in some of the end-of-chapter appendices and in some of the more advanced topics in part 3.
 
 % \section{Summation Operator and Description Statistics}
 
