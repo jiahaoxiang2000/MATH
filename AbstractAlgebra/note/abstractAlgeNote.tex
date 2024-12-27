@@ -157,7 +157,62 @@ Thus, the statement holds for $n = k + 1$.
   Therefore, $(T,\cdot)$ satisfies all properties of a monoid.
 \end{proof}
 
+\begin{definition}[Monoid Homomorphism]{monoid_homomorphism}
+  Let $(S,\cdot)$ and $(T,\ast)$ be monoids, and let $f : S \to T$ be a mapping. 
+  We say $f$ is a monoid homomorphism if $f$ preserves multiplication and maps the identity element to the identity element. That is:
+  \begin{enumerate}
+    \item For all $x,y \in S$:
+    \[
+      f(x \cdot y) = f(x) \ast f(y) 
+    \]
+    \item For the identity elements $e \in S$ and $e' \in T$:
+    \[
+      f(e) = e' 
+    \]
+  \end{enumerate}
+\end{definition}
 
+\begin{remark}
+  While a homomorphism preserves operations, an isomorphism represents complete structural equivalence. An isomorphism is first a \textbf{bijective mapping}, meaning it establishes a one-to-one correspondence between elements - essentially ``relabeling" elements uniquely. Beyond being bijective, an isomorphism preserves operations under this relabeling, implying that the only difference between two structures (like monoids) is their labeling.
+\end{remark}
+
+\begin{example}[~Different Types of Monoid Maps]
+  Let's examine several maps between monoids:
+
+  \begin{enumerate}
+    \item \textbf{A homomorphism that is not an isomorphism:} 
+     Consider $f: (\mathbb{Z}, +) \to (\mathbb{Z}, +)$ defined by $f(n) = 2n$
+    \begin{itemize}
+      \item Preserves operation: $f(a + b) = 2(a + b) = 2a + 2b = f(a) + f(b)$
+      \item Is injective: $f(a) = f(b) \implies 2a = 2b \implies a = b$
+      \item Not surjective: odd numbers are not in the image
+      \item Therefore: homomorphism but not isomorphism
+    \end{itemize}
+    \item \textbf{Another non-isomorphic homomorphism:} 
+    Consider $h: (\mathbb{Z}, +) \to (\mathbb{Z}_2, +)$ defined by $h(n) = n \bmod 2$
+    \begin{itemize}
+      \item Preserves operation: $h(a + b) = (a + b) \bmod 2 = (a \bmod 2 + b \bmod 2) \bmod 2 = h(a) + h(b)$
+      \item Not injective: $h(0) = h(2) = 0$
+      \item Surjective: image is all of $\mathbb{Z}_2$
+      \item Therefore: homomorphism but not isomorphism
+    \end{itemize}
+    \item \textbf{An isomorphism:} 
+     Consider $g: (\mathbb{Z}, +) \to (\mathbb{Z}, +)$ defined by $g(n) = -n$
+    \begin{itemize}
+      \item Preserves operation: $g(a + b) = -(a + b) = -a + (-b) = g(a) + g(b)$
+      \item Bijective: one-to-one correspondence
+      \item Has inverse function: $g^{-1}(n) = -n$
+      \item Therefore: isomorphism
+    \end{itemize}
+    \item \textbf{An isomorphism between different monoids:} 
+    \begin{itemize}
+      \item Homomorphisms preserve structure but may "collapse" elements
+      \item Isomorphisms preserve both structure and distinctness of elements
+      \item The same set can have different monoid structures that are isomorphic
+    \end{itemize}
+  \end{enumerate}
+
+\end{example}
 \chapter{Ring Theory}
 
 \chapter{Polynomial Theory}
