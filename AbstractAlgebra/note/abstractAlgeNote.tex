@@ -1,6 +1,6 @@
-\documentclass[11pt,lang=cn]{elegantbook}
+\documentclass[11pt,lang=en]{elegantbook}
 
-\title{代数笔记}
+\title{algebra note}
 % \subtitle{Classic Elegant\LaTeX{} Template}
 
 \author{isomo}
@@ -28,17 +28,63 @@
 \maketitle
 
 
-\chapter*{前言}
+\chapter*{Preface}
 \markboth{Introduction}{Introduction}
 
-抽象代数笔记，主要的面向还是自我的学习，写作上的风格也是信息密度较低，冗余啰嗦的。
+These abstract algebra notes primarily focus on self-study, with a writing style that deliberately maintains low information density and includes some redundancy for clarity.
 
-第一次接触是，一本英文的抽象代数的书，多是定理的证明，看着很慢，也没有感觉到什么实际的应用。但是时间也花了不少，为此我们想找找中文的资料，看看有没有更好的学习方式。一去小破站上搜一下视频，发现了maki讲抽象代数的视频，配合讲义，深入浅出，很棒的工作。但是内容上来说，还是有些不太完善的地方。在刷到一个推荐学习代数的书之后，李文威老师的《代数学方法》，为此我们在此基础上记录一些笔记，以便后续的学习。后续参考资料还有变化的话，会及时更新。
+My first encounter with abstract algebra was through an English textbook, which was heavily focused on theorem proofs. Progress was slow, and I struggled to see practical applications. After spending considerable time with this approach, I sought Chinese resources for potentially better learning methods. On Bilibili, I discovered Maki's abstract algebra lectures and accompanying notes, which provided an excellent introduction to the subject. However, the content still had some gaps. Later, after finding a recommended algebra book, "Methods of Algebra" by Professor Li Wenwei, I began compiling these notes based on that foundation to aid my future studies. I will update the reference materials as needed.
 
 \frontmatter
 \tableofcontents
 
 \mainmatter
+
+\chapter{Set Theory}
+
+\section{ZFC Axioms}
+
+\begin{axiom}[Axiom of Extensionality]
+  If two sets have the same elements, then they are equal.
+\end{axiom}
+
+\begin{axiom}[Axiom of Pairing]
+  For any elements $x$ and $y$, there exists a set $\{x,y\}$ whose elements are exactly $x$ and $y$.
+\end{axiom}
+
+
+
+\begin{axiom}[Axiom Schema of Separation]
+  Let $P$ be a property of sets, and let $P(u)$ denote that set $u$ satisfies property $P$. Then for any set $X$, there exists a set $Y$ such that:
+  \[
+    Y = \{u \in X : P(u)\}
+  \]
+\end{axiom}
+
+\begin{axiom}[Axiom of Union]
+  For any set $X$, there exists its union set $\bigcup X$ defined as:
+  \[
+    \bigcup X := \{u : \exists v \in X \text{ such that } u \in v\}
+  \]
+\end{axiom}
+
+\begin{axiom}[Axiom of Power Set]
+  For any set $X$, there exists its power set $\mathcal{P}(X)$ defined as:
+  \[
+    \mathcal{P}(X) := \{u : u \subset X\}
+  \]
+\end{axiom}
+
+\begin{axiom}[Axiom of Infinity]
+  There exists an infinite set. More precisely, there exists a set $X$ such that:
+  \begin{enumerate}
+    \item $\emptyset \in X$
+    \item If $y \in X$, then $y \cup \{y\} \in X$
+  \end{enumerate}
+\end{axiom}
+
+
+
 
 \chapter{Group Theory}
 
@@ -474,20 +520,6 @@ Thus, the statement holds for $n = k + 1$.
     \end{align*}
   \end{enumerate}
 \end{proof}
-
-\chapter{Ring Theory}
-
-\chapter{Ring Theory}
-
-\chapter{Ring Theory}
-
-\chapter{Ring Theory}
-
-\chapter{Ring Theory}
-
-\chapter{Polynomial Theory}
-
-\chapter{Field Theory}
 
 
 
