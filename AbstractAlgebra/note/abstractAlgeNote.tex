@@ -33,7 +33,7 @@
 
 These abstract algebra notes primarily focus on self-study, with a writing style that deliberately maintains low information density and includes some redundancy for clarity.
 
-My first encounter with abstract algebra was through an English textbook, which was heavily focused on theorem proofs. Progress was slow, and I struggled to see practical applications. After spending considerable time with this approach, I sought Chinese resources for potentially better learning methods. On Bilibili, I discovered Maki's abstract algebra lectures and accompanying notes, which provided an excellent introduction to the subject. However, the content still had some gaps. Later, after finding a recommended algebra book, "Methods of Algebra" by Professor Li Wenwei, I began compiling these notes based on that foundation to aid my future studies. I will update the reference materials as needed.
+My first encounter with abstract algebra was through an English textbook, which was heavily focused on theorem proofs. Progress was slow, and I struggled to see practical applications. After spending considerable time with this approach, I sought Chinese resources for potentially better learning methods. On Bilibili, I discovered Maki's abstract algebra lectures and accompanying notes, which provided an excellent introduction to the subject. However, the content still had some gaps. Later, after finding a recommended algebra book, ``Methods of Algebra" by Professor Li Wenwei, I began compiling these notes based on that foundation to aid my future studies. The ``Methods of Algebra" book is difficult, we math level maybe on the freshman level, so we find the ``Algebra Note" by the Professor Li Wenwei, which is more suitable for us.
 
 \frontmatter
 \tableofcontents
@@ -82,6 +82,25 @@ My first encounter with abstract algebra was through an English textbook, which 
     \item If $y \in X$, then $y \cup \{y\} \in X$
   \end{enumerate}
 \end{axiom}
+
+\begin{axiom}[Axiom Schema of Replacement]
+  Let $F$ be a function with domain set $X$. Then there exists a set $F(X)$ defined as:
+  \[
+    F(X) = \{F(x) : x \in X\}
+  \]
+\end{axiom}
+
+\begin{axiom}[Axiom of Regularity]
+  Every non-empty set contains an element which is minimal with respect to the membership relation $\in$. 
+\end{axiom}
+
+\begin{axiom}[Axiom of Choice]
+  Let $X$ be a set of non-empty sets. Then there exists a function $g : X \to \bigcup X$ (called a choice function) such that:
+  \[
+    \forall x \in X, g(x) \in x
+  \]
+\end{axiom}
+
 
 
 
