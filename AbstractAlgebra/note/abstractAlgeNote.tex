@@ -217,6 +217,37 @@ Now let us further explain the previously raised question: What is algebra?
   \end{proof}
 \end{example}
 
+\begin{proposition}
+  For a mapping $f : A \to B$ where $A$ is non-empty, the following are equivalent:
+  \begin{enumerate}[(i)]
+    \item $f$ is injective
+    \item $f$ has a left inverse
+    \item $f$ satisfies the left cancellation law
+  \end{enumerate}
+  
+  Similarly, where $A$ is non-empty, the following are equivalent:
+  \begin{enumerate}[(i)']
+    \item $f$ is surjective
+    \item $f$ has a right inverse
+    \item $f$ satisfies the right cancellation law
+  \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+  First, we prove the equivalence for injective properties:
+  
+  (i) $\implies$ (ii): Assume $f$ is injective.
+  $\forall b \in \text{Im}(f)$, $\exists a \in A$, $f(a) = b$.
+  Define $g: B \to A$ by $g(b) = a$ if $b \in \text{Im}(f)$, and arbitrary otherwise.
+  Then $g \circ f = \text{id}_A$, so $g$ is left inverse.
+  
+  (ii) $\implies$ (iii): Assume $g \circ f = \text{id}_A$. If $fg_1 = fg_2$, then $g(fg_1)=g(fg_2) \iff (gf)g_1=(gf)g_2 \iff g_1=g_2$
+  
+  (iii) $\implies$ (i): Assume left cancellation, $fg_1=fg_2\implies g_1=g_2$,
+  if $\forall a_1,a_2\in A,f(a_1)=f(a_2)$, then $f(a_1)=f(a_2)\implies a_1=a_2$.
+
+  the proof for surjective properties is similar.
+\end{proof}
 
 \chapter{Group Theory}
 
