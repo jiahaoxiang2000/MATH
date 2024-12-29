@@ -217,7 +217,7 @@ Now let us further explain the previously raised question: What is algebra?
   \end{proof}
 \end{example}
 
-\begin{proposition}
+\begin{proposition}{}{inject_left_inverse_equal}
   For a mapping $f : A \to B$ where $A$ is non-empty, the following are equivalent:
   \begin{enumerate}[(i)]
     \item $f$ is injective
@@ -256,6 +256,52 @@ Now let us further explain the previously raised question: What is algebra?
   \]
   This mapping $f^{-1}$ is called the inverse of $f$.
 \end{definition}
+
+\begin{proposition}
+  Let $f : A \to B$ be an invertible mapping. Then:
+  \begin{enumerate}
+    \item $f^{-1} : B \to A$ is also invertible, and $(f^{-1})^{-1} = f$
+    \item If $g : B \to C$ is also invertible, then the composition $g \circ f : A \to C$ is invertible, and
+    \[
+      (g \circ f)^{-1} = f^{-1} \circ g^{-1}
+    \]
+  \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+  \begin{enumerate}
+    \item Since $f \circ f^{-1} = \text{id}_B$ and $f^{-1} \circ f = \text{id}_A$,
+          $f$ is both left and right inverse of $f^{-1}$, so $(f^{-1})^{-1} = f$
+    
+    \item For composition:
+    \[
+      (f^{-1} \circ g^{-1}) \circ (g \circ f) = f^{-1} \circ (g^{-1} \circ g) \circ f = f^{-1} \circ f = \text{id}_A
+    \]
+    Similarly, $(g \circ f) \circ (f^{-1} \circ g^{-1}) = \text{id}_C$
+  \end{enumerate}
+\end{proof}
+
+\begin{proposition}
+  A mapping $f$ is bijective if and only if it is invertible, in which case its inverse mapping is precisely the previously defined $f^{-1}$.
+\end{proposition}
+
+\begin{proof} There are easy to prove by the proposition~\ref{pro:inject_left_inverse_equal}
+
+  ($\implies$) If $f$ is bijective: Being injective implies $f$ has a left inverse, Being surjective implies $f$ has a right inverse, Therefore $f$ is invertible.
+ 
+  ($\impliedby$) If $f$ is invertible: Having left inverse implies $f$ is injective, Having right inverse implies $f$ is surjective, Therefore $f$ is bijective.
+\end{proof}
+
+\begin{definition}[Preimage]
+  For a mapping $f : A \to B$ and $b \in B$, we denote:
+  \[
+    f^{-1}(b) := f^{-1}(\{b\}) = \{a \in A : f(a) = b\}
+  \]
+\end{definition}
+
+\begin{remark}
+  Note that this notation $f^{-1}(b)$ represents the preimage of $b$ under $f$, which exists even when $f$ is not invertible.
+\end{remark}
 
 \chapter{Group Theory}
 
