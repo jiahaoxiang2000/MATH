@@ -1161,7 +1161,7 @@
 \renewcommand{\theexam}{\thechapter.\arabic{exam}}
 \newenvironment{example}[1][]{
   \refstepcounter{exam}
-  \par\noindent\textbf{\color{main}{\examplename} \theexam #1 }\rmfamily}{
+  \par\noindent\textbf{\color{main}{\examplename} \theexam ~#1 }\rmfamily}{
   \par\ignorespacesafterend}
 
 %% Exercise with counter

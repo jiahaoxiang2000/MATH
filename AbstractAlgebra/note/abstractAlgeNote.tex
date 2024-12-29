@@ -102,23 +102,24 @@ Now let us further explain the previously raised question: What is algebra?
 
 
 \begin{axiom}[Axiom Schema of Separation]
-  Let $P$ be a property of sets, and let $P(u)$ denote that set $u$ satisfies property $P$. Then for any set $X$, there exists a set $Y$ such that:
+  Let $\mathcal{P} $ be a property of sets, and let $\mathcal{P}(u)$ denote that set $u$ satisfies property $\mathcal{P} $. Then for any set $X$, there exists a set $Y$ such that:
   \[
-    Y = \{u \in X : P(u)\}
+    Y = \{u \in X : \mathcal{P}(u)\}
   \]
 \end{axiom}
+
 
 \begin{axiom}[Axiom of Union]
   For any set $X$, there exists its union set $\bigcup X$ defined as:
   \[
-    \bigcup X := \{u : \exists v \in X \text{ such that } u \in v\}
+    \bigcup X := \{u : \exists v \in X, u \in v\}
   \]
 \end{axiom}
 
 \begin{axiom}[Axiom of Power Set]
-  For any set $X$, there exists its power set $\mathcal{P}(X)$ defined as:
+  For any set $X$, there exists its power set $P(X)$ defined as:
   \[
-    \mathcal{P}(X) := \{u : u \subset X\}
+    P(X) := \{u : u \subset X\}
   \]
 \end{axiom}
 
@@ -131,11 +132,22 @@ Now let us further explain the previously raised question: What is algebra?
 \end{axiom}
 
 \begin{axiom}[Axiom Schema of Replacement]
-  Let $F$ be a function with domain set $X$. Then there exists a set $F(X)$ defined as:
+  Let $\mathcal{F}$ be a function with domain set $X$. Then there exists a set $\mathcal{F}(X)$ defined as:
   \[
-    F(X) = \{F(x) : x \in X\}
+    \mathcal{F}(X) = \{\mathcal{F}(x) : x \in X\}
   \]
 \end{axiom}
+
+\begin{remark}
+  The Replacement Axiom and the Separation Axiom Schema are to construct new sets from existing sets. Different is the Replacement can equal size of the set, but the Separation is a subset numbers of the set.
+\end{remark}
+
+\begin{definition}[Cartesian Product]
+  For any two sets $A$ and $B$, their Cartesian product $A \times B$ (also called simply the product) consists of all ordered pairs $(a,b)$ where $a \in A$ and $b \in B$. In other words:
+  \[
+    A \times B := \{(a,b) : a \in A, b \in B\}
+  \]
+\end{definition}
 
 \begin{axiom}[Axiom of Regularity]
   Every non-empty set contains an element which is minimal with respect to the membership relation $\in$. 
@@ -148,8 +160,62 @@ Now let us further explain the previously raised question: What is algebra?
   \]
 \end{axiom}
 
+\begin{example}[Symmetric Difference]
+  The symmetric difference of sets $X$ and $Y$ is defined as $X \triangle Y := (X \setminus Y) \cup (Y \setminus X)$. 
+  Let's verify that $X \triangle Y = (X \cup Y) \setminus (X \cap Y)$.
+  
+  \begin{proof}
+    Let $z$ be an arbitrary element. Then:
+    \begin{align*}
+      z \in X \triangle Y &\iff z \in (X \setminus Y) \cup (Y \setminus X) \\
+      &\iff z \in X \setminus Y \text{ or } z \in Y \setminus X \\
+      &\iff (z \in X \text{ and } z \notin Y) \text{ or } (z \in Y \text{ and } z \notin X) \\
+      &\iff z \in X \cup Y \text{ and } z \notin X \cap Y \\
+      &\iff z \in (X \cup Y) \setminus (X \cap Y)
+    \end{align*}
+    Therefore, $X \triangle Y = (X \cup Y) \setminus (X \cap Y)$.
+  \end{proof}
+\end{example}
 
 
+\section{Mappings}
+
+\begin{definition}[Mapping]
+  Let $A$ and $B$ be sets. A mapping from $A$ to $B$ is written as $f : A \to B$ or $A \xrightarrow{f} B$.
+  
+  In set-theoretic language, we understand a mapping $f : A \to B$ as a subset of $A \times B$, denoted $\Gamma_f$, satisfying the following condition: for each $a \in A$, the set
+  \[
+    \{b \in B : (a,b) \in \Gamma_f\}
+  \]
+  is a singleton, whose unique element is denoted $f(a)$ and called the image of $a$ under $f$.
+\end{definition}
+
+\begin{definition}[Left and Right Inverses]
+  Consider a pair of mappings $A \xrightarrow{f} B \xrightarrow{g} A$. 
+  If $g \circ f = \text{id}_A$, then:
+  \begin{itemize}
+    \item We call $g$ the left inverse of $f$
+    \item We call $f$ the right inverse of $g$
+  \end{itemize}
+  A mapping with a left inverse (or right inverse) is called left invertible (or right invertible).
+\end{definition}
+
+\begin{example}[Composition of Invertible Maps]
+  Let us show that the composition of two left (or right) invertible mappings is again left (or right) invertible.
+  
+  \begin{proof}
+    Let $f: A \to B$ and $f': B \to C$ be left invertible mappings. Then:
+    \begin{itemize}
+      \item Let $g$ be left inverse of $f$, so $g \circ f = \text{id}_A$, Let $g'$ be left inverse of $f'$, so $g' \circ f' = \text{id}_B$
+      \item Then for composition $f' \circ f$:
+        \[
+          (g \circ g') \circ (f' \circ f) = g \circ (g' \circ f') \circ f = g \circ f = \text{id}_A
+        \]
+      \item Therefore $g \circ g'$ is a left inverse of $f' \circ f$
+    \end{itemize}
+    The proof for right invertible mappings is similar.
+  \end{proof}
+\end{example}
 
 
 \chapter{Group Theory}
