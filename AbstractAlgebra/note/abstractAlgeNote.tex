@@ -303,6 +303,60 @@ Now let us further explain the previously raised question: What is algebra?
   Note that this notation $f^{-1}(b)$ represents the preimage of $b$ under $f$, which exists even when $f$ is not invertible.
 \end{remark}
 
+\section{Product of Sets \& Disjoint Union}
+
+\begin{definition}[Generalized Cartesian Product]
+  Using the language of mappings, we define:
+  \[
+    \prod_{i \in I} A_i := \{f : I \to \bigcup_{i \in I} A_i \mid \forall i \in I, f(i) \in A_i\} 
+  \]
+  
+  Henceforth, we may write $f(i)$ as $a_i$, so elements of $\prod_{i \in I} A_i$ can be reasonably denoted as $(a_i)_{i \in I}$.
+
+  For any $i \in I$, there is a mapping $p_i : \prod_{j \in I} A_j \to A_i$ defined by $p_i((a_j)_{j \in I}) = a_i$, called the $i$-th projection.
+\end{definition}
+
+\begin{remark}
+  For easy to understand, The $\prod_{i \in I} A_i$ as the three domain space, the $(a_i)_{i\in I}$ as the one point in the three domain space, the $p_i$ as the projection from the three domain space to the one point.
+\end{remark}
+
+\begin{definition}[Disjoint Union and Partition]
+  Let set $A$ be the union of a family of subsets $(A_i)_{i \in I}$, and suppose these subsets are pairwise disjoint, that is:
+  \[
+    \forall i,j \in I, i \neq j \implies A_i \cap A_j = \emptyset
+  \]
+  In this case, we say $A$ is the disjoint union of $(A_i)_{i \in I}$, or $(A_i)_{i \in I}$ is a partition of $A$, written as:
+  \[
+    A = \bigsqcup_{i \in I} A_i
+  \]
+\end{definition}
+
+\section{Structure of Order}
+
+\begin{definition}[Binary Relation]
+  A binary relation between sets $A$ and $B$ is any subset of $A \times B$. Let $R \subset A \times B$ be a binary relation. Then for all $a \in A$ and $b \in B$, we use the notation:
+  \[
+    aRb \text{ to represent } (a,b) \in R
+  \]
+  For convenience, when $A = B$, we call this a binary relation on $A$.
+\end{definition}
+
+\begin{definition}[Order Relations]
+  Let $\preceq$ be a binary relation on set $A$. We call $\preceq$ a preorder and $(A,\preceq)$ a preordered set when:
+  \begin{itemize}
+    \item Reflexivity: For all $a \in A$, $a \preceq a$
+    \item Transitivity: For all $a,b,c \in A$, if $a \preceq b$ and $b \preceq c$, then $a \preceq c$
+  \end{itemize}
+
+  If it also satisfies:
+  \begin{itemize}
+    \item Antisymmetry: For all $a,b \in A$, if $a \preceq b$ and $b \preceq a$, then $a = b$
+  \end{itemize}
+  then $\preceq$ is called a partial order and $(A,\preceq)$ is called a partially ordered set.
+
+  A partially ordered set $(A,\preceq)$ is called a totally ordered set or chain if any two elements $a,b \in A$ are comparable, that is, either $a \preceq b$ or $b \preceq a$ holds.
+\end{definition}
+
 \chapter{Group Theory}
 
 
