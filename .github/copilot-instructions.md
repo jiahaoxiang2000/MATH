@@ -2,3 +2,4 @@
 
 - transform the pdf copy to latex format code
 - translate the chinese characters to english
+- the sentence more concise

@@ -327,7 +327,7 @@ Now let us further explain the previously raised question: What is algebra?
   \]
   In this case, we say $A$ is the disjoint union of $(A_i)_{i \in I}$, or $(A_i)_{i \in I}$ is a partition of $A$, written as:
   \[
-    A = \bigsqcup_{i \in I} A_i
+    A = \coprod_{i \in I} A_i
   \]
 \end{definition}
 
@@ -356,6 +356,147 @@ Now let us further explain the previously raised question: What is algebra?
 
   A partially ordered set $(A,\preceq)$ is called a totally ordered set or chain if any two elements $a,b \in A$ are comparable, that is, either $a \preceq b$ or $b \preceq a$ holds.
 \end{definition}
+
+\begin{definition}[Order-Preserving Maps]
+  Let $f : A \to B$ be a mapping between preordered sets. Then:
+  \begin{itemize}
+    \item $f$ is called order-preserving if:
+    \[
+      a \preceq a' \implies f(a) \preceq f(a') \text{ for all } a,a' \in A
+    \]
+    
+    \item $f$ is called strictly order-preserving if:
+    \[
+      a \preceq a' \iff f(a) \preceq f(a') \text{ for all } a,a' \in A
+    \]
+  \end{itemize}
+\end{definition}
+
+\begin{definition}[Maximal, Minimal Elements and Bounds]
+  Let $(A,\preceq)$ be a partially ordered set.
+  \begin{itemize}
+    \item An element $a_{\max} \in A$ is called a maximal element of $A$ if: there exists no $a \in A$ such that $a \succ a_{\max}$
+    
+    \item An element $a_{\min} \in A$ is called a minimal element of $A$ if: there exists no $a \in A$ such that $a \prec a_{\min}$
+  \end{itemize}
+  
+  Furthermore, let $A'$ be a subset of $A$.
+  \begin{itemize}
+    \item An element $a \in A$ is called an upper bound of $A'$ in $A$ if: for all $a' \in A'$, $a' \preceq a$
+    
+    \item An element $a \in A$ is called a lower bound of $A'$ in $A$ if: for all $a' \in A'$, $a' \succeq a$
+  \end{itemize}
+\end{definition}
+
+\begin{remark}
+  we can use the tree structure to understand the maximal, minimal elements and bounds. the partial order like the link between the nodes, the maximal, minimal elements like the root nodes and leaf nodes.
+\end{remark}
+
+\begin{definition}[Well-Ordered Set]
+  A totally ordered set $(A,\preceq)$ is called a well-ordered set if every non-empty subset $S \subseteq A$ has a minimal element.
+\end{definition}
+
+\section{Equivalence Relations and Quotient Sets}
+
+\begin{definition}[Equivalence Relation]
+  A binary relation $\sim$ on set $A$ is called an equivalence relation if it satisfies:
+  \begin{itemize}
+    \item Reflexivity: For all $a \in A$, $a \sim a$
+    \item Symmetry: For all $a,b \in A$, if $a \sim b$ then $b \sim a$
+    \item Transitivity: For all $a,b,c \in A$, if $a \sim b$ and $b \sim c$ then $a \sim c$
+  \end{itemize}
+\end{definition}
+
+\begin{definition}[Equivalence Class]
+  Let $\sim$ be an equivalence relation on set $A$. A non-empty subset $C \subset A$ is called an equivalence class if:
+  \begin{itemize}
+    \item Elements in $C$ are mutually equivalent: for all $x,y \in C$, $x \sim y$
+    \item $C$ is closed under $\sim$: for all $x \in C$ and $y \in A$, if $x \sim y$ then $y \in C$
+  \end{itemize}
+  If $C$ is an equivalence class and $a \in C$, then $a$ is called a representative element of $C$.
+\end{definition}
+
+\begin{proposition}[Partition by Equivalence Classes]
+  Let $\sim$ be an equivalence relation on set $A$. Then $A$ is the disjoint union of all its equivalence classes.
+\end{proposition}
+
+\begin{proof}
+  Let $\{C_i\}_{i \in I}$ be the collection of all equivalence classes of $A$.
+  \begin{enumerate}
+    \item First, $A = \bigcup_{i \in I} C_i$ since every element belongs to its equivalence class
+    \item For any distinct equivalence classes $C_i$ and $C_j$:
+      If $x \in C_i \cap C_j$ and $x\neq \emptyset $, then $C_i = C_j$, this is a contradiction, so $C_i \cap C_j = \emptyset$. 
+    \item Therefore, $A = \coprod_{i \in I} C_i$
+  \end{enumerate}
+\end{proof}
+
+
+\begin{definition}[Quotient Set]
+  Let $\sim$ be an equivalence relation on a non-empty set $A$. The quotient set is defined as the following subset of the power set $\mathcal{P}(A)$:
+  \[
+    A/{\sim} := \{C \subset A : C \text{ is an equivalence class with respect to } \sim\}
+  \]
+  The quotient set comes with a quotient map $q: A \to A/{\sim}$ that maps each $a \in A$ to its unique equivalence class.
+\end{definition}
+
+\begin{remark}
+  here the find the quotient set, we can use the boolean function symmetric for the equivalence relation, then we only travel the quotient set, which can reduce the travel space. 
+\end{remark}
+
+\begin{proposition}[Universal Property of Quotient Maps]{universal_property_of_quotient_maps}
+  Let $\sim$ be an equivalence relation on set $A$ and $q: A \to A/{\sim}$ be the corresponding quotient map. If a mapping $f: A \to B$ satisfies:
+  \[
+    a \sim a' \implies f(a) = f(a')
+  \]
+  then there exists a unique mapping $\bar{f}: (A/{\sim}) \to B$ such that:
+  \[
+    \bar{f} \circ q = f
+  \]
+\end{proposition}
+
+\begin{proof}
+  First, $\bar{f}$ is well-defined: for any $c \in A/{\sim}$. Then: 
+  \[
+    \bar{f}(c) := f(a), a = q^{-1}(c)
+  \]
+  The proof of uniqueness: Assume $\bar{f}$ and $\bar{f}'$, then $\bar{f}\circ q=\bar{f'} \circ q$, the $q$ is surjective, so $\bar{f}=\bar{f}'$. 
+\end{proof}
+
+\begin{proposition}
+  For any mapping $f : A \to B$, define an equivalence relation $\sim_f$ on $A$ by:
+  \[
+    a \sim_f a' \iff f(a) = f(a')
+  \]
+  Then by Proposition~\ref{pro:universal_property_of_quotient_maps}, there exists a bijection:
+  \[
+    \bar{f} : (A/{\sim_f}) \xrightarrow{1:1} \text{im}(f)
+  \]
+\end{proposition}
+
+\begin{proof}
+  Let $q: A \to A/{\sim_f}$ be the quotient map. By the universal property:
+  \begin{enumerate}
+    \item Well-defined: If $[a] = [a']$, then $a \sim_f a'$, so $f(a) = f(a')$
+    
+    \item Injective: If $\bar{f}([a]) = \bar{f}([a'])$, then $f(a) = f(a')$,
+          so $a \sim_f a'$, thus $[a] = [a']$
+    
+    \item Surjective: For any $b \in \text{im}(f)$, there exists $a \in A$
+          with $f(a) = b$, so $\bar{f}([a]) = b$
+  \end{enumerate}
+  Therefore, $\bar{f}$ is a bijection between $A/{\sim_f}$ and $\text{im}(f)$.
+\end{proof}
+
+\section{positive integer to rational number }
+
+\begin{definition}[Integers as Quotient Set]
+  The set of integers $\mathbb{Z}$ is defined as the quotient set of $\mathbb{Z}_{\geq 0}^2$ under $\sim$. We temporarily denote the equivalence class containing $(m,n)$ in $\mathbb{Z}_{\geq 0}^2$ as $[m,n]$.
+\end{definition}
+
+\begin{remark}
+  the $\sim$ relation is defined as $(m,n)\sim(m',n')\iff m+n'=m'+n \iff m-n=m'-n'$.
+\end{remark}
+
 
 \chapter{Group Theory}
 
