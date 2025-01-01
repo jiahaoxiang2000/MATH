@@ -507,6 +507,37 @@ Now let us further explain the previously raised question: What is algebra?
   By convention, multiplication $x \cdot y$ is often written simply as $xy$.
 \end{definition}
 
+\begin{definition}[Total Order on Integers]
+  Define a total order $\leq$ on $\mathbb{Z}$ by:
+  \[
+    x \leq y \iff y-x \in \mathbb{Z}_{\geq 0}
+  \]
+\end{definition}
+
+
+\begin{definition}[Rational Numbers]
+  Define the set of rational numbers $\mathbb{Q}$ as the quotient set of $\mathbb{Z} \times (\mathbb{Z} \setminus \{0\})$ under the equivalence relation:
+  \[
+    (r,s) \sim (r',s') \iff rs' = r's
+  \]
+  We temporarily denote the equivalence class containing $(r,s)$ as $[r,s]$. Through the mapping $x \mapsto [x,1]$, we view $\mathbb{Z}$ as a subset of $\mathbb{Q}$.
+\end{definition}
+
+\begin{definition}[Total Order and Absolute Value on $\mathbb{Q}$]
+  Define a total order on $\mathbb{Q}$ by:
+  \begin{align*}
+    [r,s] \geq 0 &\iff rs \geq 0 \\
+    x \geq y &\iff x-y \geq 0
+  \end{align*}
+  
+  For any $x \in \mathbb{Q}$, its absolute value $|x|$ is defined as:
+  \[
+    |x| = \begin{cases}
+      x & \text{if } x \geq 0 \\
+      -x & \text{if } x < 0
+    \end{cases}
+  \]
+\end{definition}
 
 \chapter{Group Theory}
 
