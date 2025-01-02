@@ -717,7 +717,54 @@ Now let us further explain the previously raised question: What is algebra?
   Therefore, no finite collection can contain all primes.
 \end{proof}
 
-\section{congruence}
+\section{Congruence Relation}
+
+\begin{definition}[Congruence Relation]
+  Let $N \in \mathbb{Z}$. Two integers $a,b \in \mathbb{Z}$ are called congruent modulo $N$ if $N\mid (a-b)$. This relation is written as:
+  \[
+    a \equiv b \pmod{N}
+  \]
+\end{definition}
+
+\begin{definition}[Congruence Classes]
+  For a fixed $N \in \mathbb{Z}$, we denote the quotient set of $\mathbb{Z}$ under the equivalence relation modulo $N$ (Definition 2.5.4) as $\mathbb{Z}/N\mathbb{Z}$, or abbreviated as $\mathbb{Z}/N$. The equivalence classes are called congruence classes modulo $N$.
+\end{definition}
+
+\begin{proposition}[Multiplicative Inverses Modulo N]{multiplicative_inverses_modulo_n}
+  Let $N \in \mathbb{Z}_{\geq 1}$. For any $x \in \mathbb{Z}$:
+  \[
+    (\exists y \in \mathbb{Z}, xy \equiv 1 \pmod{N}) \iff \gcd(N,x) = 1
+  \]
+\end{proposition}
+
+\begin{proof}
+  ($\implies$) If $xy \equiv 1 \pmod{N}$, then $xy = kN + 1$ for some $k \in \mathbb{Z}$
+  Therefore $xy - kN = 1$, showing $\gcd(N,x) = 1$ by properties~\ref{pro:bezouts_identity}.
+
+  ($\impliedby$) If $\gcd(N,x) = 1$, then by properties~\ref{pro:bezouts_identity}:
+  $\exists y,k \in \mathbb{Z}$ such that $xy + kN = 1$
+  Therefore $xy \equiv 1 \pmod{N}$
+\end{proof}
+
+\begin{theorem}[Fermat's Little Theorem]
+  Let $p$ be a prime number. Then for all $x \in \mathbb{Z}$:
+  \[
+    \gcd(p,x) = 1 \implies x^{p-1} \equiv 1 \pmod{p}
+  \]
+
+  Consequently, for all $x \in \mathbb{Z}$:
+  \[
+    x^p \equiv x \pmod{p}
+  \]
+\end{theorem}
+
+\begin{proof}
+  Consider the sequence $x, 2x, \ldots, (p-1)x \pmod{p}$.
+  When $\gcd(p,x) = 1$, then by proposition~\ref{pro:multiplicative_inverses_modulo_n}, $\exists y,xy \equiv 1\pmod{p}$, then $xy, 2xy, \ldots, (p-1)xy \pmod{p}$, these are all distinct and nonzero modulo $p$, thus they also mean for the $x, 2x, \ldots, (p-1)x \pmod{p}$.
+  Their product is congruent to $(p-1)! \cdot x^{p-1}$.
+  Therefore $(p-1)! \cdot x^{p-1} \equiv (p-1)! \pmod{p}$.
+  Since $\gcd(p,(p-1)!) = 1$, we can cancel to get $x^{p-1} \equiv 1 \pmod{p}$.
+\end{proof}
 
 \chapter{Group Theory}
 
