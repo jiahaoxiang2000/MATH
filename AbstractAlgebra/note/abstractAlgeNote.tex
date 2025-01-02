@@ -607,7 +607,7 @@ Now let us further explain the previously raised question: What is algebra?
   \end{itemize}
 \end{definition}
 
-\begin{proposition}[Bézout's Identity]
+\begin{proposition}[Bézout's Identity]{bezouts_identity}
   For integers $x_1,\ldots,x_n$:
   \[
     \mathbb{Z}x_1 + \cdots + \mathbb{Z}x_n = \gcd(x_1,\ldots,x_n)\mathbb{Z}
@@ -618,6 +618,106 @@ Now let us further explain the previously raised question: What is algebra?
     a_1x_1 + \cdots + a_nx_n = 1
   \]
 \end{proposition}
+
+\begin{proof}
+  We proceed by induction on $n$.
+
+  For $n=2$: Let $d = \gcd(x_1,x_2)$. By Euclidean algorithm, there exist $a_1,a_2 \in \mathbb{Z}$ such that:
+  \[
+    d = a_1x_1 + a_2x_2 \in \mathbb{Z}x_1 + \mathbb{Z}x_2
+  \]
+  Therefore $d\mathbb{Z} \subseteq \mathbb{Z}x_1 + \mathbb{Z}x_2$.
+
+  Conversely, since $d|x_1$ and $d|x_2$, we have $\mathbb{Z}x_1 + \mathbb{Z}x_2 \subseteq d\mathbb{Z}$.
+
+  For $n > 2$: Let $g = \gcd(x_1,\ldots,x_{n-1})$. By induction:
+  \[
+    \mathbb{Z}x_1 + \cdots + \mathbb{Z}x_{n-1} = g\mathbb{Z}
+  \]
+  Then:
+  \[
+    \mathbb{Z}x_1 + \cdots + \mathbb{Z}x_n = g\mathbb{Z} + \mathbb{Z}x_n = \gcd(g,x_n)\mathbb{Z} = \gcd(x_1,\ldots,x_n)\mathbb{Z}
+  \]
+
+  The corollary follows directly since $\gcd(x_1,\ldots,x_n) = 1$ if and only if they are coprime.
+\end{proof}
+
+\begin{definition}[Prime Numbers]
+  Let $p \in \mathbb{Z} \setminus \{0,\pm1\}$. We say $p$ is a prime element if its only divisors are $\pm1$ and $\pm p$.
+  A positive prime element is called a prime number.
+\end{definition}
+
+\begin{proposition}[Euclid's Lemma]{euclids_lemma}
+  Let $p$ be a prime element. If $a,b \in \mathbb{Z}$ such that $p\mid ab$, then either $p\mid a$ or $p\mid b$.
+\end{proposition}
+
+\begin{proof}
+  If $p \nmid a$, then $\gcd(p,a) = 1$ since $p$ is prime.
+  By proposition~\ref{pro:bezouts_identity}, there exist $x,y \in \mathbb{Z}$ such that:
+  \[
+    px + ay = 1
+  \]
+  Multiply both sides by $b$:
+  \[
+    pbx + aby = b
+  \]
+  Since $p\mid ab$, $pbx+aby \in p\mathbb{Z}$, so $p\mid b$.
+\end{proof}
+
+\begin{theorem}[Fundamental Theorem of Arithmetic]
+  Every non-zero integer $n \in \mathbb{Z}$ has a prime factorization:
+  \[
+    n = \pm p_1^{a_1}\cdots p_r^{a_r}
+  \]
+  where $r \in \mathbb{Z}_{\geq 0}$ (with the convention that the right side equals $\pm 1$ when $r=0$), $p_1,\ldots,p_r$ are distinct prime numbers, $a_1,\ldots,a_r \in \mathbb{Z}_{\geq 1}$, and this factorization is unique up to ordering.
+\end{theorem}
+
+\begin{proof}
+  \textbf{Existence:} By induction on $|n|$
+  \begin{itemize}
+    \item Base case: When $|n|=1$, take $r=0$
+    \item For $|n|>1$: Let $p$ be the smallest prime divisor of $n$
+    \item Then $n = pm$ where $|m| < |n|$
+    \item By induction, $m$ has prime factorization
+    \item Combine $p$ with $m$'s factorization
+  \end{itemize}
+
+  \textbf{Uniqueness:} Suppose we have two factorizations:
+  \[
+    p_1^{a_1}\cdots p_r^{a_r} = q_1^{b_1}\cdots q_s^{b_s}
+  \]
+  \begin{itemize}
+    \item By proposition~\ref{pro:euclids_lemma}, $p_1$ divides some $q_i$
+    \item Since both are prime, $p_1 = q_i$
+    \item Cancel and continue by induction
+    \item Therefore $r=s$ and factorizations are same up to ordering
+  \end{itemize}
+\end{proof}
+
+\begin{remark}
+  For a prime number $p$, we use the notation $p^a \parallel n$ to indicate that $p^a|n$ but $p^{a+1} \nmid n$ (i.e., $p^a$ is the exact power of $p$ dividing $n$).
+\end{remark}
+
+\begin{corollary}
+  Consider integers $n = \pm \prod_{i=1}^r p_i^{a_i}$ and $m = \pm \prod_{i=1}^r p_i^{b_i}$, where $p_1,\ldots,p_r$ are distinct primes and $a_i,b_i \in \mathbb{Z}_{\geq 0}$. Then:
+  \[
+    \gcd(n,m) = \prod_{i=1}^r p_i^{\min\{a_i,b_i\}}, \quad \text{lcm}(n,m) = \prod_{i=1}^r p_i^{\max\{a_i,b_i\}}
+  \]
+  Similar results hold for GCD and LCM of any number of positive integers.
+\end{corollary}
+
+\begin{theorem}[Euclid]{euclid}
+  There are infinitely many prime numbers.
+\end{theorem}
+
+\begin{proof}
+  Let $p_1,\ldots,p_n$ be any finite collection of primes.
+  Consider $N = p_1\cdots p_n + 1$.
+  Any prime factor $p$ of $N$ must be different from all $p_i$ (since dividing $N$ by any $p_i$ leaves remainder 1).
+  Therefore, no finite collection can contain all primes.
+\end{proof}
+
+\section{congruence}
 
 \chapter{Group Theory}
 
