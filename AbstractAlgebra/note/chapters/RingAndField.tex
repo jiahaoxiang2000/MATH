@@ -1,5 +1,89 @@
 
-\chapter{Ring and Field}
+\chapter{Ring, Field and Polynomial}
+
+\section{Ring \& Field}
+
+\begin{definition}[Ring]
+  A ring is a tuple $(R,+,\cdot,0_R,1_R)$ where $R$ is a set, $0_R,1_R \in R$, and $+: R \times R \to R$ and $\cdot: R \times R \to R$ are binary operations satisfying:
+  \begin{enumerate}
+    \item Addition satisfies:
+      \begin{itemize}
+        \item Associativity: $(x + y) + z = x + (y + z)$
+        \item Identity: $x + 0_R = x = 0_R + x$
+        \item Commutativity: $x + y = y + x$
+        \item Inverse: For all $x$ there exists $-x$ with $x + (-x) = 0_R$
+      \end{itemize}
+
+    \item Multiplication (written as $xy$ for $x \cdot y$) satisfies:
+      \begin{itemize}
+        \item Associativity: $(xy)z = x(yz)$
+        \item Identity: $x \cdot 1_R = x = 1_R \cdot x$
+      \end{itemize}
+
+    \item Distributive Laws:
+      \begin{itemize}
+        \item $(x + y)z = xz + yz$
+        \item $z(x + y) = zx + zy$
+      \end{itemize}
+  \end{enumerate}
+  Where $x,y,z$ represent arbitrary elements of $R$. When no confusion arises, we write $0_R, 1_R$ as $0,1$ and denote the ring by $R$. We write $x + (-y)$ as $x - y$.
+\end{definition}
+
+\begin{definition}[Subring]
+  Let $R$ be a ring. A subset $R_0 \subseteq R$ containing $0_R, 1_R$ is called a subring of $R$ if it is closed under:
+  \begin{itemize}
+    \item Addition: $x,y \in R_0 \implies x + y \in R_0$
+    \item Multiplication: $x,y \in R_0 \implies xy \in R_0$
+    \item Additive inverse: $x \in R_0 \implies -x \in R_0$
+  \end{itemize}
+  Then $(R_0,+,\cdot,0_R,1_R)$ forms a ring.
+\end{definition}
+
+\begin{definition}[Ring Invertibility]
+  Let $x$ be an element of a ring $R$.
+  \begin{itemize}
+    \item If there exists $y \in R$ such that $xy = 1$ (resp. $yx = 1$), then $y$ is called a right inverse (resp. left inverse) of $x$
+    \item $x$ is called right invertible (resp. left invertible) if it has a right (resp. left) inverse
+    \item $x$ is called invertible if it has both left and right inverses
+  \end{itemize}
+  The set of invertible elements in $R$ is denoted by $R^\times$.
+\end{definition}
+
+\begin{proposition}[Uniqueness of Ring Inverses]
+  If an element $x$ in a ring $R$ is invertible, then:
+  \begin{enumerate}
+    \item Its left inverse is also its right inverse
+    \item There exists a unique $x^{-1} \in R$ such that $x^{-1}x = 1 = xx^{-1}$
+    \item $(x^{-1})^{-1} = x$
+  \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+  Let $y$ be a left inverse and $z$ a right inverse of $x$.
+  Then $y = y(xz) = (yx)z = z$.
+  Therefore, $y = z = x^{-1}$ is the unique two-sided inverse.
+  Clearly $(x^{-1})^{-1} = x$ by definition.
+\end{proof}
+
+\begin{definition}[Commutative Ring]
+  A ring $R$ is called commutative if its multiplication is commutative, i.e.,
+  \[
+    xy = yx \text{ for all } x,y \in R
+  \]
+\end{definition}
+
+\begin{definition}[Division Ring and Field]
+  A ring $R$ is called a division ring if $R^\times = R \setminus \{0\}$ (i.e., every non-zero element is invertible).
+  A commutative division ring is called a field.
+  A subring of a field that is itself a field is called a subfield.
+\end{definition}
+
+\begin{definition}[Integral Domain]
+  A non-zero commutative ring $R$ is called an integral domain if for all $x,y \in R$:
+  \[
+    x,y \neq 0 \implies xy \neq 0
+  \]
+\end{definition}
 
 \section{Monoid Group}
 
