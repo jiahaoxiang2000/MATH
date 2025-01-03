@@ -97,6 +97,83 @@
   for all $x,y \in R$. A homomorphism from a ring to itself is called an endomorphism.
 \end{definition}
 
+\begin{definition}[Ring Isomorphism]
+  Let $f : R \to R'$ be a ring homomorphism. We call $f$ a ring isomorphism if there exists a ring homomorphism $g : R' \to R$ such that:
+  \[
+    g \circ f = \text{id}_R \text{ and } f \circ g = \text{id}_{R'}
+  \]
+  In this case, $g$ is called the inverse of $f$, and we say $R$ and $R'$ are isomorphic.
+\end{definition}
+
+\begin{proposition}
+  If $f : R \to R'$ is a ring homomorphism that is bijective as a set mapping, then $f$ is a ring isomorphism.
+\end{proposition}
+
+\begin{proof}
+  Let $g : R' \to R$ be the inverse of $f$ as a set mapping.
+  We need to show $g$ is a ring homomorphism:
+  \begin{itemize}
+    \item For addition: $g(x' + y') = g(f(g(x')) + f(g(y'))) = g(x') + g(y')$
+    \item For multiplication: $g(x'y') = g(f(g(x'))f(g(y'))) = g(x')g(y')$
+    \item For identity: $g(1_{R'}) = g(f(1_R)) = 1_R$
+  \end{itemize}
+  Therefore $g$ is a ring homomorphism and $f$ is an isomorphism.
+\end{proof}
+
+\begin{proposition}[Chinese Remainder Theorem - Ring Version]
+  Let $N \in \mathbb{Z}_{\geq 1}$ factor as $N = n_1\cdots n_k$ where $n_1,\ldots,n_k$ are pairwise coprime. Then there exists a ring isomorphism:
+  \[
+    \varphi: \mathbb{Z}/N\mathbb{Z} \xrightarrow{\sim} \prod_{i=1}^k \mathbb{Z}/n_i\mathbb{Z}
+  \]
+  given by $[x]_N \mapsto ([x]_{n_i})_{i=1}^k$
+\end{proposition}
+\begin{proof}
+  \begin{enumerate}
+    \item \textbf{Well-defined:} If $x \equiv y \pmod{N}$, then $x \equiv y \pmod{n_i}$ for all $i$
+
+    \item \textbf{Ring homomorphism:}
+      \begin{itemize}
+        \item $\varphi([x]_N + [y]_N) = \varphi([x+y]_N) = ([x+y]_{n_i}) = ([x]_{n_i} + [y]_{n_i})$
+        \item $\varphi([x]_N[y]_N) = \varphi([xy]_N) = ([xy]_{n_i}) = ([x]_{n_i}[y]_{n_i})$
+      \end{itemize}
+
+    \item \textbf{Injective:} If $\varphi([x]_N) = \varphi([y]_N)$, then $x \equiv y \pmod{n_i}$ for all $i$.
+      Since $n_i$ are coprime, $x \equiv y \pmod{N}$
+
+    \item \textbf{Surjective:} Given $([a_i]_{n_i})$, by CRT there exists $x$ with $x \equiv a_i \pmod{n_i}$.
+      Then $\varphi([x]_N) = ([a_i]_{n_i})$
+  \end{enumerate}
+\end{proof}
+
+\begin{example}[Application of Chinese Remainder Theorem]
+  Find $x$ satisfying the system of congruences:
+  \begin{align*}
+    x &\equiv 2 \pmod{3} \\
+    x &\equiv 3 \pmod{5} \\
+    x &\equiv 2 \pmod{7}
+  \end{align*}
+
+  Solution:
+  \begin{enumerate}
+    \item $N = 3 \cdot 5 \cdot 7 = 105$
+    \item Find $M_i$:
+      \begin{itemize}
+        \item $M_1 = 35$ (for mod 3)
+        \item $M_2 = 21$ (for mod 5)
+        \item $M_3 = 15$ (for mod 7)
+      \end{itemize}
+    \item Find $y_i$ where $M_iy_i \equiv 1 \pmod{n_i}$:
+      \begin{itemize}
+        \item $35y_1 \equiv 1 \pmod{3} \implies y_1 = 2$
+        \item $21y_2 \equiv 1 \pmod{5} \implies y_2 = 1$
+        \item $15y_3 \equiv 1 \pmod{7} \implies y_3 = 1$
+      \end{itemize}
+    \item $x = (2 \cdot 35 \cdot 2 + 3 \cdot 21 \cdot 1 + 2 \cdot 15 \cdot 1) \pmod{105} = 23$
+  \end{enumerate}
+
+  Verify: $23 \equiv 2 \pmod{3}$, $23 \equiv 3 \pmod{5}$, $23 \equiv 2 \pmod{7}$
+\end{example}
+
 \section{Monoid Group}
 
 \begin{definition}{monoid}{monoid}
