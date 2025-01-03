@@ -689,3 +689,77 @@
   Therefore $(p-1)! \cdot x^{p-1} \equiv (p-1)! \pmod{p}$.
   Since $\gcd(p,(p-1)!) = 1$, we can cancel to get $x^{p-1} \equiv 1 \pmod{p}$.
 \end{proof}
+
+\begin{definition}[Euler's Totient Function]
+  For $n \in \mathbb{Z}_{\geq 1}$, define $\varphi(n)$ as the number of positive integers not exceeding $n$ that are coprime to $n$.
+\end{definition}
+
+\section{radix}
+
+\begin{definition}[Equipotent Sets]
+  Two sets $A$ and $B$ are called equipotent (or have the same cardinality) if there exists a bijection $f : A \xrightarrow{1:1} B$. We denote this as $|A| = |B|$.
+\end{definition}
+
+\begin{definition}[Cardinality Comparison]
+  For sets $A$ and $B$, if there exists an injection $f : A \hookrightarrow  B$, we write $|A| \leq |B|$.
+  We write $|A| < |B|$ when $|A| \leq |B|$ but $|A| \neq |B|$.
+\end{definition}
+
+\begin{proposition}[Pigeonhole Principle]
+  Let $A$ and $B$ be finite sets with the same cardinality. Then any injection (or surjection) $f : A \to B$ is automatically a bijection.
+\end{proposition}
+
+\begin{proposition}[Characterization of Infinite Sets]
+  A set $A$ is infinite if and only if there exists an injection $\mathbb{Z}_{\geq 0}  \hookrightarrow A$.
+\end{proposition}
+
+\begin{proof}
+  ($\implies$) If $A$ is infinite, by axiom of choice we can construct an injection.
+
+  ($\impliedby$) If such injection exists, then $|A| \geq |\mathbb{Z}_{\geq 0}|$, so $A$ must be infinite.
+\end{proof}
+
+\begin{definition}[Countable Sets]
+  Let $\aleph_0 := |\mathbb{Z}_{\geq 0}|$. A set $A$ is called countable (or enumerable) if $|A| = \aleph_0$.
+  A set $A$ is called at most countable if $|A| \leq \aleph_0$, meaning $A$ is either finite or countable.
+\end{definition}
+
+\begin{proposition}
+  The union and product of finitely many countable sets are countable. That is, if $A_1,\ldots,A_n$ are countable sets, then:
+  \begin{enumerate}
+    \item $\bigcup_{i=1}^n A_i$ is countable
+    \item $\prod_{i=1}^n A_i$ is countable
+  \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+  For union: Let $f_i: \mathbb{Z}_{\geq 0} \to A_i$ be bijections.
+  Define $f: \mathbb{Z}_{\geq 0} \to \bigcup_{i=1}^n A_i$ by:
+  \[
+    f(k) = f_i(m) \text{ where } k = in + m, 0 \leq m < n
+  \]
+  This is surjective as each element appears in some $A_i$.
+
+  For product: Let $g_i: \mathbb{Z}_{\geq 0} \to A_i$ be bijections.
+  Use Cantor's pairing function to construct bijection:
+  \[
+    g: \mathbb{Z}_{\geq 0} \to \prod_{i=1}^n A_i
+  \]
+  given by $g(k) = (g_1(k_1),\ldots,g_n(k_n))$ where $k_i$ are obtained from $k$ by repeated pairing.
+\end{proof}
+
+\begin{theorem}[Cantor's Theorem]
+  For any set $A$:
+  \[
+    2^{|A|} = |\mathcal{P}(A)| > |A|
+  \]
+  where $\mathcal{P}(A)$ is the power set of $A$.
+\end{theorem}
+
+\begin{proof}
+  First show $|\mathcal{P}(A)| \geq 2^{|A|}$ by constructing characteristic function.
+  Then prove $|\mathcal{P}(A)| > |A|$ by diagonal argument:
+  Assume $f: A \to \mathcal{P}(A)$ is surjective.
+  Consider $B = \{x \in A : x \notin f(x)\}$.
+  Then $B \in \mathcal{P}(A)$ but $B \neq f(a)$ for any $a \in A$.
+\end{proof}
