@@ -174,6 +174,28 @@
   Verify: $23 \equiv 2 \pmod{3}$, $23 \equiv 3 \pmod{5}$, $23 \equiv 2 \pmod{7}$
 \end{example}
 
+\section{Polynomial Ring}
+
+\begin{definition}[Polynomial Ring]
+  Let $R$ be a non-zero ring. A polynomial in variable $X$ with coefficients in $R$ is defined as a formal sum:
+  \[
+    f = \sum_{n \geq 0} a_nX^n, \quad a_n \in R
+  \]
+  where only finitely many $a_n$ are non-zero. Terms with $a_n = 0$ may be omitted. When emphasis on the variable is needed, we write $f(X)$. The set of all such polynomials is denoted $R[X]$.
+\end{definition}
+
+\begin{definition}[Operations on Polynomials]
+  Addition of polynomials is defined term by term:
+  \[
+    \sum_{n \geq 0} a_nX^n + \sum_{n \geq 0} b_nX^n := \sum_{n \geq 0} (a_n + b_n)X^n
+  \]
+
+  Multiplication is defined by convolution:
+  \[
+    \left(\sum_{n \geq 0} a_nX^n\right) \cdot \left(\sum_{n \geq 0} b_nX^n\right) := \sum_{n \geq 0} \left(\sum_{h+k=n} a_hb_k\right)X^n
+  \]
+\end{definition}
+
 \section{Monoid Group}
 
 \begin{definition}{monoid}{monoid}
