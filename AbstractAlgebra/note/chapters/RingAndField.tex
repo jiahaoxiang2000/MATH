@@ -206,7 +206,7 @@
   \end{enumerate}
 \end{proposition}
 
-\begin{lemma}[Degree Properties in Integral Domains]
+\begin{lemma}[Degree Properties in Integral Domains]{degree_properties_integral_domains}
   Let $R$ be an integral domain (Definition~\ref{def:integral_domain}). Then for all non-zero $f,g \in R[X]$:
   \[
     \deg(fg) = \deg f + \deg g
@@ -240,6 +240,219 @@
     f \circ g := \sum_{a_1,\ldots,a_n \geq 0} c_{a_1,\ldots,a_n} g_1^{a_1}\cdots g_n^{a_n} \in R[Y_1,\ldots,Y_m]
   \]
 \end{definition}
+
+\begin{proposition}[Polynomial Ring Isomorphisms]
+  For any ring $R$, there exists a natural ring isomorphism:
+  \[
+    R[X,Y] \simeq (R[X])[Y]
+  \]
+  More generally, for any $n \geq 2$, there are ring isomorphisms:
+  \[
+    R[X_1,\ldots,X_n] \simeq R[X_1,\ldots,X_{n-1}][X_n] \simeq \cdots \simeq R[X_1]\cdots[X_n]
+  \]
+\end{proposition}
+
+\begin{proof}
+  Let's prove for $R[X,Y] \simeq (R[X])[Y]$. Define:
+  \[
+    \varphi: R[X,Y] \to (R[X])[Y]
+  \]
+  by sending $\sum_{i,j} a_{ij}X^iY^j$ to $\sum_j (\sum_i a_{ij}X^i)Y^j$
+
+  \begin{enumerate}
+    \item Ring homomorphism:
+      \begin{itemize}
+        \item Addition: Clear from coefficients reorganization
+        \item Multiplication: Terms with same total degree in $Y$ combine
+      \end{itemize}
+
+    \item Bijective:
+      \begin{itemize}
+        \item Injective: Different polynomials map to different arrangements
+        \item Surjective: Any element in $(R[X])[Y]$ comes from rearranging terms
+      \end{itemize}
+  \end{enumerate}
+
+  The general case follows by induction on $n$.
+\end{proof}
+
+\begin{corollary}
+  If $R$ is an integral domain, then any polynomial ring $R[X,Y,\ldots]$ with any number of variables is also an integral domain, and $R[X,Y,\ldots]^\times = R^\times$.
+\end{corollary}
+
+\begin{proof}
+  By induction on the number of variables:
+  \begin{enumerate}
+    \item Base case: For $R[X]$, already proved in previous lemma~\ref{lem:degree_properties_integral_domains}
+    \item Inductive step: Assume true for $n$ variables
+    \item For $n+1$ variables, use isomorphism:
+      \[
+        R[X_1,\ldots,X_{n+1}] \simeq (R[X_1,\ldots,X_n])[X_{n+1}]
+      \]
+    \item By induction hypothesis, $R[X_1,\ldots,X_n]$ is an integral domain
+    \item Apply one-variable case to get result
+  \end{enumerate}
+\end{proof}
+
+\begin{proposition}[Polynomial Division Algorithm]
+  For any polynomials $a,d \in F[X]$ where $d \neq 0$, there exist unique polynomials $q,r \in F[X]$ such that:
+  \[
+    a = dq + r \quad \text{with} \quad \deg(r) < \deg(d)
+  \]
+  where we define $\deg(0) := -\infty$.
+\end{proposition}
+
+\begin{proof}
+  \textbf{Existence:} By induction on $\deg(a)$
+  \begin{itemize}
+    \item If $\deg(a) < \deg(d)$: Take $q=0, r=a$
+    \item If $\deg(a) \geq \deg(d)$:
+      \begin{itemize}
+        \item Let $c = \text{lc}(a)/\text{lc}(d)$ and $n = \deg(a) - \deg(d)$
+        \item Set $a_1 = a - dcX^n$
+        \item Note $\deg(a_1) < \deg(a)$
+        \item By induction: $a_1 = dq_1 + r$
+        \item Then $a = d(q_1 + cX^n) + r$
+      \end{itemize}
+  \end{itemize}
+
+  \textbf{Uniqueness:} If $a = dq_1 + r_1 = dq_2 + r_2$, then:
+  \begin{itemize}
+    \item $d(q_1 - q_2) = r_2 - r_1$
+    \item If $q_1 \neq q_2$, then $\deg(r_2 - r_1) \geq \deg(d)$
+    \item But $\deg(r_2 - r_1) < \deg(d)$
+    \item Therefore $q_1 = q_2$ and $r_1 = r_2$
+  \end{itemize}
+\end{proof}
+
+\begin{definition}[Root of Polynomial]
+  Let $f \in F[X]$ and $a \in F$. We say $a$ is a root of $f$ if $f(a) = 0$.
+
+  More generally, for a commutative ring $R$, if $f \in R[X]$ and $a \in R$ satisfy $f(a) = 0$, then $a$ is called a root of $f$, or more precisely, a root of $f$ in $R$.
+\end{definition}
+
+\begin{proposition}[Bound on Number of Roots]
+  Let $f \in F[X] \setminus \{0\}$. Then $f$ has at most $\deg f$ distinct roots in $F$.
+\end{proposition}
+
+\begin{proof}
+  By induction on $\deg f$:
+  \begin{itemize}
+    \item Base case: If $\deg f = 0$, then $f$ is constant and non-zero, so has no roots
+
+    \item Inductive step: Let $a$ be a root of $f$
+      \begin{itemize}
+        \item Then $X-a$ divides $f$, so $f = (X-a)g$ for some $g$
+        \item $\deg g = \deg f - 1$
+        \item Any root of $f$ different from $a$ must be a root of $g$
+        \item By induction, $g$ has at most $\deg g$ distinct roots
+        \item Therefore $f$ has at most $1 + \deg g = \deg f$ distinct roots
+      \end{itemize}
+  \end{itemize}
+\end{proof}
+
+\section{Fractional field to rational function field}
+
+\begin{definition}[Rational Functions]
+  A rational function over $R$ is defined as a quotient $\frac{f}{g}$ where:
+  \begin{itemize}
+    \item $f,g \in R[X]$
+    \item $g$ is not the zero polynomial (i.e., $g \neq 0_{R[X]}$)
+  \end{itemize}
+\end{definition}
+
+\begin{proposition}[Fraction Field]
+  Let $R$ be an integral domain. Then:
+  \begin{enumerate}
+    \item $\text{Frac}(R)$ forms a field under the given operations
+    \item The map $f \mapsto [f,1]$ embeds $R$ as a subring of $\text{Frac}(R)$
+  \end{enumerate}
+\end{proposition}
+
+\begin{proposition}[Universal Property of Fraction Field]
+  Let $R$ be an integral domain, $R'$ a commutative ring, and $\varphi : R \to R'$ a ring homomorphism such that $\varphi(R \setminus \{0\}) \subset (R')^\times$. Then there exists a unique ring homomorphism $\Phi : \text{Frac}(R) \to R'$ making the following diagram commute:
+  \[
+    \begin{tikzcd}
+      R \arrow[r, "\varphi"]  \arrow[d] & R' \\
+      \text{Frac}(R) \arrow[ru, "\Phi"'] &
+    \end{tikzcd}
+  \]
+  Explicitly, $\Phi(f/g) = \varphi(f)\varphi(g)^{-1}$.
+\end{proposition}
+
+\begin{corollary}
+  Let $F$ be a field containing an integral domain $R$ as a subring. If every element of $F$ can be expressed as $fg^{-1}$ where $f,g \in R$ and $g \neq 0$, then there exists a unique ring isomorphism $\Phi : \text{Frac}(R) \to F$ making the following diagram commute:
+  \[
+    \begin{matrix}
+      R & \xrightarrow{\text{inclusion}} & F \\
+      \downarrow & & \nearrow \\
+      \text{Frac}(R) & \xrightarrow{\sim}_{\Phi} &
+    \end{matrix}
+  \]
+\end{corollary}
+
+\begin{proof}
+  By universal property, there exists unique $\Phi : \text{Frac}(R) \to F$.
+  \begin{itemize}
+    \item Injective: As composition of non-zero elements remains non-zero
+    \item Surjective: Every element in $F$ has form $fg^{-1}$ with $f,g \in R$
+    \item Therefore $\Phi$ is an isomorphism
+  \end{itemize}
+\end{proof}
+
+\begin{definition}[Field of Rational Functions]
+  Let $F$ be a field. The field of fractions of $F[X,Y,\ldots]$ is called the field of rational functions in variables $X,Y,\ldots$, denoted $F(X,Y,\ldots)$. It contains $F[X,Y,\ldots]$ as a subring.
+
+  Elements of $F(X,Y,\ldots)$ are called rational functions in variables $X,Y,\ldots$ with coefficients in $F$.
+\end{definition}
+
+\begin{definition}[Degree of Rational Functions]
+  Let $F$ be a field. For any $h = \frac{f}{g} \in F(X)$ where $h \neq 0$, define:
+  \[
+    \deg h := \deg f - \deg g
+  \]
+  Additionally, define $\deg(0) := -\infty$.
+\end{definition}
+
+\begin{corollary}[Bound on Roots in Integral Domain]{bound_on_roots_in_integral_domain}
+  Let $R$ be an integral domain and $f \in R[X] \setminus \{0\}$. Then $f$ has at most $\deg f$ distinct roots in $R$.
+\end{corollary}
+
+\begin{proof}
+  Let $F = \text{Frac}(R)$ be the fraction field of $R$.
+  Since $R$ is a subring of $F$, any root of $f$ in $R$ is also a root in $F$.
+  By the previous proposition, $f$ has at most $\deg f$ distinct roots in $F$.
+  Therefore, $f$ has at most $\deg f$ distinct roots in $R$.
+\end{proof}
+
+\begin{proposition}[Function Evaluation Map]
+  Let $R$ be an integral domain and $n \in \mathbb{Z}_{\geq 1}$. The function evaluation map:
+  \[
+    \text{Fcn} : R[X_1,\ldots,X_n] \to \{\text{functions } R^n \to R\}
+  \]
+  is injective if and only if $R$ has infinitely many elements.
+\end{proposition}
+
+\begin{theorem}[Extension Principle for Algebraic Equations]
+  Let $R$ be an infinite integral domain, $f,g_1,\ldots,g_m \in R[X_1,\ldots,X_n]$,
+  where $g_1,\ldots,g_m$ are non-zero. If for all $(x_1,\ldots,x_n) \in R^n$:
+  \[
+    (g_1(x_1,\ldots,x_n) \neq 0 \wedge \cdots \wedge g_m(x_1,\ldots,x_n) \neq 0) \implies f(x_1,\ldots,x_n) = 0
+  \]
+  then $f = 0$.
+\end{theorem}
+
+\begin{proof}
+  By contradiction, assume $f \neq 0$.
+  \begin{enumerate}
+    \item Let $U = \{x \in R^n : g_1(x) \neq 0,\ldots,g_m(x) \neq 0\}$
+    \item Since $R$ is infinite and $g_i$ are non-zero, $U$ is non-empty
+    \item By hypothesis, $f$ vanishes on $U$
+    \item But $f \neq 0$ implies $f$ can only vanish at finitely many points
+    \item This contradicts $R$ being infinite
+  \end{enumerate}
+  Therefore $f = 0$.
+\end{proof}
 
 \section{Monoid Group}
 
