@@ -78,7 +78,7 @@
   A subring of a field that is itself a field is called a subfield.
 \end{definition}
 
-\begin{definition}[Integral Domain]
+\begin{definition}[Integral Domain]{integral_domain}
   A non-zero commutative ring $R$ is called an integral domain if for all $x,y \in R$:
   \[
     x,y \neq 0 \implies xy \neq 0
@@ -193,6 +193,51 @@
   Multiplication is defined by convolution:
   \[
     \left(\sum_{n \geq 0} a_nX^n\right) \cdot \left(\sum_{n \geq 0} b_nX^n\right) := \sum_{n \geq 0} \left(\sum_{h+k=n} a_hb_k\right)X^n
+  \]
+\end{definition}
+
+\begin{proposition}[Ring Structure of Polynomials]
+  With the above operations, $R[X]$ forms a ring where:
+  \begin{enumerate}
+    \item The zero polynomial is $0_{R[X]}$
+    \item The unit polynomial is the constant polynomial $1_{R[X]}$ corresponding to $1_R$
+    \item $R$ embeds as a subring of $R[X]$
+    \item If $R$ is commutative, then $R[X]$ is also commutative
+  \end{enumerate}
+\end{proposition}
+
+\begin{lemma}[Degree Properties in Integral Domains]
+  Let $R$ be an integral domain (Definition~\ref{def:integral_domain}). Then for all non-zero $f,g \in R[X]$:
+  \[
+    \deg(fg) = \deg f + \deg g
+  \]
+  Consequently:
+  \begin{enumerate}
+    \item $R[X]$ is also an integral domain
+    \item $R[X]^\times = R^\times$
+  \end{enumerate}
+\end{lemma}
+
+\begin{definition}[Homogeneous Polynomials]
+  Let $f = \sum_{a_1,\ldots,a_n \geq 0} c_{a_1,\ldots,a_n} X_1^{a_1}\cdots X_n^{a_n}$ be an element of $R[X_1,\ldots,X_n]$.
+
+  $f$ is called homogeneous of degree $N$ if there exists $N \in \mathbb{Z}_{\geq 0}$ such that $c_{a_1,\ldots,a_n} \neq 0$ implies $a_1 + \cdots + a_n = N$.
+\end{definition}
+
+\begin{remark}
+  This concept extends naturally to polynomial rings with infinitely many variables, as they can be written as unions of subrings with finitely many variables.
+\end{remark}
+
+\begin{definition}[Polynomial Composition]
+  Let $R$ be a commutative ring. For $n,m \in \mathbb{Z}_{\geq 1}$, given:
+  \[
+    f = \sum_{a_1,\ldots,a_n \geq 0} c_{a_1,\ldots,a_n} X_1^{a_1}\cdots X_n^{a_n} \in R[X_1,\ldots,X_n]
+  \]
+  and $g_1,\ldots,g_n \in R[Y_1,\ldots,Y_m]$
+
+  Let $g := (g_1,\ldots,g_n) \in R[Y_1,\ldots,Y_m]^n$. The composition is defined as:
+  \[
+    f \circ g := \sum_{a_1,\ldots,a_n \geq 0} c_{a_1,\ldots,a_n} g_1^{a_1}\cdots g_n^{a_n} \in R[Y_1,\ldots,Y_m]
   \]
 \end{definition}
 
