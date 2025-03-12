@@ -6,3 +6,37 @@ Broadly speaking, a vector space over a field $F$ refers to a set $V$ together w
   \item Vector addition $+: V \times V \rightarrow V$, denoted $(v_1, v_2) \mapsto v_1 + v_2$, satisfying associativity, commutativity, and the existence of inverses;
   \item Scalar multiplication $\cdot: F \times V \rightarrow V$, denoted $(t, v) \mapsto t \cdot v = tv$, satisfying associativity and distributivity over addition.
 \end{itemize}
+
+If a mapping $T: V \rightarrow W$ between vector spaces satisfies the identities
+\begin{align*}
+  T(v_1 + v_2) &= T(v_1) + T(v_2),\\
+  T(tv) &= tT(v),
+\end{align*}
+then $T$ is called a linear mapping.
+
+\section{Introduction: Back to the system of linear equations}
+
+\begin{align}
+  a_{11}X_1 + \cdots + a_{1n}X_n &= b_1 \nonumber\\
+  a_{21}X_1 + \cdots + a_{2n}X_n &= b_2 \nonumber \\
+  &\vdots\nonumber \\
+  a_{m1}X_1 + \cdots + a_{mn}X_n &= b_m \label{eq:linear-system-2}
+\end{align}
+
+\begin{definition}
+  Consider a system of $n$ linear equations over a field $F$ in the form (\ref{eq:linear-system-2}). If $b_1 = \cdots = b_m = 0$, then the system is called homogeneous.
+\end{definition}
+
+Given $n,m \in \mathbb{Z}_{\geq 1}$ and a family of coefficients $(a_{ij})_{1 \leq i \leq m, 1 \leq j \leq n}$ where $a_{ij} \in F$, define the mapping
+\begin{align*}
+  T: F^n &\rightarrow F^m\\
+  (x_j)_{j=1}^n &\mapsto \left(\sum_{j=1}^n a_{1j}x_j, \ldots, \sum_{j=1}^n a_{mj}x_j\right).
+\end{align*}
+
+\begin{definition}
+  Let $T: F^n \rightarrow F^m$ correspond to a homogeneous system of linear equations as described above. If $v_1, \ldots, v_h \in F^n$ are all solutions of the system, and every solution $x \in F^n$ can be uniquely expressed through addition and scalar multiplication as
+  \begin{align}
+    x = \sum_{i=1}^h t_i v_i, \quad t_1, \ldots, t_h \in F,
+  \end{align}
+  where the tuple $(t_1, \ldots, t_h)$ is uniquely determined by $x$, then $v_1, \ldots, v_h$ is called a fundamental system of solutions for the homogeneous system.
+\end{definition}
