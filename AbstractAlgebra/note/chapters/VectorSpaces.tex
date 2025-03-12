@@ -40,3 +40,39 @@ Given $n,m \in \mathbb{Z}_{\geq 1}$ and a family of coefficients $(a_{ij})_{1 \l
   \end{align}
   where the tuple $(t_1, \ldots, t_h)$ is uniquely determined by $x$, then $v_1, \ldots, v_h$ is called a fundamental system of solutions for the homogeneous system.
 \end{definition}
+
+\begin{proposition}
+  Consider a homogeneous system of $n$ linear equations in the form (Eq.\ref{eq:linear-system-2}), where $\bf{b} = 0$. If the reduced row echelon matrix obtained by elimination has $r$ pivot elements, then the corresponding homogeneous system has a fundamental system of solutions $v_1, \ldots, v_{n-r}$.
+\end{proposition}
+
+\section{Vector spaces}
+
+\begin{definition}
+  A vector space over a field $F$, also called an $F$-vector space, is a tuple $(V, +, \cdot, 0_V)$ where $V$ is a set, $0_V \in V$, and operations $+: V \times V \rightarrow V$ and $\cdot: F \times V \rightarrow V$ are written as $(u,v) \mapsto u + v$ and $(t,v) \mapsto t \cdot v$ respectively, satisfying the following conditions:
+
+  1. Addition satisfies:
+  \begin{itemize}
+    \item Associativity: $(u + v) + w = u + (v + w)$;
+    \item Identity element: $v + 0_V = v = 0_V + v$;
+    \item Commutativity: $u + v = v + u$;
+    \item Additive inverse: For every $v$, there exists $-v$ such that $v + (-v) = 0_V$.
+  \end{itemize}
+
+  2. Scalar multiplication, often written as $tv$ instead of $t \cdot v$, satisfies:
+  \begin{itemize}
+    \item Associativity: $s \cdot (t \cdot v) = (st) \cdot v$;
+    \item Identity property: $1 \cdot v = v$, where $1$ is the multiplicative identity in $F$.
+  \end{itemize}
+
+  3. Scalar multiplication distributes over addition:
+  \begin{itemize}
+    \item First distributive property: $(s + t) \cdot v = s \cdot v + t \cdot v$;
+    \item Second distributive property: $s \cdot (u + v) = s \cdot u + s \cdot v$.
+  \end{itemize}
+
+  Where $u, v, w$ (or $s, t$) represent arbitrary elements of $V$ (or $F$). When there is no risk of confusion, we denote $0_V$ simply as $0$, write $u + (-v)$ as $u - v$, and refer to the structure $(V, +, \cdot, 0)$ simply as $V$.
+\end{definition}
+
+\begin{definition}
+  Let $V$ be an $F$-vector space. If a subset $V_0$ of $V$ contains $0$ and is closed under addition and scalar multiplication, then $(V_0, +, \cdot, 0)$ is also an $F$-vector space, called a subspace of $V$.
+\end{definition}
