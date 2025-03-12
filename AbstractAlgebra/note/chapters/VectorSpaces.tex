@@ -76,3 +76,91 @@ Given $n,m \in \mathbb{Z}_{\geq 1}$ and a family of coefficients $(a_{ij})_{1 \l
 \begin{definition}
   Let $V$ be an $F$-vector space. If a subset $V_0$ of $V$ contains $0$ and is closed under addition and scalar multiplication, then $(V_0, +, \cdot, 0)$ is also an $F$-vector space, called a subspace of $V$.
 \end{definition}
+
+\section{Matrix \& calculate}
+
+\begin{definition}
+  Let $m,n \in \mathbb{Z}_{\geq 1}$. An $m \times n$ matrix over a field $F$ is a rectangular array
+  \begin{align*}
+    A = (a_{ij})_{1 \leq i \leq m, 1 \leq j \leq n} =
+    \begin{pmatrix}
+      a_{11} & \cdots & a_{1n} \\
+      \vdots & \ddots & \vdots \\
+      a_{m1} & \cdots & a_{mn}
+    \end{pmatrix} =
+    \begin{bmatrix}
+      \cdots & \cdots & a_{ij} & \cdots & \cdots \\
+    \end{bmatrix}
+  \end{align*}
+
+  \noindent where $a_{ij} \in F$ is called the $(i,j)$-entry or $(i,j)$-element of matrix $A$, with $i$ indicating the row and $j$ indicating the column. An $n \times n$ matrix is called a square matrix of order $n$.
+
+  We denote the set of all $m \times n$ matrices over $F$ by $M_{m \times n}(F)$.
+\end{definition}
+
+\begin{proposition}
+  The set $M_{m \times n}(F)$ equipped with standard addition and scalar multiplication forms an $F$-vector space. The zero element is the zero matrix, and the additive inverse of a matrix $A = (a_{ij})_{i,j}$ is $-A = (-a_{ij})_{i,j}$.
+\end{proposition}
+
+\begin{definition}[Matrix Multiplication]
+  Matrix multiplication is a mapping defined as:
+  \begin{align*}
+    M_{m \times n}(F) \times M_{n \times r}(F) &\rightarrow M_{m \times r}(F)\\
+    (A, B) &\mapsto AB
+  \end{align*}
+
+  If $A = (a_{ij})_{1 \leq i \leq m, 1 \leq j \leq n}$ and $B = (b_{jk})_{1 \leq j \leq n, 1 \leq k \leq r}$, then $AB = (c_{ik})_{1 \leq i \leq m, 1 \leq k \leq r}$, where:
+  \begin{align*}
+    c_{ik} := \sum_{j=1}^{n} a_{ij}b_{jk} =
+    \begin{pmatrix} a_{i1} & \cdots & a_{in}
+    \end{pmatrix}
+    \begin{pmatrix} b_{1k} \\ \vdots \\ b_{nk}
+    \end{pmatrix}
+  \end{align*}
+
+  This represents the dot product of the $i^{th}$ row of $A$ with the $k^{th}$ column of $B$.
+\end{definition}
+
+\begin{proposition}
+  Matrix multiplication satisfies the following properties:
+  \begin{itemize}
+    \item Associativity: $(AB)C = A(BC)$;
+    \item Distributivity: $A(B + C) = AB + AC$ and $(B + C)A = BA + CA$;
+    \item Linearity: $A(tB) = t(AB) = (tA)B$;
+  \end{itemize}
+  where $t \in F$ and matrices $A, B, C$ are arbitrary, provided their dimensions make these operations valid.
+\end{proposition}
+
+\section{Bases \& Dimensions}
+
+\begin{definition}
+  Let $S$ be a subset of an $F$-vector space $V$.
+  \begin{itemize}
+    \item If $\langle S \rangle = V$, then $S$ is said to generate $V$, or $S$ is called a generating set of $V$.
+    \item A linear relation in $S$ is an equation of the form
+      \begin{align*}
+        \sum_{s \in S} a_s s = 0
+      \end{align*}
+      This relation is called trivial if all coefficients $a_s$ are zero; otherwise, it is non-trivial. The set $S$ is linearly dependent if there exists a non-trivial linear relation among its elements; otherwise, $S$ is linearly independent.
+    \item If $S$ is a linearly independent generating set, then $S$ is called a basis of $V$.
+  \end{itemize}
+\end{definition}
+
+\begin{lemma}
+  For any subset $S$ of an $F$-vector space $V$, the following statements are equivalent:
+  \begin{enumerate}
+    \item $S$ is a minimal generating set.
+    \item $S$ is a basis.
+    \item $S$ is a maximal linearly independent subset.
+  \end{enumerate}
+\end{lemma}
+
+\begin{proof}
+  Let's prove the equivalence by showing $(1) \Rightarrow (2)$, $(2) \Rightarrow (3)$, and $(3) \Rightarrow (1)$.
+
+  $(1) \Rightarrow (2)$: If $S$ is a minimal generating set, then $\langle S \rangle = V$. Suppose $S$ is not linearly independent. Then there exists some $s_0 \in S$ that can be expressed as a linear combination of other elements in $S$. But this means $S \setminus \{s_0\}$ still generates $V$, contradicting the minimality of $S$. Therefore, $S$ must be linearly independent, making it a basis.
+
+  $(2) \Rightarrow (3)$: Let $S$ be a basis. Then $S$ is linearly independent and $\langle S \rangle = V$. To show that $S$ is maximal, suppose we add any vector $v \not\in S$ to form $S' = S \cup \{v\}$. Since $\langle S \rangle = V$, we have $v \in \langle S \rangle$, meaning $v$ can be written as a linear combination of elements in $S$. Therefore, $S'$ must be linearly dependent, proving that $S$ is a maximal linearly independent set.
+
+  $(3) \Rightarrow (1)$: Let $S$ be a maximal linearly independent set. If $\langle S \rangle \neq V$, then there exists some $v \in V \setminus \langle S \rangle$. The set $S \cup \{v\}$ would still be linearly independent, contradicting the maximality of $S$. Therefore $\langle S \rangle = V$. Now suppose $S$ is not minimal. Then there exists a proper subset $S' \subset S$ with $\langle S' \rangle = V$. But this means some element in $S \setminus S'$ can be expressed as a linear combination of elements in $S'$, making $S$ linearly dependent, which is a contradiction. Thus, $S$ is a minimal generating set.
+\end{proof}
