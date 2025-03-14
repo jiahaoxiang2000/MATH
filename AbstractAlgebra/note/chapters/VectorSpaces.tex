@@ -164,3 +164,62 @@ Given $n,m \in \mathbb{Z}_{\geq 1}$ and a family of coefficients $(a_{ij})_{1 \l
 
   $(3) \Rightarrow (1)$: Let $S$ be a maximal linearly independent set. If $\langle S \rangle \neq V$, then there exists some $v \in V \setminus \langle S \rangle$. The set $S \cup \{v\}$ would still be linearly independent, contradicting the maximality of $S$. Therefore $\langle S \rangle = V$. Now suppose $S$ is not minimal. Then there exists a proper subset $S' \subset S$ with $\langle S' \rangle = V$. But this means some element in $S \setminus S'$ can be expressed as a linear combination of elements in $S'$, making $S$ linearly dependent, which is a contradiction. Thus, $S$ is a minimal generating set.
 \end{proof}
+
+\begin{proposition}
+  Consider a family of $F$-vector spaces $V_i$, each with a given basis $B_i$, where $i$ ranges over a given index set $I$.
+  Embed each $V_i$ as a subspace of the direct sum $\bigoplus_{j \in I} V_j$.
+  Correspondingly, view each $B_i$ as a subset of $\bigoplus_{j \in I} V_j$.
+  These subsets $B_i$ are pairwise disjoint, and $\bigcup_{i \in I} B_i$ forms a basis for $\bigoplus_{i \in I} V_i$.
+\end{proposition}
+
+\begin{definition}
+  Every $F$-vector space $V$ has a basis. In fact, any linearly independent subset of $V$ can be extended to a basis.
+
+  Furthermore, all bases of $V$ have the same cardinality. This common cardinality is called the dimension of $V$, denoted by $\dim_F V$ or simply $\dim V$.
+\end{definition}
+
+\begin{lemma}
+  Let $\{s_1,...,s_n\}$ be a generating set for an $F$-vector space $V$. If $m > n$, then any collection of $m$ vectors $v_1,...,v_m \in V$ is linearly dependent.
+\end{lemma}
+
+\section{Linear mappings}
+
+\begin{definition}[Linear Mapping]
+  Let $V$ and $W$ be $F$-vector spaces. A mapping $T: V \rightarrow W$ is called a linear mapping (also known as a linear transformation or linear operator) if it satisfies:
+  \begin{align*}
+    T(v_1 + v_2) &= T(v_1) + T(v_2), & \forall v_1, v_2 \in V,\\
+    T(tv) &= tT(v), & \forall t \in F, v \in V.
+  \end{align*}
+\end{definition}
+
+\begin{lemma}
+  If $T: U \rightarrow V$ and $S: V \rightarrow W$ are linear mappings, then their composition $S \circ T: U \rightarrow W$ is also a linear mapping.
+\end{lemma}
+
+\begin{proof}
+  We need to verify that $S \circ T$ satisfies the two defining properties of linear mappings:
+
+  1. For any $u_1, u_2 \in U$:
+  \begin{align*}
+    (S \circ T)(u_1 + u_2) &= S(T(u_1 + u_2)) \\
+    &= S(T(u_1) + T(u_2)) \quad \text{(by linearity of $T$)} \\
+    &= S(T(u_1)) + S(T(u_2)) \quad \text{(by linearity of $S$)} \\
+    &= (S \circ T)(u_1) + (S \circ T)(u_2)
+  \end{align*}
+
+  2. For any $t \in F$ and $u \in U$:
+  \begin{align*}
+    (S \circ T)(tu) &= S(T(tu)) \\
+    &= S(tT(u)) \quad \text{(by linearity of $T$)} \\
+    &= tS(T(u)) \quad \text{(by linearity of $S$)} \\
+    &= t(S \circ T)(u)
+  \end{align*}
+
+  Therefore, $S \circ T$ is a linear mapping.
+\end{proof}
+
+\begin{definition}
+  If a linear mapping $T: V \rightarrow W$ is both left and right invertible, it is called an invertible linear mapping or an isomorphism.
+
+  In this case, there exists a unique linear mapping $T^{-1}: W \rightarrow V$ such that $T^{-1} \circ T = \operatorname{id}_V$ and $T \circ T^{-1} = \operatorname{id}_W$. This mapping $T^{-1}$ is called the inverse of $T$; it is simultaneously the unique left inverse and the unique right inverse of $T$.
+\end{definition}
