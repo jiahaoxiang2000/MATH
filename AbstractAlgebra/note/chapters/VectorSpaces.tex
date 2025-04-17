@@ -312,3 +312,85 @@ Given $n,m \in \mathbb{Z}_{\geq 1}$ and a family of coefficients $(a_{ij})_{1 \l
 
   Conversely, if ${}^t\!A$ is invertible, the same argument applied to ${}^t\!A$ shows $A$ is invertible.
 \end{proof}
+
+\begin{definition}
+  Let $V$ be a vector space over a field $F$. The dual space of $V$, denoted $V^\vee$, is defined as
+  \[
+    V^\vee := \operatorname{Hom}(V, F),
+  \]
+  the set of all linear functionals from $V$ to $F$.
+\end{definition}
+
+\begin{definition}
+  Let $T: V \to W$ be a linear map between vector spaces over $F$. The transpose (dual) map of $T$, denoted ${}^t\!T : W^\vee \to V^\vee$, is defined by
+  \[
+    {}^t\!T(\lambda) = \lambda \circ T, \quad \forall\, \lambda \in W^\vee.
+  \]
+  That is, for any $v \in V$,
+  \[
+    ({}^t\!T(\lambda))(v) = \lambda(T(v)).
+  \]
+\end{definition}
+
+\begin{proposition}
+  Let $U, V, W$ be vector spaces over $F$, and let $T: U \to V$, $S: V \to W$ be linear maps. Then
+  \[
+    {}^t\!(S T) = {}^t\!T \circ {}^t\!S \in \operatorname{Hom}(W^\vee, U^\vee).
+  \]
+\end{proposition}
+
+\begin{proof}
+  For any $\lambda \in W^\vee$ and $u \in U$,
+  \[
+    ({}^t\!(S T)(\lambda))(u) = \lambda((S T)(u)) = \lambda(S(T(u))) = ({}^t\!S(\lambda))(T(u)) = ({}^t\!T({}^t\!S(\lambda)))(u).
+  \]
+  Thus, ${}^t\!(S T) = {}^t\!T \circ {}^t\!S$.
+\end{proof}
+
+\begin{proposition}
+  Let $V$ be a finite-dimensional vector space with basis $v_1, \ldots, v_n$. For each $1 \leq i \leq n$, define $\check{v}_i \in V^\vee$ by
+  \[
+    \check{v}_i\left(\sum_{j=1}^n x_j v_j\right) = x_i.
+  \]
+  Then $\check{v}_1, \ldots, \check{v}_n$ form a basis of $V^\vee$, called the dual basis of $v_1, \ldots, v_n$.
+\end{proposition}
+
+\begin{proof}
+  Each $\check{v}_i$ is linear, and for any $v_j$ we have $\check{v}_i(v_j) = \delta_{ij}$. Any $f \in V^\vee$ is determined by its values $f(v_j)$, so $f = \sum_{i=1}^n f(v_i)\check{v}_i$. Thus, $\{\check{v}_1, \ldots, \check{v}_n\}$ is a basis for $V^\vee$.
+\end{proof}
+
+\section{Kernel, Image, and Gaussian Elimination}
+
+\begin{definition}
+  Let $T: V \to W$ be a linear map between vector spaces. The \textbf{kernel} of $T$ is
+  \[
+    \ker T := \{ v \in V : T(v) = 0 \} = T^{-1}(0).
+  \]
+  The \textbf{image} of $T$ is
+  \[
+    \operatorname{im} T := \{ w \in W : \exists v \in V,\, T(v) = w \}.
+  \]
+\end{definition}
+
+\begin{proposition}
+  Let $T: V \to W$ be a linear map. Then $\ker T$ is a subspace of $V$, and $\operatorname{im} T$ is a subspace of $W$.
+\end{proposition}
+
+\begin{proof}
+  For $\ker T$:
+  Let $u, v \in \ker T$ and $a, b \in F$. Then $T(au + bv) = aT(u) + bT(v) = a \cdot 0 + b \cdot 0 = 0$, so $au + bv \in \ker T$. Thus, $\ker T$ is a subspace of $V$.
+
+  For $\operatorname{im} T$:
+  Let $w_1, w_2 \in \operatorname{im} T$, so $w_1 = T(v_1)$, $w_2 = T(v_2)$ for some $v_1, v_2 \in V$. For $a, b \in F$, $a w_1 + b w_2 = a T(v_1) + b T(v_2) = T(a v_1 + b v_2) \in \operatorname{im} T$. Thus, $\operatorname{im} T$ is a subspace of $W$.
+\end{proof}
+
+\begin{proposition}
+  A linear map $T: V \to W$ is injective if and only if $\ker T = \{0\}$.
+\end{proposition}
+
+\begin{theorem}
+  Let $T: V \to W$ be a linear map between vector spaces, with $V$ finite-dimensional. Then
+  \[
+    \dim V = \dim (\ker T) + \dim (\operatorname{im} T).
+  \]
+\end{theorem}
