@@ -513,3 +513,117 @@ Given $n,m \in \mathbb{Z}_{\geq 1}$ and a family of coefficients $(a_{ij})_{1 \l
 \begin{proof}
   Let $\{v_1, \ldots, v_k\}$ be a basis for $V_0$. Extend this to a basis $\{v_1, \ldots, v_k, w_1, \ldots, w_m\}$ for $V$. Let $V_1 = \operatorname{span}\{w_1, \ldots, w_m\}$. Then every $v \in V$ can be uniquely written as $v = v_0 + v_1$ with $v_0 \in V_0$, $v_1 \in V_1$, so $V = V_0 \oplus V_1$.
 \end{proof}
+
+\section{Block Matrix Operations}
+
+\begin{definition}
+  Let $T: V \to W$ be a linear map, where $V = V_1 \oplus \cdots \oplus V_n$ and $W = W_1 \oplus \cdots \oplus W_m$ are direct sum decompositions. The matrix $A := M(T)$, with respect to these decompositions, can be partitioned into $m \times n$ blocks as follows:
+  \[
+    A =
+    \begin{pmatrix}
+      A_{11} & \cdots & A_{1n} \\
+      \vdots & \ddots & \vdots \\
+      A_{m1} & \cdots & A_{mn}
+    \end{pmatrix}
+  \]
+  where $A_{ij} := M(T_{ij})$ is the matrix of the component map $T_{ij}: V_j \to W_i$.
+
+  A matrix $A$ with such a partition is called a \textbf{block matrix}, and each $A_{ij}$ is called its $(i,j)$-block.
+\end{definition}
+
+Let $V$ be a vector space over $F$ and $U$ a subspace. For any $v \in V$, the equivalence class of $v$ modulo $U$ is denoted by
+\[
+  v + U := \{ v + u : u \in U \}.
+\]
+Such subsets are called \textbf{cosets} of $U$ in $V$, and $v$ is called a representative of the coset. We have $v + U = v' + U$ if and only if $v - v' \in U$.
+
+\begin{definition}[Quotient Space]
+  Let $U$ be a subspace of an $F$-vector space $V$. Define the \textbf{quotient space}
+  \[
+    V/U := \{ v + U : v \in V \}
+  \]
+  as the set of all cosets of $U$ in $V$.
+
+  On $V/U$, define the following operations:
+  \begin{itemize}
+    \item Addition: $(v_1 + U) + (v_2 + U) := (v_1 + v_2) + U$, for $v_1, v_2 \in V$;
+    \item Scalar multiplication: $t(v + U) := (tv) + U$, for $t \in F$, $v \in V$;
+    \item Zero element: $0_{V/U} := U = 0_V + U$ (the coset of $0$).
+  \end{itemize}
+
+  With these operations, $(V/U, +, \cdot, 0_{V/U})$ is a vector space over $F$, called the \textbf{quotient space} of $V$ by $U$.
+\end{definition}
+
+\begin{definition}[Cokernel]
+  Let $T: V \to W$ be a linear map. The \textbf{cokernel} of $T$ is defined as the quotient space of $W$ by the image of $T$:
+  \[
+    \operatorname{coker}(T) := W / \operatorname{im}(T).
+  \]
+\end{definition}
+
+\begin{proposition}
+  A linear map $T: V \to W$ is surjective if and only if $\operatorname{coker}(T) = \{0\}$.
+\end{proposition}
+
+\begin{proof}
+  If $T$ is surjective, then $\operatorname{im}(T) = W$, so $W / \operatorname{im}(T) = W / W = \{0\}$.
+
+  Conversely, if $\operatorname{coker}(T) = \{0\}$, then $W / \operatorname{im}(T) = \{0\}$, so $\operatorname{im}(T) = W$, i.e., $T$ is surjective.
+\end{proof}
+
+\begin{proposition}
+  Let $U$ be a subspace of a vector space $V$, and let $T: V \to W$ be a linear map.
+  \begin{enumerate}
+    \item[(i)] If $U \subset \ker(T)$, then there exists a unique linear map $\overline{T}: V/U \to W$ such that the following diagram commutes:
+      \[
+        \begin{tikzcd}
+          V \arrow[r, "T"] \arrow[d, "q"'] & W \\
+          V/U \arrow[ur, "\overline{T}"', dashed]
+        \end{tikzcd}
+      \]
+      where $q: V \to V/U$ is the quotient map. Explicitly, $\overline{T}(v + U) = T(v)$.
+
+    \item[(ii)] If $U = \ker(T)$ and $W = \operatorname{im}(T)$, then $\overline{T}: V/U \to W$ is an isomorphism of vector spaces.
+  \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+  (i) If $U \subset \ker(T)$, then $T(v) = T(v')$ whenever $v - v' \in U$, so $T$ is constant on cosets $v + U$. Thus, $\overline{T}(v + U) := T(v)$ is well-defined and linear. Uniqueness follows since $q$ is surjective.
+
+  (ii) If $U = \ker(T)$ and $W = \operatorname{im}(T)$, then $\overline{T}$ is injective (since $\ker(\overline{T}) = \{U\}$) and surjective (since $T$ is surjective onto $W$), so it is an isomorphism.
+\end{proof}
+
+\begin{proposition}
+  Let $U$ be a subspace of $V$. Let $\overline{V} := V/U$, and let $q: V \to \overline{V}$ be the quotient map. There is a bijection
+  \[
+    \left\{
+      W \subset V : W \text{ is a subspace},\, W \supset U
+    \right\}
+    \longleftrightarrow
+    \left\{
+      \overline{W} \subset \overline{V} : \overline{W} \text{ is a subspace}
+    \right\}
+  \]
+  given by $W \mapsto \overline{W} := q(W)$ and $\overline{W} \mapsto W := q^{-1}(\overline{W})$.
+
+  This bijection has the following properties:
+  \begin{itemize}
+    \item It is strictly order-preserving: $W_1 \supset W_2$ if and only if $\overline{W}_1 \supset \overline{W}_2$.
+    \item If $W$ corresponds to $\overline{W}$, then there is a natural isomorphism
+      \[
+        V/W \cong \overline{V}/\overline{W}, \quad v + W \mapsto q(v) + \overline{W}.
+      \]
+      If we write $\overline{W} = W/U$, this isomorphism can be viewed as
+      \[
+        V/W \cong (V/U)/(W/U).
+      \]
+  \end{itemize}
+\end{proposition}
+
+\begin{proposition}
+  Let $V, W$ be subspaces of a vector space. Then there is a natural isomorphism
+  \[
+    V / (V \cap W) \cong (V + W) / W
+  \]
+  given by $v + (V \cap W) \mapsto v + W$ for $v \in V$.
+\end{proposition}
