@@ -1,0 +1,40 @@
+\chapter{Determinant}
+
+\section{Permutations Introduction}
+
+\begin{definition}
+Let $X$ be a non-empty set. The set of permutations on $X$ is defined as
+\[
+S_X := \{\, \text{bijections } \sigma : X \to X \,\} .
+\]
+It contains the identity mapping $\mathrm{id} = \mathrm{id}_X \in S_X$. These permutations can be composed as functions, $(\sigma, \sigma') \mapsto \sigma \sigma'$, or inverted, $\sigma \mapsto \sigma^{-1}$, and the result still belongs to $S_X$.
+\end{definition}
+
+\begin{definition}
+Fix $n \in \mathbb{Z}_{\geq 1}$. For $1 \leq i \neq j \leq n$, the corresponding transposition $(i\ j) \in S_n$ is defined as the following permutation:
+\[
+(i\ j):\quad k \mapsto
+\begin{cases}
+j, & \text{if } k = i, \\
+i, & \text{if } k = j, \\
+k, & \text{if } k \neq i, j.
+\end{cases}
+\]
+In other words, $(i\ j)$ swaps $i$ and $j$, and leaves all other elements unchanged.
+\end{definition}
+
+\begin{definition}
+Let $\sigma \in S_n$. The elements of the following set are called the inversions of $\sigma$:
+\[
+\operatorname{Inv}_\sigma := \{\, (i, j) \in \mathbb{Z}^2 : 1 \leq i < j \leq n,\ \sigma(i) > \sigma(j) \,\}.
+\]
+The number of inversions of $\sigma$ is defined as $\ell(\sigma) := |\operatorname{Inv}_\sigma|$.
+\end{definition}
+
+\begin{proposition}
+Let $\sigma \in S_n$. Then there exists $\ell \in \mathbb{Z}_{\geq 0}$ and a sequence of transpositions $\tau_1, \ldots, \tau_\ell \in S_n$ such that
+\[
+\sigma = \tau_1 \cdots \tau_\ell ;
+\]
+when $\ell = 0$, the product on the right is understood as the identity $\mathrm{id}$. We call $\ell$ the length of the above decomposition. Among all decompositions of $\sigma$ into transpositions, the minimal possible length is $\ell(\sigma)$.
+\end{proposition}
