@@ -54,3 +54,185 @@ The above map $\operatorname{sgn}$ satisfies $\operatorname{sgn}(\mathrm{id}) = 
 \begin{definition}
 Let $\sigma \in S_n$. If there exists a sequence of transpositions $\tau_1, \ldots, \tau_\ell$ such that $\sigma = \tau_1 \cdots \tau_\ell$, where $\ell \in \mathbb{Z}_{\geq 0}$ is even (respectively, odd), then $\sigma$ is called an \emph{even permutation} (respectively, \emph{odd permutation}).
 \end{definition}
+
+\begin{definition}
+Suppose the concept of orientation has been fixed on $V$. Define the map $D : V^n \to \mathbb{R}$ as follows:
+\[
+D(u_1, \ldots, u_n) =
+\begin{cases}
+0, & \text{if } u_1, \ldots, u_n \text{ are dependent}, \\
+\text{the volume of } \Diamond(u_1, \ldots, u_n), & \text{if } u_1, \ldots, u_n \text{ are independent and positively }, \\
+-\big(\text{the volume of } \Diamond(u_1, \ldots, u_n)\big), & \text{if } u_1, \ldots, u_n \text{ are independent and negatively }.
+\end{cases}
+\]
+We call $D(u_1, \ldots, u_n)$ the oriented volume determined by the ordered set of vectors $u_1, \ldots, u_n \in V$.
+\end{definition}
+
+\section{A Characterization of a Class of Alternating Forms}
+
+\begin{definition}
+Let $V$ be a vector space over a field $F$. For every $m \in \mathbb{Z}_{\geq 1}$, define
+\[
+D_{V,m} := \left\{ D : V^m \to F \;\middle|\; \text{$D$ satisfies the following properties D.1 and D.2} \right\}.
+\]
+\begin{itemize}
+    \item[D.1] For each $1 \leq i \leq m$,
+    \[
+    D(\ldots, v_i + v_i', \ldots) = D(\ldots, v_i, \ldots) + D(\ldots, v_i', \ldots),
+    \]
+    \[
+    D(\ldots, t v_i, \ldots) = t D(\ldots, v_i, \ldots),
+    \]
+    where $v_i, v_i' \in V$ and $t \in F$, and the ellipsis indicates that the other $m-1$ variables are fixed.
+    \item[D.2] If there exist $1 \leq i < j \leq m$ such that $v_i = v_j$, then
+    \[
+    D(v_1, \ldots, v_m) = 0.
+    \]
+\end{itemize}
+A map in $D_{V,m}$ is also called an $m$-linear alternating form on $V$.
+\end{definition}
+
+\begin{lemma}
+Let $m \in \mathbb{Z}_{\geq 1}$, $D \in D_{V,m}$, and $\sigma \in S_m$. Then
+\[
+D\big(v_{\sigma^{-1}(1)}, \ldots, v_{\sigma^{-1}(m)}\big) = \operatorname{sgn}(\sigma) D(v_1, \ldots, v_m),
+\]
+where $\operatorname{sgn} : S_m \to \{\pm 1\}$ is the sign map.
+\end{lemma}
+
+\begin{theorem}
+Let $V$ be a finite-dimensional vector space. Then $\dim D_V = 1$. If $n := \dim V \geq 1$ and $e_1, \ldots, e_n$ is an ordered basis of $V$, denoted by $e$, then there exists a unique $D_e \in D_V$ such that $D_e(e_1, \ldots, e_n) = 1$.
+\end{theorem}
+
+\section{Definition of Determinant}
+
+\begin{definition}
+Let $V$ be an $n$-dimensional vector space, $n \in \mathbb{Z}_{\geq 1}$. For each $T \in \operatorname{End}(V)$, define $\det T \in F$ to be the unique element such that
+\[
+T^*(D) = (\det T) \cdot D, \quad D \in D_V;
+\]
+equivalently, for every $D \in D_V$ and $(v_1, \ldots, v_n) \in V^n$,
+\[
+D(T v_1, \ldots, T v_n) = \det T \cdot D(v_1, \ldots, v_n).
+\]
+In the case of the zero vector space ($n = 0$), for $T = 0_V = \operatorname{id}_V$, we define $\det(T) := 1$.
+\end{definition}
+
+\begin{theorem}
+The determinant has the following properties:
+\begin{itemize}
+    \item[(i)] $\det(\operatorname{id}_V) = 1$.
+    \item[(ii)] For $S, T \in \operatorname{End}(V)$, $\det(ST) = \det(S)\det(T)$.
+    \item[(iii)] If $T$ is invertible, then $\det T \in F$ is also invertible, and $\det(T^{-1}) = (\det T)^{-1}$.
+\end{itemize}
+\end{theorem}
+
+\begin{proposition}
+Let $T \in \operatorname{End}(V)$ and let $S : V \xrightarrow{\sim} W$ be an isomorphism of finite-dimensional vector spaces. Then $STS^{-1} \in \operatorname{End}(W)$ satisfies
+\[
+\det(STS^{-1}) = \det T.
+\]
+\end{proposition}
+
+\begin{proposition}
+Let $V$ be an $n$-dimensional vector space (with $n \geq 1$), and let $e_1, \ldots, e_n$ be an ordered basis of $V$, denoted by $e$. Let $D_e \in D_V$ be as given in Theorem 5.3.5. Then
+\[
+\det T = D_e(T e_1, \ldots, T e_n).
+\]
+\end{proposition}
+
+\begin{proposition}
+Let $e$ be the standard ordered basis of $F^n$, $n \in \mathbb{Z}_{\geq 1}$. In this way, each $A = (a_{ij})_{i,j} \in M_{n \times n}(F)$ is identified with an element of $\operatorname{End}(F^n)$. The determinant of the matrix $A$ is defined as
+\[
+\det A := D_e(Ae_1, \ldots, Ae_n),
+\]
+Then,
+\[
+\det A = \sum_{\sigma \in S_n} \operatorname{sgn}(\sigma) a_{\sigma(1),1} \cdots a_{\sigma(n),n}
+= \sum_{\sigma \in S_n} \operatorname{sgn}(\sigma) a_{1,\sigma(1)} \cdots a_{n,\sigma(n)}.
+\]
+\end{proposition}
+
+\begin{definition}
+Let $1 \leq i, j \leq n$, where $n \in \mathbb{Z}_{\geq 1}$. The $(i, j)$-th minor of a matrix $A \in M_{n \times n}(F)$ is defined as the determinant of the $(n-1) \times (n-1)$ matrix $M_{ij}$ obtained by deleting the $i$-th row and $j$-th column from $A$. It is denoted by
+\[
+M_{ij} := \det M_{ij} \in F.
+\]
+\end{definition}
+
+\section{Cramer's Rule}
+
+\begin{proposition}
+Let $V$ be a finite-dimensional $F$-vector space. Then $T \in \operatorname{End}(V)$ is invertible if and only if $\det T \in F^\times$.
+\end{proposition}
+
+\begin{corollary}
+Let $v_1, \ldots, v_n$ be elements of an $n$-dimensional $F$-vector space $V$ ($n \in \mathbb{Z}_{\geq 1}$). Then the following statements are equivalent:
+\begin{itemize}
+    \item[(i)] $v_1, \ldots, v_n$ are linearly dependent;
+    \item[(ii)] $D(v_1, \ldots, v_n) = 0$ for all $D \in D_V$;
+    \item[(iii)] There exists an ordered basis $e_1, \ldots, e_n$ of $V$, denoted by $e$, such that $D_e(v_1, \ldots, v_n) = 0$.
+\end{itemize}
+\end{corollary}
+
+\begin{definition}
+Let $n \in \mathbb{Z}_{\geq 1}$. For $A = (a_{ij})_{i,j} \in M_{n \times n}(F)$, the classical adjugate matrix is defined as
+\[
+A^\vee = (A_{ji})_{i,j} \in M_{n \times n}(F),
+\]
+where
+\[
+A_{ij} := (-1)^{i+j} M_{ij}, \quad 1 \leq i, j \leq n,
+\]
+and $M_{ij}$ is the $(i,j)$-th minor of $A$.
+\end{definition}
+
+\begin{theorem}
+For any $A \in M_{n \times n}(F)$, we have
+\[
+A A^\vee = \det A \cdot 1_{n \times n} = A^\vee A.
+\]
+\end{theorem}
+
+\begin{corollary}[Cramer's Rule]
+Consider the system of $n$ linear equations over a field $F$:
+\[
+\begin{cases}
+a_{11} X_1 + \cdots + a_{1n} X_n = b_1 \\
+\quad\vdots \\
+a_{n1} X_1 + \cdots + a_{nn} X_n = b_n
+\end{cases}
+\]
+Let the coefficient matrix $A = (a_{ij})_{i,j} \in M_{n \times n}(F)$ be regarded as a linear map from $F^n$ to $F^n$.
+\begin{itemize}
+    \item[(i)] If the system is homogeneous, i.e., $b_1 = \cdots = b_n = 0$, then its solution set is $\ker A$ (see Definition 4.8.1). In particular, the system has a nontrivial solution if and only if $\det A = 0$.
+    \item[(ii)] When $(b_1, \ldots, b_n) \in F^n$ is given, the system either has no solution, or its solution set is of the form
+    \[
+    (x_1, \ldots, x_n) + \ker A,
+    \]
+    where $(x_1, \ldots, x_n) \in F^n$ is any particular solution.
+    \item[(iii)] If $\det A \in F^\times$, then for any $(b_1, \ldots, b_n) \in F^n$, the system has a unique solution $(x_1, \ldots, x_n)$, where
+    \[
+    x_j = \frac{
+    \begin{vmatrix}
+    a_{11} & \cdots & b_1 & \cdots & a_{1n} \\
+    a_{21} & \cdots & b_2 & \cdots & a_{2n} \\
+    \vdots &        & \vdots &        & \vdots \\
+    a_{n1} & \cdots & b_n & \cdots & a_{nn}
+    \end{vmatrix}
+    }{
+    \begin{vmatrix}
+    a_{11} & \cdots & a_{1j} & \cdots & a_{1n} \\
+    a_{21} & \cdots & a_{2j} & \cdots & a_{2n} \\
+    \vdots &        & \vdots &        & \vdots \\
+    a_{n1} & \cdots & a_{nj} & \cdots & a_{nn}
+    \end{vmatrix}
+    }, \quad j = 1, \ldots, n,
+    \]
+    where in the numerator, the $j$-th column of $A$ is replaced by the column vector $(b_1, \ldots, b_n)^T$.
+\end{itemize}
+\end{corollary}
+
+\begin{note}
+Although Cramer's rule provides an exact solution to a system of linear equations when the coefficient matrix is invertible, in practice the computational cost of evaluating determinants increases rapidly with $n$. Even when these determinants can be computed efficiently, Cramer's rule remains numerically unstable: since it involves division, when the denominator $\det A$ is close to zero, even a \textbf{small perturbation can cause large changes} in $x_1, \ldots, x_n$. Therefore, the value of Cramer's rule lies mainly in its theoretical significance.
+\end{note}
