@@ -38,3 +38,19 @@ Let $\sigma \in S_n$. Then there exists $\ell \in \mathbb{Z}_{\geq 0}$ and a seq
 \]
 when $\ell = 0$, the product on the right is understood as the identity $\mathrm{id}$. We call $\ell$ the length of the above decomposition. Among all decompositions of $\sigma$ into transpositions, the minimal possible length is $\ell(\sigma)$.
 \end{proposition}
+
+\begin{proposition}
+There exists a unique map $\operatorname{sgn} : S_n \to \{\pm 1\}$ such that the following properties hold:
+\begin{itemize}
+    \item[(i)] For all $\sigma, \xi \in S_n$, we have $\operatorname{sgn}(\sigma\xi) = \operatorname{sgn}(\sigma)\operatorname{sgn}(\xi)$,
+    \item[(ii)] If $\tau \in S_n$ is a transposition, then $\operatorname{sgn}(\tau) = -1$.
+\end{itemize}
+The above map $\operatorname{sgn}$ satisfies $\operatorname{sgn}(\mathrm{id}) = 1$ and $\operatorname{sgn}(\sigma^{-1}) = \operatorname{sgn}(\sigma)^{-1} = \operatorname{sgn}(\sigma)$. Its value can further be expressed in terms of the number of inversions as
+\[
+\operatorname{sgn}(\sigma) = (-1)^{\ell(\sigma)}.
+\]
+\end{proposition}
+
+\begin{definition}
+Let $\sigma \in S_n$. If there exists a sequence of transpositions $\tau_1, \ldots, \tau_\ell$ such that $\sigma = \tau_1 \cdots \tau_\ell$, where $\ell \in \mathbb{Z}_{\geq 0}$ is even (respectively, odd), then $\sigma$ is called an \emph{even permutation} (respectively, \emph{odd permutation}).
+\end{definition}
