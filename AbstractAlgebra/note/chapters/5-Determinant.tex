@@ -282,3 +282,40 @@ Let $n \geq 1$. For any $A \in M_{n \times n}(F)$ and any invertible matrix $P \
 (P^{-1} A P)^\vee = P^{-1} A^\vee P.
 \]
 \end{corollary}
+
+\begin{lemma}
+Let $A = (a_{ij})_{i,j} \in M_{n \times n}(F)$, and let the characteristic polynomial $\mathrm{Char}_A \in F[X]$ be written as
+\[
+X^n + c_{n-1} X^{n-1} + \cdots + c_0,
+\]
+then
+\[
+- c_{n-1} = \sum_{i=1}^n a_{ii}.
+\]
+\end{lemma}
+
+\begin{definition}[Trace]
+For a matrix $A = (a_{ij})_{i,j} \in M_{n \times n}(F)$, its trace is defined as
+\[
+\mathrm{Tr}(A) := \sum_{i=1}^n a_{ii}.
+\]
+\end{definition}
+
+\begin{definition}[Invariant Subspace]
+Given a linear operator $T \in \mathrm{End}(V)$, if a subspace $U \subset V$ satisfies $T(U) \subset U$, then $U$ is called a $T$-invariant subspace of $V$, or simply an invariant subspace.
+\end{definition}
+
+\begin{proposition}
+Let $V$ be a finite-dimensional vector space over $F$, $T \in \mathrm{End}(V)$, and $U$ a $T$-invariant subspace of $V$. Then the linear map $\overline{T} \in \mathrm{End}(V/U)$ satisfies
+\[
+\mathrm{Char}_{T|_U} \cdot \mathrm{Char}_{\overline{T}} = \mathrm{Char}_{T}.
+\]
+\end{proposition}
+
+\begin{lemma}
+Let $C \in M_{n \times n}(F)$ and $1 \leq k \leq n$. In the polynomial $\det(X \cdot 1_{n \times n} + C) \in F[X]$, the coefficient of the $X^{n-k}$ term is
+\[
+\sum_{I \subset \{1, \ldots, n\},\, |I| = k} \det C_{I I},
+\]
+where $C_{I I}$ denotes the principal submatrix of $C$ indexed by $I$.
+\end{lemma}
