@@ -12,7 +12,7 @@
   #axiom(title: "Extensionality")[
     If two sets have the same elements, then they are equal.
     $
-      A = B ⟺ (A subset B) ∧ (B subset A)
+      A = B arrow.l.r.double.long (A subset B) ∧ (B subset A)
     $
   ] <axiom:extensionality>
 
@@ -23,7 +23,7 @@
   #axiom(title: "Schema of Separation")[
     Let $cal(P)$ be a property of sets, and let $cal(P)(u)$ denote that set $u$ satisfies property $cal(P)$. Then for any set $X$, there exists a set $Y$ such that:
     $
-      Y = \{u ∈ X : cal(P)(u)\}
+      Y = \{u in X : cal(P)(u)\}
     $
   ] <axiom:separation>
 
@@ -43,14 +43,14 @@
 
   #axiom(title: "Infinity")[
     There exists an infinite set. More precisely, there exists a set $X$ such that:
-    1. $∅ ∈ X$
-    2. If $y ∈ X$, then $y union \{y\} ∈ X$
+    1. $∅ in X$
+    2. If $y in X$, then $y union \{y\} in X$
   ] <axiom:infinity>
 
   #axiom(title: "Schema of Replacement")[
     Let $cal(F)$ be a function with domain set $X$. Then there exists a set $cal(F)(X)$ defined as:
     $
-      cal(F)(X) = \{cal(F)(x) : x ∈ X\}
+      cal(F)(X) = \{cal(F)(x) : x in X\}
     $
   ] <axiom:replacement>
 
@@ -59,20 +59,20 @@
   ]
 
   #definition(title: "Cartesian Product")[
-    For any two sets $A$ and $B$, their Cartesian product $A times B$ (also called simply the product) consists of all ordered pairs $(a,b)$ where $a ∈ A$ and $b ∈ B$. In other words:
+    For any two sets $A$ and $B$, their Cartesian product $A times B$ (also called simply the product) consists of all ordered pairs $(a,b)$ where $a in A$ and $b in B$. In other words:
     $
-      A times B := {(a,b) : a ∈ A, b ∈ B}
+      A times B := {(a,b) : a in A, b in B}
     $
   ]
 
   #axiom(title: "Regularity")[
-    Every non-empty set contains an element which is minimal with respect to the membership relation $∈$.
+    Every non-empty set contains an element which is minimal with respect to the membership relation $in$.
   ] <axiom:regularity>
 
   #axiom(title: "Choice")[
-    Let $X$ be a set of non-empty sets. Then there exists a function $g : X → union.big X$ (called a choice function) such that:
+    Let $X$ be a set of non-empty sets. Then there exists a function $g : X arrow union.big X$ (called a choice function) such that:
     $
-      ∀ x ∈ X, g(x) ∈ x
+      ∀ x in X, g(x) in x
     $
   ] <axiom:choice>
 
@@ -83,11 +83,11 @@
     #proof[
       Let $z$ be an arbitrary element. Then:
       $
-        z ∈ X triangle Y & ⟺ z ∈ (X \\ Y) union (Y \\ X)                  \
-                         & ⟺ z ∈ X \\ Y "or" z ∈ Y \\ X                   \
-                         & ⟺ (z ∈ X "and" z ∉ Y) "or" (z ∈ Y "and" z ∉ X) \
-                         & ⟺ z ∈ X union Y "and" z ∉ X inter Y            \
-                         & ⟺ z ∈ (X union Y) \\ (X inter Y)
+        z in X triangle Y & arrow.l.r.double.long z in (X \\ Y) union (Y \\ X)                   \
+                          & arrow.l.r.double.long z in X \\ Y "or" z in Y \\ X                   \
+                          & arrow.l.r.double.long (z in X "and" z ∉ Y) "or" (z in Y "and" z ∉ X) \
+                          & arrow.l.r.double.long z in X union Y "and" z ∉ X inter Y             \
+                          & arrow.l.r.double.long z in (X union Y) \\ (X inter Y)
       $
       Therefore, $X triangle Y = (X union Y) \\ (X inter Y)$.
     ]
@@ -98,9 +98,9 @@
   #definition(title: "Mapping")[
     Let $A$ and $B$ be sets. A mapping from $A$ to $B$ is written as $f : A arrow B$ or $A arrow^f B$.
 
-    In set-theoretic language, we understand a mapping $f : A → B$ as a subset of $A times B$, denoted $Gamma_f$, satisfying the following condition: for each $a ∈ A$, the set
+    In set-theoretic language, we understand a mapping $f : A arrow B$ as a subset of $A times B$, denoted $Gamma_f$, satisfying the following condition: for each $a in A$, the set
     $
-      \{b ∈ B : (a,b) ∈ Gamma_f\}
+      \{b in B : (a,b) in Gamma_f\}
     $
     is a singleton, whose unique element is denoted $f(a)$ and called the image of $a$ under $f$.
   ]
@@ -118,7 +118,7 @@
     Let us show that the composition of two left (or right) invertible mappings is again left (or right) invertible.
 
     #proof[
-      Let $f: A → B$ and $f': B → C$ be left invertible mappings. Then:
+      Let $f: A arrow B$ and $f': B arrow C$ be left invertible mappings. Then:
       - Let $g$ be left inverse of $f$, so $g compose f = "id"_A$
       - Let $g'$ be left inverse of $f'$, so $g' compose f' = "id"_B$
       - Then for composition $f' compose f$:
@@ -132,7 +132,7 @@
   ]
 
   #proposition(title: "Injection and Left Inverse Equivalence")[
-    For a mapping $f : A → B$ where $A$ is non-empty, the following are equivalent:
+    For a mapping $f : A arrow B$ where $A$ is non-empty, the following are equivalent:
     1. $f$ is injective
     2. $f$ has a left inverse
     3. $f$ satisfies the left cancellation law
@@ -146,21 +146,21 @@
       First, we prove the equivalence for injective properties:
 
       (1) $⇒$ (2): Assume $f$ is injective.
-      $∀ b ∈ "Im"(f)$, $∃ a ∈ A$, $f(a) = b$.
-      Define $g: B → A$ by $g(b) = a$ if $b ∈ "Im"(f)$, and arbitrary otherwise.
+      $∀ b in "Im"(f)$, $∃ a in A$, $f(a) = b$.
+      Define $g: B arrow A$ by $g(b) = a$ if $b in "Im"(f)$, and arbitrary otherwise.
       Then $g compose f = "id"_A$, so $g$ is left inverse.
 
-      (2) $⇒$ (3): Assume $g compose f = "id"_A$. If $f g_1 = f g_2$, then $g(f g_1) = g(f g_2) ⟺ (g f) g_1 = (g f) g_2 ⟺ g_1 = g_2$
+      (2) $⇒$ (3): Assume $g compose f = "id"_A$. If $f g_1 = f g_2$, then $g(f g_1) = g(f g_2) arrow.l.r.double.long (g f) g_1 = (g f) g_2 arrow.l.r.double.long g_1 = g_2$
 
       (3) $⇒$ (1): Assume left cancellation, $f g_1 = f g_2 ⇒ g_1 = g_2$.
-      If $∀ a_1, a_2 ∈ A, f(a_1) = f(a_2)$, then $f(a_1) = f(a_2) ⇒ a_1 = a_2$.
+      If $∀ a_1, a_2 in A, f(a_1) = f(a_2)$, then $f(a_1) = f(a_2) ⇒ a_1 = a_2$.
 
       The proof for surjective properties is similar.
     ]
   ] <prop:inject_left_inverse_equal>
 
   #definition(title: "Invertible Mapping")[
-    A mapping $f$ is called invertible if it is both left and right invertible. In this case, there exists a unique mapping $f^(-1): B → A$ such that:
+    A mapping $f$ is called invertible if it is both left and right invertible. In this case, there exists a unique mapping $f^(-1): B arrow A$ such that:
     $
       f^(-1) compose f = "id"_A quad "and" quad f compose f^(-1) = "id"_B
     $
@@ -168,9 +168,9 @@
   ]
 
   #proposition(title: "Properties of Invertible Mappings")[
-    Let $f : A → B$ be an invertible mapping. Then:
-    1. $f^(-1) : B → A$ is also invertible, and $(f^(-1))^(-1) = f$
-    2. If $g : B → C$ is also invertible, then the composition $g compose f : A → C$ is invertible, and
+    Let $f : A arrow B$ be an invertible mapping. Then:
+    1. $f^(-1) : B arrow A$ is also invertible, and $(f^(-1))^(-1) = f$
+    2. If $g : B arrow C$ is also invertible, then the composition $g compose f : A arrow C$ is invertible, and
       $
         (g compose f)^(-1) = f^(-1) compose g^(-1)
       $
@@ -200,9 +200,9 @@
   ]
 
   #definition(title: "Preimage")[
-    For a mapping $f : A → B$ and $b ∈ B$, we denote:
+    For a mapping $f : A arrow B$ and $b in B$, we denote:
     $
-      f^(-1)(b) := f^(-1)({b}) = {a ∈ A : f(a) = b}
+      f^(-1)(b) := f^(-1)({b}) = {a in A : f(a) = b}
     $
   ]
 
@@ -210,82 +210,82 @@
     Note that this notation $f^(-1)(b)$ represents the preimage of $b$ under $f$, which exists even when $f$ is not invertible.
   ]
 
-  ---- *check on here, next time keep do it*
+  // ---- *check on here, next time keep do it*
 
   == Product of Sets & Disjoint Union
 
   #definition(title: "Generalized Cartesian Product")[
     Using the language of mappings, we define:
     $
-      product_(i ∈ I) A_i := {f : I → union.big_(i ∈ I) A_i | ∀ i ∈ I, f(i) ∈ A_i}
+      product_(i in I) A_i := {f : I arrow union.big_(i in I) A_i | ∀ i in I, f(i) in A_i}
     $
 
-    Henceforth, we may write $f(i)$ as $a_i$, so elements of $product_(i ∈ I) A_i$ can be reasonably denoted as $(a_i)_(i ∈ I)$.
+    Henceforth, we may write $f(i)$ as $a_i$, so elements of $product_(i in I) A_i$ can be reasonably denoted as $(a_i)_(i in I)$.
 
-    For any $i ∈ I$, there is a mapping $p_i : product_(j ∈ I) A_j → A_i$ defined by $p_i((a_j)_(j ∈ I)) = a_i$, called the $i$-th projection.
+    For any $i in I$, there is a mapping $p_i : product_(j in I) A_j arrow A_i$ defined by $p_i((a_j)_(j in I)) = a_i$, called the $i$-th projection.
   ]
 
   #remark[
-    For easy to understand, The $product_(i ∈ I) A_i$ as the three domain space, the $(a_i)_(i∈I)$ as the one point in the three domain space, the $p_i$ as the projection from the three domain space to the one point.
+    For easy to understand, The $product_(i in I) A_i$ as the three domain space, the $(a_i)_(i in I)$ as the one point in the three domain space, the $p_i$ as the projection from the three domain space to the one point.
   ]
 
   #definition(title: "Disjoint Union and Partition")[
-    Let set $A$ be the union of a family of subsets $(A_i)_(i ∈ I)$, and suppose these subsets are pairwise disjoint, that is:
+    Let set $A$ be the union of a family of subsets $(A_i)_(i in I)$, and suppose these subsets are pairwise disjoint, that is:
     $
-      ∀ i,j ∈ I, i ≠ j ⇒ A_i ∩ A_j = ∅
+      forall i,j in I, i eq.not j arrow.double A_i inter A_j = emptyset
     $
-    In this case, we say $A$ is the disjoint union of $(A_i)_(i ∈ I)$, or $(A_i)_(i ∈ I)$ is a partition of $A$, written as:
+    In this case, we say $A$ is the *disjoint union* of $(A_i)_(i in I)$, or $(A_i)_(i in I)$ is a partition of $A$, written as:
     $
-      A = union.sq.big_(i ∈ I) A_i
+      A = union.sq.big_(i in I) A_i
     $
   ]
 
   == Structure of Order
 
   #definition(title: "Binary Relation")[
-    A binary relation between sets $A$ and $B$ is any subset of $A times B$. Let $R subset A times B$ be a binary relation. Then for all $a ∈ A$ and $b ∈ B$, we use the notation:
+    A binary relation between sets $A$ and $B$ is any subset of $A times B$. Let $R subset A times B$ be a binary relation. Then for all $a in A$ and $b in B$, we use the notation:
     $
-      a R b "to represent" (a,b) ∈ R
+      a R b "to represent" (a,b) in R
     $
     For convenience, when $A = B$, we call this a binary relation on $A$.
   ]
 
   #definition(title: "Order Relations")[
-    Let $≼$ be a binary relation on set $A$. We call $≼$ a preorder and $(A,≼)$ a preordered set when:
-    - Reflexivity: For all $a ∈ A$, $a ≼ a$
-    - Transitivity: For all $a,b,c ∈ A$, if $a ≼ b$ and $b ≼ c$, then $a ≼ c$
+    Let $prec.eq$ be a binary relation on set $A$. We call $prec.eq$ a preorder and $(A,prec.eq)$ a preordered set when:
+    - Reflexivity: For all $a in A$, $a prec.eq a$
+    - Transitivity: For all $a,b,c in A$, if $a prec.eq b$ and $b prec.eq c$, then $a prec.eq c$
 
     If it also satisfies:
-    - Antisymmetry: For all $a,b ∈ A$, if $a ≼ b$ and $b ≼ a$, then $a = b$
+    - Antisymmetry: For all $a,b in A$, if $a prec.eq b$ and $b prec.eq a$, then $a = b$
 
-    then $≼$ is called a partial order and $(A,≼)$ is called a partially ordered set.
+    then $prec.eq$ is called a partial order and $(A,prec.eq)$ is called a *partially ordered* set.
 
-    A partially ordered set $(A,≼)$ is called a totally ordered set or chain if any two elements $a,b ∈ A$ are comparable, that is, either $a ≼ b$ or $b ≼ a$ holds.
+    A partially ordered set $(A,prec.eq)$ is called a totally ordered set or chain if any two elements $a,b in A$ are comparable, that is, either $a prec.eq b$ or $b prec.eq a$ holds.
   ]
 
   #definition(title: "Order-Preserving Maps")[
-    Let $f : A → B$ be a mapping between preordered sets. Then:
+    Let $f : A arrow B$ be a mapping between preordered sets. Then:
     - $f$ is called order-preserving if:
       $
-        a ≼ a' ⇒ f(a) ≼ f(a') "for all" a,a' ∈ A
+        a prec.eq a' ⇒ f(a) prec.eq f(a') "for all" a,a' in A
       $
 
     - $f$ is called strictly order-preserving if:
       $
-        a ≼ a' ⟺ f(a) ≼ f(a') "for all" a,a' ∈ A
+        a prec.eq a' arrow.l.r.double.long f(a) prec.eq f(a') "for all" a,a' in A
       $
   ]
 
   #definition(title: "Maximal, Minimal Elements and Bounds")[
-    Let $(A,≼)$ be a partially ordered set.
-    - An element $a_("max") ∈ A$ is called a maximal element of $A$ if: there exists no $a ∈ A$ such that $a ≻ a_("max")$
+    Let $(A,prec.eq)$ be a partially ordered set.
+    - An element $a_("max") in A$ is called a maximal element of $A$ if: there exists no $a in A$ such that $a ≻ a_("max")$
 
-    - An element $a_("min") ∈ A$ is called a minimal element of $A$ if: there exists no $a ∈ A$ such that $a ≺ a_("min")$
+    - An element $a_("min") in A$ is called a minimal element of $A$ if: there exists no $a in A$ such that $a ≺ a_("min")$
 
     Furthermore, let $A'$ be a subset of $A$.
-    - An element $a ∈ A$ is called an upper bound of $A'$ in $A$ if: for all $a' ∈ A'$, $a' ≼ a$
+    - An element $a in A$ is called an upper bound of $A'$ in $A$ if:  $forall a' in A'$, $a' prec.eq a$
 
-    - An element $a ∈ A$ is called a lower bound of $A'$ in $A$ if: for all $a' ∈ A'$, $a' ≽ a$
+    - An element $a in A$ is called a lower bound of $A'$ in $A$ if: $forall a' in A'$, $a' succ.eq a$
   ]
 
   #remark[
@@ -293,62 +293,62 @@
   ]
 
   #definition(title: "Well-Ordered Set")[
-    A totally ordered set $(A,≼)$ is called a well-ordered set if every non-empty subset $S ⊆ A$ has a minimal element.
+    A totally ordered set $(A,prec.eq)$ is called a well-ordered set if every non-empty subset $S ⊆ A$ has a minimal element.
   ]
 
   == Equivalence Relations and Quotient Sets
 
   #definition(title: "Equivalence Relation")[
-    A binary relation $∼$ on set $A$ is called an equivalence relation if it satisfies:
-    - Reflexivity: For all $a ∈ A$, $a ∼ a$
-    - Symmetry: For all $a,b ∈ A$, if $a ∼ b$ then $b ∼ a$
-    - Transitivity: For all $a,b,c ∈ A$, if $a ∼ b$ and $b ∼ c$ then $a ∼ c$
+    A binary relation $tilde$ on set $A$ is called an equivalence relation if it satisfies:
+    - Reflexivity: For all $a in A$, $a tilde a$
+    - Symmetry: For all $a,b in A$, if $a tilde b$ then $b tilde a$
+    - Transitivity: For all $a,b,c in A$, if $a tilde b$ and $b tilde c$ then $a tilde c$
   ]
 
   #definition(title: "Equivalence Class")[
-    Let $∼$ be an equivalence relation on set $A$. A non-empty subset $C subset A$ is called an equivalence class if:
-    - Elements in $C$ are mutually equivalent: for all $x,y ∈ C$, $x ∼ y$
-    - $C$ is closed under $∼$: for all $x ∈ C$ and $y ∈ A$, if $x ∼ y$ then $y ∈ C$
+    Let $tilde$ be an equivalence relation on set $A$. A non-empty subset $C subset A$ is called an equivalence class if:
+    - Elements in $C$ are mutually equivalent: for all $x,y in C$, $x tilde y$
+    - $C$ is closed under $tilde$: for all $x in C$ and $y in A$, if $x tilde y$ then $y in C$
 
-    If $C$ is an equivalence class and $a ∈ C$, then $a$ is called a representative element of $C$.
+    If $C$ is an equivalence class and $a in C$, then $a$ is called a representative element of $C$.
   ]
 
   #proposition(title: "Partition by Equivalence Classes")[
-    Let $∼$ be an equivalence relation on set $A$. Then $A$ is the disjoint union of all its equivalence classes.
+    Let $tilde$ be an equivalence relation on set $A$. Then $A$ is the disjoint union of all its equivalence classes.
 
     #proof[
-      Let ${C_i}_(i ∈ I)$ be the collection of all equivalence classes of $A$.
-      1. First, $A = union.big_(i ∈ I) C_i$ since every element belongs to its equivalence class
+      Let ${C_i}_(i in I)$ be the collection of all equivalence classes of $A$.
+      1. First, $A = union.big_(i in I) C_i$ since every element belongs to its equivalence class
       2. For any distinct equivalence classes $C_i$ and $C_j$:
-        If $x ∈ C_i ∩ C_j$ and $x≠ ∅$, then $C_i = C_j$, this is a contradiction, so $C_i ∩ C_j = ∅$.
-      3. Therefore, $A = union.sq.big_(i ∈ I) C_i$
+        If $x in C_i ∩ C_j$ and $x≠ ∅$, then $C_i = C_j$, this is a contradiction, so $C_i ∩ C_j = ∅$.
+      3. Therefore, $A = union.sq.big_(i in I) C_i$
     ]
   ]
 
   #definition(title: "Quotient Set")[
-    Let $∼$ be an equivalence relation on a non-empty set $A$. The quotient set is defined as the following subset of the power set $cal(P)(A)$:
+    Let $tilde$ be an equivalence relation on a non-empty set $A$. The quotient set is defined as the following subset of the power set $cal(P)(A)$:
     $
-      A\/∼ := {C subset A : C "is an equivalence class with respect to" ∼}
+      A\/tilde := {C subset A : C "is an equivalence class with respect to" tilde}
     $
-    The quotient set comes with a quotient map $q: A → A\/∼$ that maps each $a ∈ A$ to its unique equivalence class.
+    The quotient set comes with a quotient map $q: A arrow A\/tilde$ that maps each $a in A$ to its unique equivalence class.
   ]
 
   #remark[
-    here the find the quotient set, we can use the boolean function symmetric for the equivalence relation, then we only travel the quotient set, which can reduce the travel space.
+    here the find the quotient set, we can use the boolean function symmetric for the equivalence relation, then we only travel the quotient set, which can _reduce the travel space_.
   ]
 
   #proposition(title: "Universal Property of Quotient Maps")[
-    Let $∼$ be an equivalence relation on set $A$ and $q: A → A\/∼$ be the corresponding quotient map. If a mapping $f: A → B$ satisfies:
+    Let $tilde$ be an equivalence relation on set $A$ and $q: A arrow A\/tilde$ be the corresponding quotient map. If a mapping $f: A arrow B$ satisfies:
     $
-      a ∼ a' ⇒ f(a) = f(a')
+      a tilde a' ⇒ f(a) = f(a')
     $
-    then there exists a unique mapping $overline(f): (A\/∼) → B$ such that:
+    then there exists a unique mapping $overline(f): (A\/tilde) arrow B$ such that:
     $
       overline(f) compose q = f
     $
 
     #proof[
-      First, $overline(f)$ is well-defined: for any $c ∈ A\/∼$. Then:
+      First, $overline(f)$ is well-defined: for any $c in A\/tilde$. Then:
       $
         overline(f)(c) := f(a), a = q^(-1)(c)
       $
@@ -357,37 +357,37 @@
   ] <prop:universal_property_of_quotient_maps>
 
   #proposition(title: "Canonical Factorization")[
-    For any mapping $f : A → B$, define an equivalence relation $∼_f$ on $A$ by:
+    For any mapping $f : A arrow B$, define an equivalence relation $tilde_f$ on $A$ by:
     $
-      a ∼_f a' ⟺ f(a) = f(a')
+      a tilde_f a' arrow.l.r.double.long f(a) = f(a')
     $
     Then by the previous proposition, there exists a bijection:
     $
-      overline(f) : (A\/∼_f) arrow.r^(1:1) "im"(f)
+      overline(f) : (A\/tilde_f) arrow.r^(1:1) "im"(f)
     $
 
     #proof[
-      Let $q: A → A\/∼_f$ be the quotient map. By the universal property:
-      1. Well-defined: If $[a] = [a']$, then $a ∼_f a'$, so $f(a) = f(a')$
+      Let $q: A arrow A\/tilde_f$ be the quotient map. By the universal property:
+      1. Well-defined: If $[a] = [a']$, then $a tilde_f a'$, so $f(a) = f(a')$
 
       2. Injective: If $overline(f)([a]) = overline(f)([a'])$, then $f(a) = f(a')$,
-        so $a ∼_f a'$, thus $[a] = [a']$
+        so $a tilde_f a'$, thus $[a] = [a']$
 
-      3. Surjective: For any $b ∈ "im"(f)$, there exists $a ∈ A$
+      3. Surjective: For any $b in "im"(f)$, there exists $a in A$
         with $f(a) = b$, so $overline(f)([a]) = b$
 
-      Therefore, $overline(f)$ is a bijection between $A\/∼_f$ and $"im"(f)$.
+      Therefore, $overline(f)$ is a bijection between $A\/tilde_f$ and $"im"(f)$.
     ]
   ]
 
   == Positive Integer to Rational Number
 
   #definition(title: "Integers as Quotient Set")[
-    The set of integers $bb(Z)$ is defined as the quotient set of $bb(Z)_(≥ 0)^2$ under $∼$. We temporarily denote the equivalence class containing $(m,n)$ in $bb(Z)_(≥ 0)^2$ as $[m,n]$.
+    The set of integers $bb(Z)$ is defined as the quotient set of $bb(Z)_(gt.eq 0)^2$ under $tilde$. We temporarily denote the equivalence class containing $(m,n)$ in $bb(Z)_(gt.eq 0)^2$ as $[m,n]$.
   ]
 
   #remark[
-    the $∼$ relation is defined as $(m,n)∼(m',n')⟺ m+n'=m'+n ⟺ m-n=m'-n'$.
+    the $tilde$ relation is defined as $(m,n) tilde (m', n')arrow.l.r.double.long m+n'=m'+n arrow.l.r.double.long m-n=m'-n'$.
   ]
 
   #definition(title: "Operations on Integer Equivalence Classes")[
@@ -402,39 +402,41 @@
   #definition(title: "Total Order on Integers")[
     Define a total order $≤$ on $bb(Z)$ by:
     $
-      x ≤ y ⟺ y-x ∈ bb(Z)_(≥ 0)
+      x lt.eq y arrow.l.r.double.long y-x in bb(Z)_(gt.eq 0)
     $
   ]
 
   #definition(title: "Rational Numbers")[
     Define the set of rational numbers $bb(Q)$ as the quotient set of $bb(Z) times (bb(Z) without {0})$ under the equivalence relation:
     $
-      (r,s) ∼ (r',s') ⟺ r s' = r' s
+      (r,s) tilde (r',s') arrow.l.r.double.long r s' = r' s
     $
-    We temporarily denote the equivalence class containing $(r,s)$ as $[r,s]$. Through the mapping $x ↦ [x,1]$, we view $bb(Z)$ as a subset of $bb(Q)$.
+    We temporarily denote the equivalence class containing $(r,s)$ as $[r,s]$. Through the mapping $x mapsto [x,1]$, we view $bb(Z)$ as a subset of $bb(Q)$.
   ]
+
+  --- *TODO NEXT time to read check.*
 
   #definition(title: "Total Order and Absolute Value on ℚ")[
     Define a total order on $bb(Q)$ by:
     $
-      [r,s] ≥ 0 & ⟺ r s ≥ 0 \
-          x ≥ y & ⟺ x-y ≥ 0
+      [r,s] gt.eq 0 & arrow.l.r.double.long r s gt.eq 0 \
+          x gt.eq y & arrow.l.r.double.long x-y gt.eq 0
     $
 
-    For any $x ∈ bb(Q)$, its absolute value $|x|$ is defined as:
+    For any $x in bb(Q)$, its absolute value $|x|$ is defined as:
     $
       |x| = cases(
-        x & "if" x ≥ 0,
+        x & "if" x gt.eq 0,
         -x & "if" x < 0
       )
     $
   ]
 
   #proposition(title: "Multiplicative Inverses in ℚ")[
-    Let $bb(Q)^times := bb(Q) without {0}$. For any $x ∈ bb(Q)^times$, there exists a unique $x^(-1) ∈ bb(Q)^times$ such that $x x^(-1) = 1$.
+    Let $bb(Q)^times := bb(Q) without {0}$. For any $x in bb(Q)^times$, there exists a unique $x^(-1) in bb(Q)^times$ such that $x x^(-1) = 1$.
 
     #proof[
-      For $x = [r,s] ∈ bb(Q)^times$, define $x^(-1) = [s,r]$ when $r > 0$ and $x^(-1) = [-s,-r]$ when $r < 0$.
+      For $x = [r,s] in bb(Q)^times$, define $x^(-1) = [s,r]$ when $r > 0$ and $x^(-1) = [-s,-r]$ when $r < 0$.
       Then $x x^(-1) = 1$ and the uniqueness, here have the $x',x''$, then $x' x = 1 = x'' x$, the $x$ have the right inverse, so $x' = x''$.
     ]
   ]
@@ -442,27 +444,27 @@
   == Arithmetical
 
   #definition(title: "Integer Multiples and Divisibility")[
-    For any $x ∈ bb(Z)$, define:
+    For any $x in bb(Z)$, define:
     $
-      x bb(Z) := {x d : d ∈ bb(Z)}
+      x bb(Z) := {x d : d in bb(Z)}
     $
     which consists of all multiples of $x$.
 
-    For $x,y ∈ bb(Z)$:
-    - We say $x$ divides $y$, written $x|y$, if $y ∈ x bb(Z)$
+    For $x,y in bb(Z)$:
+    - We say $x$ divides $y$, written $x|y$, if $y in x bb(Z)$
     - Otherwise, we write $x ∤ y$
     - When $x|y$, we call $x$ a factor or divisor of $y$
   ]
 
   #proposition(title: "Division Algorithm")[
-    For any integers $a,d ∈ bb(Z)$ where $d ≠ 0$, there exist unique integers $q,r ∈ bb(Z)$ such that:
+    For any integers $a,d in bb(Z)$ where $d ≠ 0$, there exist unique integers $q,r in bb(Z)$ such that:
     $
       a & = d q + r \
       0 & ≤ r < |d|
     $
 
     #proof[
-      *Existence:* $∀ a,b,$ $∃ q∈ bb(Z)$, let exist $r = a - d q$ (here can use the modular equivalence relation), and $0≤ r<|d|$.
+      *Existence:* $∀ a,b,$ $∃ q in bb(Z)$, let exist $r = a - d q$ (here can use the modular equivalence relation), and $0≤ r<|d|$.
 
       *Uniqueness:*
       Suppose $a = d q_1 + r_1 = d q_2 + r_2$ with $0 ≤ r_1,r_2 < |d|$
@@ -474,32 +476,32 @@
 
   #lemma(title: "Generator of Integer Ideals")[
     Let $I$ be a non-empty subset of $bb(Z)$ satisfying:
-    1. If $x,y ∈ I$, then $x + y ∈ I$
-    2. If $a ∈ bb(Z)$ and $x ∈ I$, then $a x ∈ I$
+    1. If $x,y in I$, then $x + y in I$
+    2. If $a in bb(Z)$ and $x in I$, then $a x in I$
 
-    Then there exists a unique $g ∈ bb(Z)_(≥ 0)$ such that $I = g bb(Z)$.
+    Then there exists a unique $g in bb(Z)_(gt.eq 0)$ such that $I = g bb(Z)$.
 
     #proof[
       If $I = {0}$, take $g = 0$. Otherwise, let $g$ be the smallest positive element in $I$.
 
-      For any $x ∈ I$, by division algorithm:
+      For any $x in I$, by division algorithm:
       $
         x = g q + r "where" 0 ≤ r < g
       $
 
-      Then $r = x - g q ∈ I$ by properties of $I$. By minimality of $g$, we must have $r = 0$.
-      Therefore $x ∈ g bb(Z)$, so $I ⊆ g bb(Z)$.
+      Then $r = x - g q in I$ by properties of $I$. By minimality of $g$, we must have $r = 0$.
+      Therefore $x in g bb(Z)$, so $I ⊆ g bb(Z)$.
 
-      Since $g ∈ I$, we have $g bb(Z) ⊆ I$. Thus $I = g bb(Z)$.
+      Since $g in I$, we have $g bb(Z) ⊆ I$. Thus $I = g bb(Z)$.
 
       Uniqueness follows from the fact that $g$ must be the smallest positive element in $I$.
     ]
   ]
 
   #definition(title: "Greatest Common Divisor")[
-    For any integers $a,b ∈ bb(Z)$, the greatest common divisor of $a$ and $b$, denoted $gcd(a, b)$, is the unique positive integer $d$ such that:
+    For any integers $a,b in bb(Z)$, the greatest common divisor of $a$ and $b$, denoted $gcd(a, b)$, is the unique positive integer $d$ such that:
     - $d | a$ and $d | b$
-    - For any $d' ∈ bb(Z)$, if $d' | a$ and $d' | b$, then $d' | d$
+    - For any $d' in bb(Z)$, if $d' | a$ and $d' | b$, then $d' | d$
   ] <def:greatest_common_divisor>
 
   #proposition(title: "Bézout's Identity")[
@@ -508,7 +510,7 @@
       bb(Z) x_1 + ⋯ + bb(Z) x_n = gcd(x_1, …, x_n) bb(Z)
     $
 
-    Consequently, $x_1,…,x_n$ are coprime if and only if there exist $a_1,…,a_n ∈ bb(Z)$ such that:
+    Consequently, $x_1,…,x_n$ are coprime if and only if there exist $a_1,…,a_n in bb(Z)$ such that:
     $
       a_1 x_1 + ⋯ + a_n x_n = 1
     $
@@ -516,9 +518,9 @@
     #proof[
       We proceed by induction on $n$.
 
-      For $n=2$: Let $d = gcd(x_1, x_2)$. By Euclidean algorithm, there exist $a_1,a_2 ∈ bb(Z)$ such that:
+      For $n=2$: Let $d = gcd(x_1, x_2)$. By Euclidean algorithm, there exist $a_1,a_2 in bb(Z)$ such that:
       $
-        d = a_1 x_1 + a_2 x_2 ∈ bb(Z) x_1 + bb(Z) x_2
+        d = a_1 x_1 + a_2 x_2 in bb(Z) x_1 + bb(Z) x_2
       $
       Therefore $d bb(Z) ⊆ bb(Z) x_1 + bb(Z) x_2$.
 
@@ -538,16 +540,16 @@
   ] <prop:bezouts_identity>
 
   #definition(title: "Prime Numbers")[
-    Let $p ∈ bb(Z) without {0,±1}$. We say $p$ is a prime element if its only divisors are $±1$ and $±p$.
+    Let $p in bb(Z) without {0,±1}$. We say $p$ is a prime element if its only divisors are $±1$ and $±p$.
     A positive prime element is called a prime number.
   ]
 
   #proposition(title: "Euclid's Lemma")[
-    Let $p$ be a prime element. If $a,b ∈ bb(Z)$ such that $p|a b$, then either $p|a$ or $p|b$.
+    Let $p$ be a prime element. If $a,b in bb(Z)$ such that $p|a b$, then either $p|a$ or $p|b$.
 
     #proof[
       If $p ∤ a$, then $gcd(p, a) = 1$ since $p$ is prime.
-      By the previous proposition, there exist $x,y ∈ bb(Z)$ such that:
+      By the previous proposition, there exist $x,y in bb(Z)$ such that:
       $
         p x + a y = 1
       $
@@ -555,16 +557,16 @@
       $
         p b x + a b y = b
       $
-      Since $p|a b$, $p b x + a b y ∈ p bb(Z)$, so $p|b$.
+      Since $p|a b$, $p b x + a b y in p bb(Z)$, so $p|b$.
     ]
   ] <prop:euclids_lemma>
 
   #theorem(title: "Fundamental Theorem of Arithmetic")[
-    Every non-zero integer $n ∈ bb(Z)$ has a prime factorization:
+    Every non-zero integer $n in bb(Z)$ has a prime factorization:
     $
       n = ± p_1^(a_1) ⋯ p_r^(a_r)
     $
-    where $r ∈ bb(Z)_(≥ 0)$ (with the convention that the right side equals $±1$ when $r=0$), $p_1,…,p_r$ are distinct prime numbers, $a_1,…,a_r ∈ bb(Z)_(≥ 1)$, and this factorization is unique up to ordering.
+    where $r in bb(Z)_(gt.eq 0)$ (with the convention that the right side equals $±1$ when $r=0$), $p_1,…,p_r$ are distinct prime numbers, $a_1,…,a_r in bb(Z)_(gt.eq 1)$, and this factorization is unique up to ordering.
 
     #proof[
       *Existence:* By induction on $|n|$
@@ -590,7 +592,7 @@
   ]
 
   #corollary[
-    Consider integers $n = ± product_(i=1)^r p_i^(a_i)$ and $m = ± product_(i=1)^r p_i^(b_i)$, where $p_1,…,p_r$ are distinct primes and $a_i,b_i ∈ bb(Z)_(≥ 0)$. Then:
+    Consider integers $n = ± product_(i=1)^r p_i^(a_i)$ and $m = ± product_(i=1)^r p_i^(b_i)$, where $p_1,…,p_r$ are distinct primes and $a_i,b_i in bb(Z)_(gt.eq 0)$. Then:
     $
       gcd(n, m) = product_(i=1)^r p_i^(min{a_i,b_i}), quad "lcm"(n,m) = product_(i=1)^r p_i^(max{a_i,b_i})
     $
@@ -611,39 +613,39 @@
   == Congruence Relation
 
   #definition(title: "Congruence Relation")[
-    Let $N ∈ bb(Z)$. Two integers $a,b ∈ bb(Z)$ are called congruent modulo $N$ if $N|(a-b)$. This relation is written as:
+    Let $N in bb(Z)$. Two integers $a,b in bb(Z)$ are called congruent modulo $N$ if $N|(a-b)$. This relation is written as:
     $
       a ≡ b (mod N)
     $
   ]
 
   #definition(title: "Congruence Classes")[
-    For a fixed $N ∈ bb(Z)$, we denote the quotient set of $bb(Z)$ under the equivalence relation modulo $N$ as $bb(Z)\/N bb(Z)$, or abbreviated as $bb(Z)\/N$. The equivalence classes are called congruence classes modulo $N$.
+    For a fixed $N in bb(Z)$, we denote the quotient set of $bb(Z)$ under the equivalence relation modulo $N$ as $bb(Z)\/N bb(Z)$, or abbreviated as $bb(Z)\/N$. The equivalence classes are called congruence classes modulo $N$.
   ]
 
   #proposition(title: "Multiplicative Inverses Modulo N")[
-    Let $N ∈ bb(Z)_(≥ 1)$. For any $x ∈ bb(Z)$:
+    Let $N in bb(Z)_(gt.eq 1)$. For any $x in bb(Z)$:
     $
-      (∃ y ∈ bb(Z), x y ≡ 1 (mod N)) ⟺ gcd(N, x) = 1
+      (∃ y in bb(Z), x y ≡ 1 (mod N)) arrow.l.r.double.long gcd(N, x) = 1
     $
 
     #proof[
-      ($⇒$) If $x y ≡ 1 (mod N)$, then $x y = k N + 1$ for some $k ∈ bb(Z)$
+      ($⇒$) If $x y ≡ 1 (mod N)$, then $x y = k N + 1$ for some $k in bb(Z)$
       Therefore $x y - k N = 1$, showing $gcd(N, x) = 1$ by Bézout's identity.
 
       ($⇐$) If $gcd(N, x) = 1$, then by Bézout's identity:
-      $∃ y,k ∈ bb(Z)$ such that $x y + k N = 1$
+      $∃ y,k in bb(Z)$ such that $x y + k N = 1$
       Therefore $x y ≡ 1 (mod N)$
     ]
   ] <prop:multiplicative_inverses_modulo_n>
 
   #theorem(title: "Fermat's Little Theorem")[
-    Let $p$ be a prime number. Then for all $x ∈ bb(Z)$:
+    Let $p$ be a prime number. Then for all $x in bb(Z)$:
     $
       gcd(p, x) = 1 ⇒ x^(p-1) ≡ 1 (mod p)
     $
 
-    Consequently, for all $x ∈ bb(Z)$:
+    Consequently, for all $x in bb(Z)$:
     $
       x^p ≡ x (mod p)
     $
@@ -658,7 +660,7 @@
   ]
 
   #definition(title: "Euler's Totient Function")[
-    For $n ∈ bb(Z)_(≥ 1)$, define $φ(n)$ as the number of positive integers not exceeding $n$ that are coprime to $n$.
+    For $n in bb(Z)_(gt.eq 1)$, define $φ(n)$ as the number of positive integers not exceeding $n$ that are coprime to $n$.
   ]
 
   == Radix
@@ -673,21 +675,21 @@
   ]
 
   #proposition(title: "Pigeonhole Principle")[
-    Let $A$ and $B$ be finite sets with the same cardinality. Then any injection (or surjection) $f : A → B$ is automatically a bijection.
+    Let $A$ and $B$ be finite sets with the same cardinality. Then any injection (or surjection) $f : A arrow B$ is automatically a bijection.
   ]
 
   #proposition(title: "Characterization of Infinite Sets")[
-    A set $A$ is infinite if and only if there exists an injection $bb(Z)_(≥ 0) ↪ A$.
+    A set $A$ is infinite if and only if there exists an injection $bb(Z)_(gt.eq 0) ↪ A$.
 
     #proof[
       ($⇒$) If $A$ is infinite, by axiom of choice we can construct an injection.
 
-      ($⇐$) If such injection exists, then $|A| ≥ |bb(Z)_(≥ 0)|$, so $A$ must be infinite.
+      ($⇐$) If such injection exists, then $|A| gt.eq |bb(Z)_(gt.eq 0)|$, so $A$ must be infinite.
     ]
   ]
 
   #definition(title: "Countable Sets")[
-    Let $ℵ_0 := |bb(Z)_(≥ 0)|$. A set $A$ is called countable (or enumerable) if $|A| = ℵ_0$.
+    Let $ℵ_0 := |bb(Z)_(gt.eq 0)|$. A set $A$ is called countable (or enumerable) if $|A| = ℵ_0$.
     A set $A$ is called at most countable if $|A| ≤ ℵ_0$, meaning $A$ is either finite or countable.
   ]
 
@@ -697,17 +699,17 @@
     2. $product_(i=1)^n A_i$ is countable
 
     #proof[
-      For union: Let $f_i: bb(Z)_(≥ 0) → A_i$ be bijections.
-      Define $f: bb(Z)_(≥ 0) → union.big_(i=1)^n A_i$ by:
+      For union: Let $f_i: bb(Z)_(gt.eq 0) arrow A_i$ be bijections.
+      Define $f: bb(Z)_(gt.eq 0) arrow union.big_(i=1)^n A_i$ by:
       $
         f(k) = f_i(m) "where" k = i n + m, 0 ≤ m < n
       $
       This is surjective as each element appears in some $A_i$.
 
-      For product: Let $g_i: bb(Z)_(≥ 0) → A_i$ be bijections.
+      For product: Let $g_i: bb(Z)_(gt.eq 0) arrow A_i$ be bijections.
       Use Cantor's pairing function to construct bijection:
       $
-        g: bb(Z)_(≥ 0) → product_(i=1)^n A_i
+        g: bb(Z)_(gt.eq 0) arrow product_(i=1)^n A_i
       $
       given by $g(k) = (g_1(k_1),…,g_n(k_n))$ where $k_i$ are obtained from $k$ by repeated pairing.
     ]
@@ -721,11 +723,11 @@
     where $cal(P)(A)$ is the power set of $A$.
 
     #proof[
-      First show $|cal(P)(A)| ≥ 2^(|A|)$ by constructing characteristic function.
+      First show $|cal(P)(A)| gt.eq 2^(|A|)$ by constructing characteristic function.
       Then prove $|cal(P)(A)| > |A|$ by diagonal argument:
-      Assume $f: A → cal(P)(A)$ is surjective.
-      Consider $B = {x ∈ A : x ∉ f(x)}$.
-      Then $B ∈ cal(P)(A)$ but $B ≠ f(a)$ for any $a ∈ A$.
+      Assume $f: A arrow cal(P)(A)$ is surjective.
+      Consider $B = {x in A : x ∉ f(x)}$.
+      Then $B in cal(P)(A)$ but $B ≠ f(a)$ for any $a in A$.
     ]
   ]
 
