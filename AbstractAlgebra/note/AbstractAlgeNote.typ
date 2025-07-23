@@ -41,6 +41,9 @@
   spacing: 1.2em,
 )
 
+// Set heading numbering
+#set heading(numbering: "1.1.1")
+
 // Heading styles
 #show heading.where(level: 1): it => {
   pagebreak(weak: true)
@@ -48,6 +51,10 @@
   block[
     #set align(center)
     #set text(size: 20pt, weight: "bold", fill: primary-color)
+    #if it.numbering != none [
+      #counter(heading).display(it.numbering)
+      #h(1em)
+    ]
     #upper(it.body)
     #v(1em)
     #line(length: 60%, stroke: 2pt + primary-color)
@@ -59,6 +66,10 @@
   v(1.5em)
   block[
     #set text(size: 16pt, weight: "bold", fill: secondary-color)
+    #if it.numbering != none [
+      #counter(heading).display(it.numbering)
+      #h(1em)
+    ]
     #it.body
     #v(0.5em)
     #line(length: 100%, stroke: 1pt + secondary-color)
@@ -70,6 +81,10 @@
   v(1em)
   block[
     #set text(size: 14pt, weight: "bold", fill: text-color)
+    #if it.numbering != none [
+      #counter(heading).display(it.numbering)
+      #h(1em)
+    ]
     #it.body
   ]
   v(0.75em)
