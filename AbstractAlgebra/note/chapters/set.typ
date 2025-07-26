@@ -414,7 +414,6 @@
     We temporarily denote the equivalence class containing $(r,s)$ as $[r,s]$. Through the mapping $x mapsto [x,1]$, we view $bb(Z)$ as a subset of $bb(Q)$.
   ]
 
-  --- *TODO NEXT time to read check.*
 
   #definition(title: "Total Order and Absolute Value on ℚ")[
     Define a total order on $bb(Q)$ by:
@@ -667,6 +666,8 @@
   #definition(title: "Euler's Totient Function")[
     For $n in bb(Z)_(gt.eq 1)$, define $φ(n)$ as the number of positive integers not exceeding $n$ that are coprime to $n$.
   ]
+
+  --- *TODO NEXT time to read check.*
 
   == Radix
 
