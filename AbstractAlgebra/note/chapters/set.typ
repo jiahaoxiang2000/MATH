@@ -464,7 +464,7 @@
     $
 
     #proof[
-      *Existence:* $∀ a,b,$ $∃ q in bb(Z)$, let exist $r = a - d q$ (here can use the modular equivalence relation), and $0≤ r<|d|$.
+      *Existence:* $∀ a,d,$ $∃ q in bb(Z)$, let exist $r = a - d q$ (here can use the modular equivalence relation), and $0≤ r<|d|$.
 
       *Uniqueness:*
       Suppose $a = d q_1 + r_1 = d q_2 + r_2$ with $0 ≤ r_1,r_2 < |d|$
@@ -496,13 +496,17 @@
 
       Uniqueness follows from the fact that $g$ must be the smallest positive element in $I$.
     ]
-  ]
+  ]<lemma:generator_of_integer_ideals>
 
   #definition(title: "Greatest Common Divisor")[
     For any integers $a,b in bb(Z)$, the greatest common divisor of $a$ and $b$, denoted $gcd(a, b)$, is the unique positive integer $d$ such that:
     - $d | a$ and $d | b$
     - For any $d' in bb(Z)$, if $d' | a$ and $d' | b$, then $d' | d$
   ] <def:greatest_common_divisor>
+
+  #note-box[
+    For the GCD, we use the @lemma:generator_of_integer_ideals to see. If $d | a$, then $a in d bb(Z)$, and $d | b$, then $b in d bb(Z)$, we know $a,b$ are in the *many integer generators*. So, the GCD is to find the greatest common generator of the $a,b$.
+  ]
 
   #proposition(title: "Bézout's Identity")[
     For integers $x_1,…,x_n$:
@@ -540,7 +544,7 @@
   ] <prop:bezouts_identity>
 
   #definition(title: "Prime Numbers")[
-    Let $p in bb(Z) without {0,±1}$. We say $p$ is a prime element if its only divisors are $±1$ and $±p$.
+    Let $p in bb(Z) without {0,plus.minus 1}$. We say $p$ is a prime element if its only divisors are $plus.minus 1$ and $plus.minus p$.
     A positive prime element is called a prime number.
   ]
 
@@ -555,18 +559,19 @@
       $
       Multiply both sides by $b$:
       $
+        p x b + a y b = b \
         p b x + a b y = b
       $
-      Since $p|a b$, $p b x + a b y in p bb(Z)$, so $p|b$.
+      Since $p|a b$, $p b x + a b y in p bb(Z)$, so $b in p bb(Z)$ $p|b$.
     ]
   ] <prop:euclids_lemma>
 
   #theorem(title: "Fundamental Theorem of Arithmetic")[
     Every non-zero integer $n in bb(Z)$ has a prime factorization:
     $
-      n = ± p_1^(a_1) ⋯ p_r^(a_r)
+      n = plus.minus p_1^(a_1) ⋯ p_r^(a_r)
     $
-    where $r in bb(Z)_(gt.eq 0)$ (with the convention that the right side equals $±1$ when $r=0$), $p_1,…,p_r$ are distinct prime numbers, $a_1,…,a_r in bb(Z)_(gt.eq 1)$, and this factorization is unique up to ordering.
+    where $r in bb(Z)_(gt.eq 0)$ (with the convention that the right side equals $plus.minus 1$ when $r=0$), $p_1,…,p_r$ are distinct prime numbers, $a_1,…,a_r in bb(Z)_(gt.eq 1)$, and this factorization is unique up to ordering.
 
     #proof[
       *Existence:* By induction on $|n|$
@@ -592,7 +597,7 @@
   ]
 
   #corollary[
-    Consider integers $n = ± product_(i=1)^r p_i^(a_i)$ and $m = ± product_(i=1)^r p_i^(b_i)$, where $p_1,…,p_r$ are distinct primes and $a_i,b_i in bb(Z)_(gt.eq 0)$. Then:
+    Consider integers $n = plus.minus product_(i=1)^r p_i^(a_i)$ and $m = plus.minus product_(i=1)^r p_i^(b_i)$, where $p_1,…,p_r$ are distinct primes and $a_i,b_i in bb(Z)_(gt.eq 0)$. Then:
     $
       gcd(n, m) = product_(i=1)^r p_i^(min{a_i,b_i}), quad "lcm"(n,m) = product_(i=1)^r p_i^(max{a_i,b_i})
     $
