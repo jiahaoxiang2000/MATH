@@ -184,6 +184,8 @@
     4. If $R$ is commutative, then $R[X]$ is also commutative
   ]
 
+  -- TODO reading next time
+
   #lemma(title: "Degree Properties in Integral Domains")[
     Let $R$ be an integral domain. Then for all non-zero $f,g in R[X]$:
     $
