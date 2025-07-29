@@ -667,8 +667,6 @@
     For $n in bb(Z)_(gt.eq 1)$, define $φ(n)$ as the number of positive integers not exceeding $n$ that are coprime to $n$.
   ]
 
-  --- *TODO NEXT time to read check.*
-
   == Radix
 
   #definition(title: "Equipotent Sets")[
@@ -727,14 +725,6 @@
       2^(|A|) = |cal(P)(A)| > |A|
     $
     where $cal(P)(A)$ is the power set of $A$.
-
-    #proof[
-      First show $|cal(P)(A)| gt.eq 2^(|A|)$ by constructing characteristic function.
-      Then prove $|cal(P)(A)| > |A|$ by diagonal argument:
-      Assume $f: A arrow cal(P)(A)$ is surjective.
-      Consider $B = {x in A : x ∉ f(x)}$.
-      Then $B in cal(P)(A)$ but $B ≠ f(a)$ for any $a in A$.
-    ]
   ]
 
 ]
