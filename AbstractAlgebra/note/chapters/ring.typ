@@ -325,7 +325,7 @@
     2. The map $f arrow.bar [f,1]$ embeds $R$ as a subring of $"Frac"(R)$
   ]
 
-  #proposition(title: "Universal Property of Fraction Field")[
+  #proposition(title: "Universal Property of Fraction Field (MORE)")[
     Let $R$ be an integral domain, $R'$ a commutative ring, and $phi : R arrow R'$ a ring homomorphism such that $phi(R without {0}) subset (R')^times$. Then there exists a unique ring homomorphism $Phi : "Frac"(R) arrow R'$ making the following diagram commute:
     $
       cases(
@@ -496,7 +496,7 @@
 
       *Step 3:* By definition of exponentiation in a monoid:
       $
-        x^(m+n) & = underbrace(x dot x dot dots x)_(m+n text(" times"))                                                         \
+        x^(m+n) & = underbrace(x dot x dot dots x)_(m+n text(" times")) \
                 & = (underbrace(x dot x dot dots x)_(m text(" times"))) dot (underbrace(x dot x dot dots x)_(n text(" times"))) \
                 & = x^m dot x^n
       $
@@ -613,7 +613,7 @@
       1. $f^(-1)$ preserves operation:
         $
           f^(-1)(a * b) & = f^(-1)(f(f^(-1)(a)) * f(f^(-1)(b))) \
-                        & = f^(-1)(f(f^(-1)(a) dot f^(-1)(b)))  \
+                        & = f^(-1)(f(f^(-1)(a) dot f^(-1)(b))) \
                         & = f^(-1)(a) dot f^(-1)(b)
         $
 
@@ -642,10 +642,10 @@
     #proof[
       Let $y$ and $y'$ be inverses of $x$. Then:
       $
-        y & = y dot e          \
+        y & = y dot e \
           & = y dot (x dot y') \
           & = (y dot x) dot y' \
-          & = e dot y'         \
+          & = e dot y' \
           & = y'
       $
       Therefore, the inverse is unique.
@@ -692,8 +692,8 @@
       We will show that $y^(-1) dot x^(-1)$ is the inverse of $x dot y$:
       $
         (x dot y)(y^(-1) dot x^(-1)) & = x dot (y dot y^(-1)) dot x^(-1) \
-                                     & = x dot e dot x^(-1)              \
-                                     & = x dot x^(-1)                    \
+                                     & = x dot e dot x^(-1) \
+                                     & = x dot x^(-1) \
                                      & = e
       $
       Similarly, $(y^(-1) dot x^(-1))(x dot y) = e$.
