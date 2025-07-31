@@ -1,4 +1,5 @@
 #import "@preview/theorion:0.3.2": *
+#import "@preview/cetz:0.4.1"
 
 #let ring-content = [
   = Ring, Field and Polynomial
@@ -184,7 +185,6 @@
     4. If $R$ is commutative, then $R[X]$ is also commutative
   ]
 
-  -- TODO reading next time
 
   #lemma(title: "Degree Properties in Integral Domains")[
     Let $R$ be an integral domain. Then for all non-zero $f,g in R[X]$:
@@ -327,25 +327,76 @@
 
   #proposition(title: "Universal Property of Fraction Field (MORE)")[
     Let $R$ be an integral domain, $R'$ a commutative ring, and $phi : R arrow R'$ a ring homomorphism such that $phi(R without {0}) subset (R')^times$. Then there exists a unique ring homomorphism $Phi : "Frac"(R) arrow R'$ making the following diagram commute:
-    $
-      cases(
-        R arrow.r^phi R',
-        R arrow.b,
-        "Frac"(R) arrow.r^Phi R'
-      )
-    $
+
+    #align(center)[
+      #cetz.canvas({
+        import cetz.draw: *
+
+        // Define positions
+        let R = (0, 1)
+        let R-prime = (3, 1)
+        let frac-R = (0, -1)
+
+        // Draw nodes
+        content(R, $R$)
+        content(R-prime, $R'$)
+        content(frac-R, $"Frac"(R)$)
+
+        // Draw arrows with padding from symbol positions
+        let padding = 0.3
+        line((R.at(0) + padding, R.at(1)), (R-prime.at(0) - padding, R-prime.at(1)), mark: (end: ">"))
+        line((R.at(0), R.at(1) - padding), (frac-R.at(0), frac-R.at(1) + padding), mark: (end: ">"))
+        line(
+          (frac-R.at(0) + padding, frac-R.at(1) + padding),
+          (R-prime.at(0) - padding, R-prime.at(1) - padding),
+          mark: (end: ">"),
+          stroke: (dash: "dashed"),
+        )
+
+        // Add labels at midpoints
+        content((1.5, 1.4), $phi$, anchor: "south")
+        content((-0.7, 0), $iota$, anchor: "east")
+        content((1.5, -0.5), $Phi$, anchor: "north")
+      })
+    ]
+
     Explicitly, $Phi(f\/g) = phi(f)phi(g)^(-1)$.
   ]
 
   #corollary[
     Let $F$ be a field containing an integral domain $R$ as a subring. If every element of $F$ can be expressed as $f g^(-1)$ where $f,g in R$ and $g eq.not 0$, then there exists a unique ring isomorphism $Phi : "Frac"(R) arrow F$ making the following diagram commute:
-    $
-      cases(
-        R arrow.r^"inclusion" F,
-        R arrow.b,
-        "Frac"(R) arrow.r^(tilde Phi) F
-      )
-    $
+
+    #align(center)[
+      #cetz.canvas({
+        import cetz.draw: *
+
+        // Define positions
+        let R = (0, 1)
+        let F = (3, 1)
+        let frac-R = (0, -1)
+
+        // Draw nodes
+        content(R, $R$)
+        content(F, $F$)
+        content(frac-R, $"Frac"(R)$)
+
+        // Draw arrows with padding from symbol positions
+        let padding = 0.3
+        line((R.at(0) + padding, R.at(1)), (F.at(0) - padding, F.at(1)), mark: (end: ">"))
+        line((R.at(0), R.at(1) - padding), (frac-R.at(0), frac-R.at(1) + padding), mark: (end: ">"))
+        line(
+          (frac-R.at(0) + padding, frac-R.at(1) + padding),
+          (F.at(0) - padding, F.at(1) - padding),
+          mark: (end: ">"),
+          stroke: (dash: "dashed"),
+        )
+
+        // Add labels at midpoints
+        content((1.5, 1.4), text(size: 0.8em)[inclusion], anchor: "south")
+        content((-0.7, 0), $iota$, anchor: "east")
+        content((1.5, -0.5), $tilde(Phi)$, anchor: "north")
+      })
+    ]
 
     #proof[
       By universal property, there exists unique $Phi : "Frac"(R) arrow F$.
@@ -368,6 +419,8 @@
     $
     Additionally, define $deg(0) := -infinity$.
   ]
+
+  -- TODO reading next time
 
   #corollary(title: "Bound on Roots in Integral Domain")[
     Let $R$ be an integral domain and $f in R[X] without {0}$. Then $f$ has at most $deg f$ distinct roots in $R$.
