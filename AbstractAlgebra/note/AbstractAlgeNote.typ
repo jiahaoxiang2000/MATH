@@ -1,6 +1,7 @@
 #import "@preview/theorion:0.3.2": *
 #import "chapters/set.typ": set-content
 #import "chapters/ring.typ": ring-content
+#import "chapters/VectorSpaces.typ": vector-spaces-content
 
 // Document configuration
 #let title = "Algebra Note"
@@ -178,3 +179,5 @@ Now let us further explain the previously raised question: What is algebra?
 #set-content
 
 #ring-content
+
+#vector-spaces-content
