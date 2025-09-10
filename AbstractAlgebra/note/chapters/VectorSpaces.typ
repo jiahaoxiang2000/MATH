@@ -212,8 +212,7 @@
   ]
 
   == Linear Mappings to Matrix
-  
-  -- TODO check context
+
 
   #definition[
     Let $V$ be an $F$-vector space. We denote $op("End")(V) := op("Hom")(V,V)$, whose elements are called endomorphisms of $V$.
@@ -254,6 +253,8 @@
   ]
 
   == Transpose of a Matrix and Dual Spaces
+
+  > NOTE: not clear understand Dual Space
 
   #definition[
     Let $R$ be a ring. For any $A = (a_(i j)) in M_(m times n)(R)$, the transpose of $A$, denoted $A^T$, is the $n times m$ matrix $(a_(j i))$. That is,
@@ -318,6 +319,7 @@
   ]
 
   == Kernel, Image, and Gaussian Elimination
+
 
   #definition[
     Let $T: V -> W$ be a linear map between vector spaces. The *kernel* of $T$ is
@@ -384,6 +386,8 @@
   ]
 
   == Change of Basis: Matrix Conjugation and Equivalence
+
+  -- TODO check context
 
   #lemma[
     The map $P_(bold(v))^(bold(v)'): F^n -> F^n$ defined by change of basis from $bold(v)$ to $bold(v)'$ is a vector space automorphism of $F^n$. Its inverse is $P_(bold(v)')^(bold(v))$.
