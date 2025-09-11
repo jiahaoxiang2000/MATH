@@ -387,8 +387,6 @@
 
   == Change of Basis: Matrix Conjugation and Equivalence
 
-  -- TODO check context
-
   #lemma[
     The map $P_(bold(v))^(bold(v)'): F^n -> F^n$ defined by change of basis from $bold(v)$ to $bold(v)'$ is a vector space automorphism of $F^n$. Its inverse is $P_(bold(v)')^(bold(v))$.
   ]
@@ -510,7 +508,7 @@
     Let $U$ be a subspace of a vector space $V$, and let $T: V -> W$ be a linear map.
     1. If $U subset ker(T)$, then there exists a unique linear map $overline(T): V\/U -> W$ such that the following diagram commutes:
       $
-        V arrow(T) W \
+        V arrow.long_(T) W \
         q | quad overline(T) \
         V\/U
       $
