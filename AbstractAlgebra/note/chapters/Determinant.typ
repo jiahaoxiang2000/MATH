@@ -228,6 +228,19 @@
     $
   ]
 
+  Using Kronecker's delta notation
+  $
+    delta_(i,j) := cases(
+      1 "if" i = j,
+      0 "if" i != j
+    )
+  $
+  the explicit formula for the determinant gives
+  $
+    det(X dot 1_(n times n) - A) = sum_(sigma in S_n) "sgn"(sigma) product_(i=1)^n (delta_(i,sigma(i)) X - a_(i,sigma(i))).
+  $
+  The highest degree term in $X$ comes from the contribution of $sigma = "id"$, yielding $X^n$, so $deg "Char"_A = n$.
+
   #proposition[
     Let $P in M_(n times n)(F)$ be invertible. Then $"Char"_(P^(-1) A P) = "Char"_A$.
   ]
@@ -293,9 +306,9 @@
   #lemma[
     Let $C in M_(n times n)(F)$ and $1 <= k <= n$. In the polynomial $det(X dot 1_(n times n) + C) in F[X]$, the coefficient of the $X^(n-k)$ term is
     $
-      sum_(I subset {1, ..., n}, |I| = k) det C_(I I),
+      sum_(I subset {1, ..., n}, |I| = k) det C mat(I; I),
     $
-    where $C_(I I)$ denotes the principal submatrix of $C$ indexed by $I$.
+    where $C mat(I; I)$ denotes the principal submatrix of $C$ indexed by $I$.
   ]
 
 ]

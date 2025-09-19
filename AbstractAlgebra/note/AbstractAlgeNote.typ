@@ -3,6 +3,7 @@
 #import "chapters/ring.typ": ring-content
 #import "chapters/VectorSpaces.typ": vector-spaces-content
 #import "chapters/Determinant.typ": determinant-content
+#import "chapters/RingsPolynomialsRevisited.typ": rings-polynomials-revisited-content
 
 // Document configuration
 #let title = "Algebra Note"
@@ -184,3 +185,5 @@ Now let us further explain the previously raised question: What is algebra?
 #vector-spaces-content
 
 #determinant-content
+
+#rings-polynomials-revisited-content
