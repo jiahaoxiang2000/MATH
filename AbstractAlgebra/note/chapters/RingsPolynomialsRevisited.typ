@@ -183,5 +183,69 @@
       $ f/g = q + sum_(i=1)^n h_i/g_i. $
   ]
 
+  == Simple Generalization: Unique Factorization in Principal Ideal Domains
+
+  #definition[
+    Let $R$ be an integral domain. If all ideals of $R$ are principal ideals, then $R$ is called a *principal ideal domain*.
+  ]
+
+  #proposition[
+    An integral domain $R$ is a unique factorization domain if and only if the following conditions hold:
+
+    ◦ Every $r ∈ R ∖ {0}$ can be written as a product of irreducible elements.
+
+    ◦ Every irreducible element is a prime element.
+  ]
+
+  #lemma[
+    Let $R$ be a principal ideal domain, and let $(I_n)_(n=1)^infinity$ be a sequence of ideals of $R$ satisfying $I_1 ⊂ I_2 ⊂ I_3 ⊂ ⋯$. Then for sufficiently large $n ∈ bb(Z)_(≥1)$, we have $I_n = I_(n+1) = ⋯$.
+  ]
+
+  #theorem[
+    If $R$ is a principal ideal domain, then $R$ is a unique factorization domain.
+  ]
+
+  #proposition[
+    Let $R$ be a principal ideal domain. Elements $r_1, ..., r_n$ are coprime if and only if $angle.l r_1, ..., r_n angle.r = R$, or equivalently, there exist $s_1, ..., s_n ∈ R$ such that $sum_(i=1)^n r_i s_i = 1$.
+  ]
+
+  #proposition[
+    Let $R$ be a principal ideal domain, $t ∈ R ∖ {0}$ and $t in.not R^times$. The following properties are equivalent:
+
+    (i) $R\/(t)$ is a field;
+
+    (ii) $R\/(t)$ is an integral domain;
+
+    (iii) $t$ is a prime element;
+
+    (iv) $t$ is irreducible.
+  ]
+
+  #theorem[
+    *(Chinese Remainder Theorem for Principal Ideal Domains)* Let $R$ be a principal ideal domain, $a_1, ..., a_n ∈ R ∖ {0}$ be pairwise coprime, and $a := a_1 ⋯ a_n$. Then there is a ring isomorphism
+    $
+      phi : R\/(a) & arrow product_(i=1)^n R\/(a_i) \
+           r + (a) & arrow.bar (r + (a_i))_(i=1)^n.
+    $
+  ]
+
+  == Formal Derivatives
+
+  #definition[
+    *(Formal Derivative)* Let $f = sum_(n≥0) a_n X^n ∈ F[X]$. Define the *formal derivative* of $f$ as
+    $ f' := sum_(n≥1) n a_n X^(n-1) ∈ F[X], $
+    where $n a_n ∈ F$ is understood in the sense of (3.1.1). Recursively define the derivatives of any order by
+    $ f^((0)) = f, quad f^((m)) := (f^((m-1)))' quad (m ∈ bb(Z)_(≥1)) $
+    We also write $f'' = (f')'$, and so on.
+  ]
+
+  #corollary[
+    The derivative mapping $f arrow.bar f'$ is a linear map from the $F$-vector space $F[X]$ to itself.
+  ]
+
+  #proposition[
+    The property $f' = 0 arrow.double.l.r.long f ∈ F$ holds in $F[X]$ if and only if $"char"(F) = 0$.
+  ]
+
 
 ]
