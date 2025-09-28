@@ -247,5 +247,26 @@
     The property $f' = 0 arrow.double.l.r.long f ∈ F$ holds in $F[X]$ if and only if $"char"(F) = 0$.
   ]
 
+  #proposition[
+    There exists a unique mapping
+    $ F(X) arrow F(X) $
+    $ f arrow.bar f' $
+    such that its restriction to $F[X]$ gives the formal derivative of polynomials, and for all $f, g ∈ F(X)$ we have
+    $ (f + g)' = f' + g', $
+    $ (f g)' = f' g + f g'. $
+    In fact, it can be precisely given by the formula:
+    $ (f/g)' = (f' g - f g')/g^2, $
+    where $f, g ∈ F[X]$ and $g ≠ 0$.
+  ]
+
+  #definition[
+    *(Formal Partial Derivatives)* For an $n$-variable polynomial expressed as a finite sum
+    $ f = sum_(i_1, ..., i_n ≥ 0) c_(i_1, ..., i_n) X_1^(i_1) ⋯ X_n^(i_n) ∈ F[X_1, ..., X_n] $
+    and $1 ≤ k ≤ n$, we borrow notation from analysis to define
+    $ (partial f)/(partial X_k) := sum_(i_1, ..., i_n ≥ 0) i_k c_(i_1, ..., i_n) X_1^(i_1) ⋯ X_k^(i_k - 1) ⋯ X_n^(i_n). $
+  ]
+
+  == Applications: Mason–Stothers Theorem
+
 
 ]
