@@ -266,6 +266,16 @@
     $ (partial f)/(partial X_k) := sum_(i_1, ..., i_n ≥ 0) i_k c_(i_1, ..., i_n) X_1^(i_1) ⋯ X_k^(i_k - 1) ⋯ X_n^(i_n). $
   ]
 
+  #definition[
+    *(Radical of a Polynomial)* Let $f ∈ F[X]$ be nonzero. Define the *radical* of $f$ by
+    $ rad(f) := product_(p ∣ f) p, $
+    where $p$ runs over the monic irreducible polynomials of $F[X]$ that divide $f$. If $f ∈ F^times$, interpret the right-hand side as $1$.
+  ]
+
+  #lemma[
+    Let $f, g ∈ F[X]$ be coprime with $f' ≠ 0$ and $g' ≠ 0$. Then $f f' ≠ g g'.$
+  ]
+
   == Applications: Mason–Stothers Theorem
 
 
