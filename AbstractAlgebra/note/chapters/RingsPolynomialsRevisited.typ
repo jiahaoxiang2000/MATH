@@ -2,6 +2,7 @@
 
 #import "@preview/theorion:0.3.2": *
 #import "@preview/cetz:0.3.0": canvas, draw
+#let rad = math.op("rad")
 #let rings-polynomials-revisited-content = [
 
   = Ring and Polynomial Revisited
@@ -56,22 +57,25 @@
 
     (i) If $I subset "ker"(f)$, then there exists a unique ring homomorphism $overline(f) : R\/I arrow R'$ such that the following diagram commutes:
     #align(center)[
-      #canvas(length: 1.5cm, {
-        import draw: *
+      #canvas(
+        length: 1.5cm,
+        {
+          import draw: *
 
-        content((0, 2), $R$)
-        content((3, 2), $R'$)
-        content((0, 0), $R\/I$)
+          content((0, 2), $R$)
+          content((3, 2), $R'$)
+          content((0, 0), $R\/I$)
 
-        line((0.3, 2), (2.7, 2), mark: (end: ">"))
-        content((1.5, 2.4), $f$)
+          line((0.3, 2), (2.7, 2), mark: (end: ">"))
+          content((1.5, 2.4), $f$)
 
-        line((0, 1.7), (0, 0.3), mark: (end: ">"))
-        content((-0.5, 1), $q$)
+          line((0, 1.7), (0, 0.3), mark: (end: ">"))
+          content((-0.5, 1), $q$)
 
-        line((0.3, 0.2), (2.6, 1.7), mark: (end: ">"))
-        content((1.8, 0.6), $overline(f)$)
-      })
+          line((0.3, 0.2), (2.6, 1.7), mark: (end: ">"))
+          content((1.8, 0.6), $overline(f)$)
+        },
+      )
     ]
     In other words, $overline(f) compose q = f$.
     Specifically, $overline(f)(x + I) = f(x)$.
@@ -83,26 +87,29 @@
     Let $f : R_1 arrow R_2$ be a ring homomorphism, $I_1 subset R_1$ and $I_2 subset R_2$ be ideals, and $f(I_1) subset I_2$. Then there exists a unique ring homomorphism $overline(f) : R_1\/I_1 arrow R_2\/I_2$ such that the following diagram commutes:
 
     #align(center)[
-      #canvas(length: 1.5cm, {
-        import draw: *
+      #canvas(
+        length: 1.5cm,
+        {
+          import draw: *
 
-        content((0, 2), $R_1$)
-        content((3, 2), $R_2$)
-        content((0, 0), $R_1\/I_1$)
-        content((3, 0), $R_2\/I_2$)
+          content((0, 2), $R_1$)
+          content((3, 2), $R_2$)
+          content((0, 0), $R_1\/I_1$)
+          content((3, 0), $R_2\/I_2$)
 
-        line((0.3, 2), (2.7, 2), mark: (end: ">"))
-        content((1.5, 2.4), $f$)
+          line((0.3, 2), (2.7, 2), mark: (end: ">"))
+          content((1.5, 2.4), $f$)
 
-        line((0, 1.7), (0, 0.3), mark: (end: ">"))
-        content((-0.5, 1), $q_1$)
+          line((0, 1.7), (0, 0.3), mark: (end: ">"))
+          content((-0.5, 1), $q_1$)
 
-        line((3, 1.7), (3, 0.3), mark: (end: ">"))
-        content((3.5, 1), $q_2$)
+          line((3, 1.7), (3, 0.3), mark: (end: ">"))
+          content((3.5, 1), $q_2$)
 
-        line((0.3, 0), (2.7, 0), mark: (end: ">"))
-        content((1.5, -0.3), $overline(f)$)
-      })
+          line((0.3, 0), (2.7, 0), mark: (end: ">"))
+          content((1.5, -0.3), $overline(f)$)
+        },
+      )
     ]
 
     In other words, $q_2 compose f = overline(f) compose q_1$.
@@ -157,9 +164,9 @@
   ]
 
   #definition[
-    Let $R$ be a unique factorization domain, $h in "Frac"(R) \\ {0}$. Then there exist $f, g in R$ such that $g eq.not 0$ and $f$ and $g$ are coprime, and $h = f/g$. Such a fraction $f/g$ is called a *reduced fraction*.
+    Let $R$ be a unique factorization domain, $h in "Frac"(R) \\ {0}$. Then there exist $f, g in R$ such that $g eq.not 0$ and $f$ and $g$ are coprime, and $h = f / g$. Such a fraction $f / g$ is called a *reduced fraction*.
 
-    If $f_1, g_1 in R$ also satisfy $g_1 eq.not 0$ and $h = f_1/g_1$, then we must have $f | f_1$ and $g | g_1$.
+    If $f_1, g_1 in R$ also satisfy $g_1 eq.not 0$ and $h = f_1 / g_1$, then we must have $f | f_1$ and $g | g_1$.
   ]
 
   #lemma[
@@ -180,7 +187,7 @@
     - $h_i in F[X]$ satisfies $deg h_i < deg g_i$ for $1 lt.eq i lt.eq n$;
 
     - We have the equality in $F(X)$:
-      $ f/g = q + sum_(i=1)^n h_i/g_i. $
+      $ f / g = q + sum_(i=1)^n h_i / g_i. $
   ]
 
   == Simple Generalization: Unique Factorization in Principal Ideal Domains
@@ -225,7 +232,7 @@
     *(Chinese Remainder Theorem for Principal Ideal Domains)* Let $R$ be a principal ideal domain, $a_1, ..., a_n ∈ R ∖ {0}$ be pairwise coprime, and $a := a_1 ⋯ a_n$. Then there is a ring isomorphism
     $
       phi : R\/(a) & arrow product_(i=1)^n R\/(a_i) \
-           r + (a) & arrow.bar (r + (a_i))_(i=1)^n.
+      r + (a) & arrow.bar (r + (a_i))_(i=1)^n.
     $
   ]
 
@@ -255,7 +262,7 @@
     $ (f + g)' = f' + g', $
     $ (f g)' = f' g + f g'. $
     In fact, it can be precisely given by the formula:
-    $ (f/g)' = (f' g - f g')/g^2, $
+    $ (f / g)' = (f' g - f g') / g^2, $
     where $f, g ∈ F[X]$ and $g ≠ 0$.
   ]
 
@@ -263,8 +270,12 @@
     *(Formal Partial Derivatives)* For an $n$-variable polynomial expressed as a finite sum
     $ f = sum_(i_1, ..., i_n ≥ 0) c_(i_1, ..., i_n) X_1^(i_1) ⋯ X_n^(i_n) ∈ F[X_1, ..., X_n] $
     and $1 ≤ k ≤ n$, we borrow notation from analysis to define
-    $ (partial f)/(partial X_k) := sum_(i_1, ..., i_n ≥ 0) i_k c_(i_1, ..., i_n) X_1^(i_1) ⋯ X_k^(i_k - 1) ⋯ X_n^(i_n). $
+    $
+      (partial f) / (partial X_k) := sum_(i_1, ..., i_n ≥ 0) i_k c_(i_1, ..., i_n) X_1^(i_1) ⋯ X_k^(i_k - 1) ⋯ X_n^(i_n).
+    $
   ]
+
+  == Applications: Mason–Stothers Theorem
 
   #definition[
     *(Radical of a Polynomial)* Let $f ∈ F[X]$ be nonzero. Define the *radical* of $f$ by
@@ -276,7 +287,51 @@
     Let $f, g ∈ F[X]$ be coprime with $f' ≠ 0$ and $g' ≠ 0$. Then $f f' ≠ g g'.$
   ]
 
-  == Applications: Mason–Stothers Theorem
+  #theorem[
+    *(Mason–Stothers Theorem, 1981)* Let $a, b, c ∈ F[X]$ be pairwise coprime polynomials with $a' ≠ 0$, $b' ≠ 0$, $c' ≠ 0$, and suppose $a + b + c = 0$. Then
+    $ max {"deg"(a), "deg"(b), "deg"(c)} ≤ "deg"(rad(a b c)) - 1. $
+  ]
 
+  #corollary[
+    *(Polynomial Fermat's Last Theorem)* Let $n ∈ bb(Z)_(≥1)$ with $"char"(F) ∤ n$. Suppose there exist pairwise coprime polynomials $u, v, w ∈ F[X]$ whose derivatives satisfy $u' ≠ 0$, $v' ≠ 0$, $w' ≠ 0$, and that $u^n + v^n = w^n$. Then $n < 3$.
+  ]
+
+  == Roots and Repeated Factors
+
+  We already know $F[X]$ is a unique factorization domain. By a simple degree argument the linear polynomial $X - a$ is irreducible for every $a ∈ F$. Consequently, $X - a$ and $h ∈ F[X]$ are coprime if and only if $X - a$ does not divide $h$, which is equivalent to $h(a) ≠ 0$ by the remainder theorem.
+
+  Fix $a ∈ F$. Every nonzero $f ∈ F[X]$ can be written uniquely in the form
+  $
+    f = (X - a)^(m_a) h,
+  $
+  where $m_a ∈ bb(Z)_(≥0)$, $h ∈ F[X]$, and $h(a) ≠ 0$ (equivalently, $h$ is coprime to $X - a$). The exponent $m_a$ is determined uniquely by $f$ and $a$, and satisfies $m_a > 0$ precisely when $a$ is a root of $f$.
+
+  #definition[
+    *(Multiplicity of a Root)* In the factorization $f = (X - a)^(m_a) h$ above, the integer $m_a$ is called the *multiplicity* of $a$ in the nonzero polynomial $f$.
+  ]
+
+  #definition[
+    *(Splitting Polynomial)* A polynomial $f ∈ F[X]$ is said to *split* over $F$ if it factors as a product of linear polynomials in $F[X]$.
+  ]
+
+  #proposition[
+    Let $f ∈ F[X]$ be nonzero and let $a_1, …, a_m ∈ F$ be its roots counted with multiplicities. Then $0 ≤ m ≤ "deg"(f)$. Moreover, $m = "deg"(f)$ if and only if $f$ is constant or $f$ splits over $F$.
+  ]
+
+  #definition[
+    *(Algebraically Closed Field)* A field $F$ is *algebraically closed* if every nonconstant polynomial over $F$ splits over $F$.
+  ]
+
+  #proposition[
+    Let $f ∈ F[X]$ be nonzero.
+
+    (i) If $f$ and $f'$ are coprime, then $f$ has no repeated factors.
+
+    (ii) If $f$ has no repeated factors and each irreducible factor $p$ of $f$ satisfies $p' ≠ 0$ (which holds automatically when $"char"(F) = 0$), then $f$ and $f'$ are coprime.
+  ]
+
+  #corollary[
+    Suppose $f ∈ F[X]$ splits over $F$. Then $f$ has no repeated roots if and only if $f$ and $f'$ are coprime.
+  ]
 
 ]
