@@ -232,7 +232,7 @@
     *(Chinese Remainder Theorem for Principal Ideal Domains)* Let $R$ be a principal ideal domain, $a_1, ..., a_n ∈ R ∖ {0}$ be pairwise coprime, and $a := a_1 ⋯ a_n$. Then there is a ring isomorphism
     $
       phi : R\/(a) & arrow product_(i=1)^n R\/(a_i) \
-      r + (a) & arrow.bar (r + (a_i))_(i=1)^n.
+           r + (a) & arrow.bar (r + (a_i))_(i=1)^n.
     $
   ]
 
@@ -241,7 +241,7 @@
   #definition[
     *(Formal Derivative)* Let $f = sum_(n≥0) a_n X^n ∈ F[X]$. Define the *formal derivative* of $f$ as
     $ f' := sum_(n≥1) n a_n X^(n-1) ∈ F[X], $
-    where $n a_n ∈ F$ is understood in the sense of (3.1.1). Recursively define the derivatives of any order by
+    where $n a_n ∈ F$ . Recursively define the derivatives of any order by
     $ f^((0)) = f, quad f^((m)) := (f^((m-1)))' quad (m ∈ bb(Z)_(≥1)) $
     We also write $f'' = (f')'$, and so on.
   ]
