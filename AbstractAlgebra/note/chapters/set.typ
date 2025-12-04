@@ -1,7 +1,6 @@
-#import "@preview/theorion:0.3.2": *
+#import "command.typ": *
 
-#let set-content = [
-  = Sets Mappings and Relationships
+= Sets Mappings and Relationships
 
   == Set Theory
 
@@ -726,6 +725,4 @@
     $
     where $cal(P)(A)$ is the power set of $A$.
   ]
-
-]
 

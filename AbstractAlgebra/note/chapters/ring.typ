@@ -1,8 +1,6 @@
-#import "@preview/theorion:0.3.2": *
-#import "@preview/cetz:0.4.1"
+#import "command.typ": *
 
-#let ring-content = [
-  = Ring, Field and Polynomial
+= Ring, Field and Polynomial
 
   == Ring & Field
 
@@ -861,4 +859,3 @@
         $
     ]
   ]
-]

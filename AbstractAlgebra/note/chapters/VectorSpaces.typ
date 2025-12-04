@@ -1,9 +1,6 @@
-#import "@preview/theorion:0.3.2": *
+#import "command.typ": *
 
-// Vector Spaces chapter content
-#let vector-spaces-content = [
-
-  = Vector Spaces and Linear Mappings
+= Vector Spaces and Linear Mappings
 
   Broadly speaking, a vector space over a field $F$ refers to a set $V$ together with two operations:
   - Vector addition $+: V times V -> V$, denoted $(v_1, v_2) |-> v_1 + v_2$, satisfying associativity, commutativity, and the existence of inverses;
@@ -541,5 +538,3 @@
     $ V \/ (V inter W) tilde.equiv (V + W) \/ W $
     given by $v + (V inter W) |-> v + W$ for $v in V$.
   ]
-
-]

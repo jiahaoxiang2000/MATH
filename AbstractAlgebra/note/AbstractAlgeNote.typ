@@ -1,9 +1,4 @@
 #import "@preview/theorion:0.3.2": *
-#import "chapters/set.typ": set-content
-#import "chapters/ring.typ": ring-content
-#import "chapters/VectorSpaces.typ": vector-spaces-content
-#import "chapters/Determinant.typ": determinant-content
-#import "chapters/RingsPolynomialsRevisited.typ": rings-polynomials-revisited-content
 
 // Document configuration
 #let title = "Algebra Note"
@@ -178,12 +173,12 @@ Now let us further explain the previously raised question: What is algebra?
   - Finding exact solutions when possible
   - Developing efficient algorithms, Providing methods for approximating solutions
 
-#set-content
+#include "chapters/set.typ"
 
-#ring-content
+#include "chapters/ring.typ"
 
-#vector-spaces-content
+#include "chapters/VectorSpaces.typ"
 
-#determinant-content
+#include "chapters/Determinant.typ"
 
-#rings-polynomials-revisited-content
+#include "chapters/RingsPolynomialsRevisited.typ"

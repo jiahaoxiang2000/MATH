@@ -1,8 +1,6 @@
-#import "@preview/theorion:0.3.2": *
+#import "command.typ": *
 
-#let determinant-content = [
-
-  = Determinant
+= Determinant
 
   == Permutations Introduction
 
@@ -310,5 +308,3 @@
     $
     where $C mat(I; I)$ denotes the principal submatrix of $C$ indexed by $I$.
   ]
-
-]
