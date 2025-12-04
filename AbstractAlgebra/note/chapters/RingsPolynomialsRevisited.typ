@@ -330,3 +330,123 @@ where $m_a ∈ bb(Z)_(≥0)$, $h ∈ F[X]$, and $h(a) ≠ 0$ (equivalently, $h$ 
 #corollary[
   Suppose $f ∈ F[X]$ splits over $F$. Then $f$ has no repeated roots if and only if $f$ and $f'$ are coprime.
 ]
+
+== Symmetric Polynomials
+
+#definition[
+  *(Symmetric Polynomial)* Let $f ∈ F[X_1, ..., X_n]$. If $sigma f = f$ holds for all $sigma in S_n$, then $f$ is called a *symmetric polynomial*.
+]
+
+#definition[
+  *(Elementary Symmetric Polynomials)* For $1 ≤ k ≤ n$, define the $n$-variable polynomial
+  $ e_k := sum_(1 ≤ i_1 < ⋯ < i_k ≤ n) X_(i_1) ⋯ X_(i_k). $
+  It is easy to see that this is a homogeneous symmetric polynomial of degree $k$, called the *$k$-th elementary symmetric polynomial*. For the case $k = 0$, we conveniently define $e_0 := 1$.
+]
+
+#lemma[
+  Let $f$ be an $n$-variable symmetric polynomial. Then $f(X_1, ..., X_(n-1), 0) = 0$ if and only if $e_n | f$.
+]
+
+#theorem[
+  *(Fundamental Theorem of Symmetric Polynomials)* Let $f$ be an $n$-variable symmetric polynomial. Then there exists $g ∈ F[X_1, ..., X_n]$ such that
+  $ f = g(e_1, ..., e_n). $
+]
+
+#theorem[
+  Let $g ∈ F[X_1, ..., X_n]$. If $g(e_1, ..., e_n) = 0$, then $g = 0$.
+]
+
+== Resultants
+
+#definition[
+  *(Resultant)* Let $n, m ∈ bb(Z)_(≥1)$. Consider elements of $F[X]$
+  $ f = v_0 X^n + ⋯ + v_n, $
+  $ g = w_0 X^m + ⋯ + w_m, $
+  where $v_i, w_j ∈ F$. Define the *resultant* of $f$ and $g$ as
+  $
+    "Res"(f, g) := det mat(
+      v_0, v_1, ..., v_n, , , , ;
+      , v_0, v_1, ..., v_n, , , ;
+      , , dots.down, dots.down, dots.down, dots.down, , ;
+      , , , v_0, v_1, ..., v_n;
+      w_0, w_1, ..., w_m, , , , ;
+      , w_0, w_1, ..., w_m, , , ;
+      , , dots.down, dots.down, dots.down, dots.down, , ;
+      , , , w_0, w_1, ..., w_m
+    )
+  $
+  This is a determinant of order $n + m$, where the first $m$ rows contain shifted copies of the coefficients of $f$, the next $n$ rows contain shifted copies of the coefficients of $g$, and blank entries are zero.
+] <def-resultant>
+
+#lemma[
+  Fix $n, m ∈ bb(Z)_(≥1)$. Let $f, g ∈ F[X]$ be as in @def-resultant. Then $"Res"(f, g) = 0$ if and only if there exist $f_1, g_1 ∈ F[X]$, not both zero, such that
+  $ f g_1 + g f_1 = 0, quad deg f_1 < n, quad deg g_1 < m. $
+]
+
+#theorem[
+  Fix $n, m ∈ bb(Z)_(≥1)$. Let $f, g ∈ F[X]$ be as in @def-resultant. Then $"Res"(f, g) = 0$ if and only if one of the following conditions holds: either $v_0 = 0 = w_0$, or $f$ and $g$ have a common factor of degree $> 0$.
+]
+
+#theorem[
+  Fix $n, m ∈ bb(Z)_(≥1)$. Let $f, g ∈ F[X]$ have the following factorizations
+  $ f = a product_(i=1)^n (X - alpha_i), quad g = b product_(j=1)^m (X - beta_j), $
+  where $a, b$ and $alpha_i, beta_j$ are all elements of $F$. Then
+  $
+    "Res"(f, g) = a^m product_(i=1)^n g(alpha_i) = (-1)^(n m) b^n product_(j=1)^m f(beta_j) = a^m b^n product_(i, j) (alpha_i - beta_j).
+  $
+]
+
+== Introduction to Irreducible Polynomials
+
+#definition[
+  *(Content and Primitive Polynomials)* Let $f = sum_(k=0)^n a_k X^k ∈ bb(Z)[X]$ be nonzero. Define
+  $ c(f) := gcd(a_0, ..., a_n) $
+  to be the greatest common divisor of all coefficients. If $c(f) = 1$, then $f$ is called a *primitive polynomial*.
+]
+
+#lemma[
+  *(Gauss's Lemma)* Let $g, h ∈ bb(Z)[X]$ be primitive polynomials. Then $g h$ is also primitive.
+]
+
+#lemma[
+  For all nonzero $g, h ∈ bb(Z)[X]$, we have $c(g h) = c(g) c(h)$.
+]
+
+#proposition[
+  Let $f ∈ bb(Z)[X]$ be a primitive polynomial. The following are equivalent:
+
+  (a) $f$ is irreducible in $bb(Q)[X]$;
+
+  (b) There do not exist polynomials $g, h ∈ bb(Z)[X]$, both of degree $> 0$, such that $f = g h$.
+
+  Moreover, if a primitive polynomial $f$ factors as $g h$ in $bb(Q)[X]$, then by multiplying $g$ and $h$ by some $alpha ∈ bb(Q)^times$ and $alpha^(-1)$ respectively, we can ensure that both $g$ and $h$ are primitive polynomials.
+] <prop-primitive-irreducible>
+
+#theorem[
+  The irreducible elements of the integral domain $bb(Z)[X]$ fall into two classes:
+
+  ▷ *First class:* Irreducible elements of $bb(Z)$.
+
+  ▷ *Second class:* Primitive polynomials $f$ of degree $> 0$ that satisfy the equivalent conditions (a) or (b) of @prop-primitive-irreducible.
+
+  Furthermore, $bb(Z)[X]$ is a unique factorization domain.
+]
+
+#theorem[
+  *(Eisenstein's Criterion)* Let $n ∈ bb(Z)_(≥1)$ and $f = a_0 + a_1 X + ⋯ + a_n X^n ∈ bb(Z)[X]$. If there exists a prime $p$ satisfying
+  $ p divides.not a_n, $
+  $ 0 ≤ i < n ==> p | a_i, $
+  $ p^2 divides.not a_0, $
+  then $f$ is irreducible as an element of $bb(Q)[X]$.
+]
+
+#proposition[
+  *(Rational Root Test)* Let $alpha = u \/ v$ be a rational number that is a root of a polynomial with integer coefficients $a_n X^n + a_(n-1) X^(n-1) + ⋯ + a_0 ∈ bb(Z)[X]$, where $u$ and $v$ are coprime. Then $v | a_n$ and $u | a_0$.
+]
+
+#corollary[
+  Any rational root of a monic polynomial with integer coefficients must be an integer.
+]
+
+
+
