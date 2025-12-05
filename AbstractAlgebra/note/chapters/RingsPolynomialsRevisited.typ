@@ -448,5 +448,68 @@ where $m_a ∈ bb(Z)_(≥0)$, $h ∈ F[X]$, and $h(a) ≠ 0$ (equivalently, $h$ 
   Any rational root of a monic polynomial with integer coefficients must be an integer.
 ]
 
+== Constructing Field Extensions from Irreducible Polynomials
+
+#lemma[
+  Let $f ∈ F[X] ∖ F$. Then
+  $
+    ι : F & → F[X]\/(f) \
+        a & ↦ a + (f)
+  $
+  is an injective ring homomorphism.
+]
+
+#lemma[
+  Let $f ∈ F[X] ∖ F$. Then the cosets of $1, X, ..., X^(deg f - 1)$ modulo $(f)$ form a basis for $F[X]\/(f)$ as an $F$-vector space.
+]
+
+#proposition[
+  Let $f = sum_(n≥0) a_n X^n ∈ F[X]$ be irreducible.
+
+  (i) With respect to the field embedding $ι : F ↪ F[X]\/(f) =: E$, let $α := X + (f) ∈ E$. Then the polynomial $f^ι ∈ E[X]$ satisfies $f^ι (α) = 0$.
+
+  (ii) If $L$ is a commutative ring, $ξ : F → L$ is a ring homomorphism, and $β ∈ L$ satisfies $f^ξ (β) = 0$, then there exists a unique ring homomorphism $ψ : E → L$ such that $ψ(α) = β$ and the following diagram commutes:
+  #align(center)[
+    #cetz.canvas(
+      length: 1.5cm,
+      {
+        import cetz.draw: *
+
+        content((0, 2), $F$)
+        content((3, 2), $E$)
+        content((1.5, 0), $L$)
+
+        line((0.3, 2), (2.7, 2), mark: (end: ">"))
+        content((1.5, 2.4), $ι$)
+
+        line((0.3, 1.7), (1.2, 0.3), mark: (end: ">"))
+        content((0.3, 1), $ξ$)
+
+        line((2.7, 1.7), (1.8, 0.3), mark: (end: ">"))
+        content((2.7, 1), $ψ$)
+      },
+    )
+  ]
+  This is equivalent to saying that $ψ$ is a linear map with respect to the $F$-vector space structure on $E$ (or $L$) given by $ι$ (or $ξ$).
+]
+
+#corollary[
+  For any field $F$ and any nonconstant polynomial $f ∈ F[X]$, there exists a field embedding $F ↪ E_f$ such that $f$ splits over $E_f$.
+]
+
+#definition[
+  *(Degree of Extension)* Consider a field $F$, a ring $L$, together with a given homomorphism $F → L$. This data makes $L$ an $F$-vector space. Define the *degree* of $L$ relative to $F$ as
+  $ [L : F] := dim_F L. $
+  In particular, for any field extension $E$ of $F$, we can discuss its degree $[E : F]$.
+]
+
+#proposition[
+  *(Tower Law)* Let $E$ be a field extension of $F$, and let $L$ be any ring with a given homomorphism $E → L$, making $L$ an $E$-vector space. If we restrict the scalar multiplication to the subfield $F$, then $L$ is also an $F$-vector space. The degrees satisfy the tower property:
+  $ [L : F] = [L : E] · [E : F]. $
+]
+
+#corollary[
+  Let $f ∈ F[X]$ satisfy $n := deg f ≥ 1$. Then the extension field $E_f$  can be suitably chosen such that $[E_f : F] ≤ n!$.
+]
 
 
